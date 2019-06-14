@@ -13,7 +13,7 @@
 //#import "SystemMessageVC.h"
 //#import "WorkMessageVC.h"
 #import <WebKit/WebKit.h>
-//#import <>
+#import <Bugtags/Bugtags.h>
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 
@@ -318,7 +318,7 @@
 ////配置bugtags
 - (void)configBugTags
 {
-//    [Bugtags startWithAppKey:@"07c43cc016f72f45636411177a0f0742" invocationEvent:BTGInvocationEventNone];
+    [Bugtags startWithAppKey:@"07c43cc016f72f45636411177a0f0742" invocationEvent:BTGInvocationEventNone];
 }
 
 //删除web缓存
