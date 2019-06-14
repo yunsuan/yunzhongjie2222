@@ -160,8 +160,6 @@
         
         UIAlertAction *agree = [UIAlertAction actionWithTitle:@"通过" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            [_dataArr removeObjectAtIndex:indexPath.row];
-            [_MainTableView reloadData];
             [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"1",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
                 
                 if ([resposeObject[@"code"] integerValue] == 200) {
@@ -183,8 +181,7 @@
             __strong __typeof(&*view)strongView = view;
             view.workWorkingDimissionViewBlock = ^{
                 
-                [_dataArr removeObjectAtIndex:indexPath.row];
-                [_MainTableView reloadData];
+            
                 [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"0",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
                     
                     if ([resposeObject[@"code"] integerValue] == 200) {

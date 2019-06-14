@@ -45,5 +45,37 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/Moudel/&#x5de5;&#x4f5c;/&#x7ecf;&#x7eaa;&#x4eba;&#x7ba1;&#x7406;/&#x5f85;&#x5ba1;&#x6838;/WorkWaitAgentManageVC.m"
+            timestampString = "582225788.665506"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/Moudel/&#x5de5;&#x4f5c;/&#x7ecf;&#x7eaa;&#x4eba;&#x7ba1;&#x7406;/&#x5f85;&#x5ba1;&#x6838;/WorkWaitAgentManageVC.m"
+            timestampString = "582225791.153617"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
