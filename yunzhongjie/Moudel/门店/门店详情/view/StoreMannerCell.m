@@ -43,7 +43,8 @@
     _headImg.contentMode = UIViewContentModeScaleAspectFill;
     _headImg.clipsToBounds = YES;
     _headImg.layer.cornerRadius = 21.5 *SIZE;
-    _headImg.backgroundColor = CLBackColor;
+//    _headImg.backgroundColor = CLBackColor;
+    _headImg.image = [UIImage imageNamed:@"ic_def_head"];
     [self.contentView addSubview:_headImg];
     
     _nameL = [[UILabel alloc] initWithFrame:CGRectMake(68*SIZE, 19*SIZE, 200*SIZE, 13*SIZE)];

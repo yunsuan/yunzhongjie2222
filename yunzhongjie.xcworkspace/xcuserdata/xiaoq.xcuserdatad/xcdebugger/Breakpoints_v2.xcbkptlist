@@ -62,11 +62,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x6211;&#x7684;/MineVC.m"
-            timestampString = "582222049.320364"
+            timestampString = "582233618.671152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-updateheadimgbyimg:"
             landmarkType = "7">
             <Locations>
@@ -78,11 +78,11 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
-                  timestampString = "582229064.8604521"
+                  timestampString = "582233619.936847"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "185"
-                  endingLineNumber = "185"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
                   offsetFromSymbolStart = "156">
                </Location>
                <Location
@@ -93,11 +93,11 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
-                  timestampString = "582229064.866654"
+                  timestampString = "582233619.940137"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "185"
-                  endingLineNumber = "185"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
@@ -110,7 +110,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x95e8;&#x5e97;/&#x95e8;&#x5e97;&#x8be6;&#x60c5;/StoreMainVC.m"
-            timestampString = "582218305.300313"
+            timestampString = "582233618.6712331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
@@ -142,7 +142,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x6211;&#x7684;/&#x4fee;&#x6539;&#x5bc6;&#x7801;/ChangePassWordVC.m"
-            timestampString = "582222423.941486"
+            timestampString = "582229991.950205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -158,7 +158,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x6211;&#x7684;/&#x4fee;&#x6539;&#x5bc6;&#x7801;/ChangePassWordVC.m"
-            timestampString = "582222458.948717"
+            timestampString = "582229991.950321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -180,6 +180,22 @@
             startingLineNumber = "115"
             endingLineNumber = "115"
             landmarkName = "-Register"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/Moudel/&#x623f;&#x6e90;/&#x623f;&#x6e90;&#x8be6;&#x60c5;/ProjectDetailVC.m"
+            timestampString = "582233618.67153"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-SetDataBydata:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

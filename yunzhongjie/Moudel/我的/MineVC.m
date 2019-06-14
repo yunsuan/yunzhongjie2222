@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) UITableView *table;
 
+@property (nonatomic, strong) UIButton *quitBtn;
 
 @end
 
@@ -97,8 +98,28 @@
 
 - (void)initDataSource{
     
-    _imgArr = @[@[@"Modifythe",@"Modifythe",@"work",@"Setupthe",@"version",@"about"]];
-    _titleArr = @[@[@"个人资料",@"修改密码",@"意见反馈",@"推送设置",@"版本信息",@"安全退出"]];
+    _imgArr = @[@[@"ic_personaldata",@"ic_opinion",@"ic_focus",@"ic_certification",@"ic_about"]];
+    _titleArr = @[@[@"个人资料",@"修改密码",@"意见反馈",@"推送设置",@"版本信息"]];
+}
+
+-(void)action_quit
+{
+    [self alertControllerWithNsstring:@"退出" And:@"你确认要退出登录吗？" WithCancelBlack:^{
+        
+    } WithDefaultBlack:^{
+        
+        [BaseRequest GET:LoginOut_URL parameters:nil success:^(id  _Nonnull resposeObject) {
+            //
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGINENTIFIER];
+            //                    [UserModelArchiver ClearModel];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"goLoginVC" object:nil];
+        } failure:^(NSError * _Nonnull error) {
+            
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGINENTIFIER];
+            //                    [UserModelArchiver ClearModel];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"goLoginVC" object:nil];
+        }];
+    }];
 }
 
 #pragma mark -- 选择头像
@@ -375,6 +396,17 @@
     _table.backgroundColor = self.view.backgroundColor;
     _table.delegate = self;
     _table.dataSource = self;
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 360*SIZE, 70*SIZE)];
+    _quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _quitBtn.frame = CGRectMake(20*SIZE, 20*SIZE, 320*SIZE, 40*SIZE);
+    _quitBtn.backgroundColor = COLOR(238, 119, 92, 1);
+    _quitBtn.layer.cornerRadius = 5*SIZE;
+    _quitBtn.layer.masksToBounds=  YES;
+    [_quitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+    [_quitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_quitBtn addTarget:self action:@selector(action_quit) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:_quitBtn];
+    _table.tableFooterView = view;
     [self.view addSubview:_table];
     
     if (@available(iOS 11.0,*)) {
@@ -384,6 +416,9 @@
         
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    
+  
+    
 }
 
 @end
