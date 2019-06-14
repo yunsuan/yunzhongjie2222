@@ -394,7 +394,28 @@
             }];
         }else{
             
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"审核" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
             
+            UIAlertAction *agree = [UIAlertAction actionWithTitle:@"通过" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                
+            }];
+            
+            UIAlertAction *refuse = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                
+            }];
+            
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            
+            [alert addAction:agree];
+            [alert addAction:refuse];
+            [alert addAction:cancel];
+            [self.navigationController presentViewController:alert animated:YES completion:^{
+                
+            }];
         }
     };
     
@@ -435,6 +456,28 @@
     }
 }
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [BaseRequest GET:DeleteMessage_URL parameters:@{@"message_id":[NSString stringWithFormat:@"%@",_dataArr[indexPath.row][@"message_id"]]} success:^(id resposeObject) {
+        
+        if ([resposeObject[@"code"] integerValue] == 200) {
+            
+            [self RequestMethod];
+        }else{
+            
+            [self showContent:resposeObject[@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+        [self showContent:@"网络错误"];
+    }];
+}
+
 - (void)initUI{
     self.navBackgroundView.hidden = NO;
     self.leftButton.hidden = YES;
@@ -446,6 +489,7 @@
     _table.separatorStyle = UITableViewCellSeparatorStyleNone;
     _table.delegate = self;
     _table.dataSource = self;
+    _table.editing = YES;
     [self.view addSubview:_table];
     _table.mj_header = [GZQGifHeader headerWithRefreshingBlock:^{
         

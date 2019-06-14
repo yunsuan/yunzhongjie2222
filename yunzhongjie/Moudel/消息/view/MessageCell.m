@@ -48,10 +48,10 @@
     }else{
         
         _titelL.text = @"门店认证审核";
-        _nameL.text = [NSString stringWithFormat:@"客户姓名：%@",dataDic[@"name"]];
-        _phoneL.text = [NSString stringWithFormat:@"推荐编号：%@",dataDic[@"client_id"]];
-        _timeL.text = [NSString stringWithFormat:@"推荐时间：%@",dataDic[@"create_time"]];
-        _infoL.text = [NSString stringWithFormat:@"推荐项目：%@",dataDic[@"project_name"]];
+        _nameL.text = [NSString stringWithFormat:@"申请人：%@",dataDic[@"agent_name"]];
+        _phoneL.text = [NSString stringWithFormat:@"联系电话：%@",dataDic[@"agent_tel"]];
+        _timeL.text = [NSString stringWithFormat:@"申请权限：%@",dataDic[@"role"]];
+        _infoL.text = [NSString stringWithFormat:@"申请时间：%@",dataDic[@"create_time"]];
     }
 }
 
