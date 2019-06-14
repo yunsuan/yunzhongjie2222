@@ -25,6 +25,8 @@ static NSString *const DeleteMessage_URL = @"middle/message/work/delete";
 static NSString *const MessageList_URL = @"middle/message/work/list";
 //获取未读消息总量
 static NSString *const MessageCount_URL = @"middle/message/getUnreadCount";
+//经纪人审核
+static NSString *const MiddleAgentEX_URL = @"middle/agent/ex";
 
 
 
@@ -457,8 +459,17 @@ static NSString *const TakeLookDisabledList_URL = @"agent/take/push/disabled/lis
 #pragma mark ---  工作  ---
 
 #pragma mark -- 经纪人管理 --
+//经纪人审核列表
+static NSString *const MiddleAgentGetExlist_URL = @"middle/agent/getExList";
+
 //经纪人在职列表
 static NSString *const AgentGetPayrollList_URL = @"middle/agent/getPayrollList";
+
+//经纪人离职
+static NSString *const MiddleAgentQuit_URL = @"middle/agent/quit";
+
+//经理人离职列表
+static NSString *const MiddleAgentGetQuitList_URL = @"middle/agent/getQuitList";
 
 #pragma mark -- 签字流程 --
 

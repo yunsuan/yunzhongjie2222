@@ -8,7 +8,8 @@
 
 #import "WorkWorkingAgentManageVC.h"
 
-#import "WorkWaitAgentCell.h"
+//#import "WorkWaitAgentCell.h"
+#import "WorkWorkingDimissionView.h"
 #import "WorkWorkingConfirmAgentCell.h"
 
 @interface WorkWorkingAgentManageVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -34,6 +35,7 @@
 
 -(void)initDateSouce
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RequestMethod) name:@"dimission" object:nil];
     _page = 1;
     _dataArr = [@[] mutableCopy];
 }
@@ -56,9 +58,9 @@
             
             [self->_dataArr removeAllObjects];
             [self->_MainTableView reloadData];
-            if ([resposeObject[@"data"] count]) {
+            if ([resposeObject[@"data"][@"data"] count]) {
                 
-                [self SetData:resposeObject[@"data"]];
+                [self SetData:resposeObject[@"data"][@"data"]];
                 self->_MainTableView.mj_footer.state = MJRefreshStateIdle;
             }else{
                 
@@ -88,9 +90,9 @@
         
         if ([resposeObject[@"code"] integerValue] == 200) {
             
-            if ([resposeObject[@"data"] count]) {
+            if ([resposeObject[@"data"][@"data"] count]) {
                 
-                [self SetData:resposeObject[@"data"]];
+                [self SetData:resposeObject[@"data"][@"data"]];
                 self->_MainTableView.mj_footer.state = MJRefreshStateIdle;
             }else{
                 
@@ -150,6 +152,71 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.dataDic = _dataArr[indexPath.row];
+    
+    [cell.confirmBtn setTitle:@"离职" forState:UIControlStateNormal];
+    [cell.confirmBtn setBackgroundColor:CLLightGrayColor];
+    
+    cell.workWorkingConfirmAgentCellBlock = ^{
+      
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"离职" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction *store = [UIAlertAction actionWithTitle:@"仅离职门店" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:self.view.frame];
+            __strong __typeof(&*view)strongView = view;
+            view.workWorkingDimissionViewBlock = ^{
+                
+                [BaseRequest POST:MiddleAgentQuit_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remarks":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"1"} success:^(id resposeObject) {
+                    
+                    if ([resposeObject[@"code"] integerValue] == 200) {
+                        
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
+                    }else{
+                        
+                        [self showContent:resposeObject[@"msg"]];
+                    }
+                } failure:^(NSError *error) {
+                    
+                    [self showContent:@"网络错误"];
+                }];
+            };
+            [self.view addSubview:view];
+        }];
+        
+        UIAlertAction *company = [UIAlertAction actionWithTitle:@"离职公司" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:self.view.frame];
+            __strong __typeof(&*view)strongView = view;
+            view.workWorkingDimissionViewBlock = ^{
+                
+                [BaseRequest POST:MiddleAgentQuit_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remarks":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"1"} success:^(id resposeObject) {
+                    
+                    if ([resposeObject[@"code"] integerValue] == 200) {
+                        
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
+                    }else{
+                        
+                        [self showContent:resposeObject[@"msg"]];
+                    }
+                } failure:^(NSError *error) {
+                    
+                    [self showContent:@"网络错误"];
+                }];
+            };
+            [self.view addSubview:view];
+        }];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alert addAction:store];
+        [alert addAction:company];
+        [alert addAction:cancel];
+        [self.navigationController presentViewController:alert animated:YES completion:^{
+            
+        }];
+    };
     return cell;
 }
 

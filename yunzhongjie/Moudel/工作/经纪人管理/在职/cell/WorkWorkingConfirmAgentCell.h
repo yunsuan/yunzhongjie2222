@@ -18,15 +18,15 @@ typedef void(^WorkWorkingConfirmAgentCellBlock)(void);
 
 @property (nonatomic, strong) UILabel *nameL;
 
-@property (nonatomic, strong) UIImageView *sexImg;
+//@property (nonatomic, strong) UIImageView *sexImg;
 
 @property (nonatomic, strong) UILabel *phoneL;
 
-@property (nonatomic, strong) UILabel *roleL;
-
+//@property (nonatomic, strong) UILabel *roleL;
+//
 @property (nonatomic, strong) UILabel *timeL;
-
-@property (nonatomic, strong) UILabel *projectL;
+//
+//@property (nonatomic, strong) UILabel *projectL;
 
 @property (nonatomic, strong) UILabel *storeL;
 
@@ -35,6 +35,8 @@ typedef void(^WorkWorkingConfirmAgentCellBlock)(void);
 @property (nonatomic, strong) UIView *lineView;
 
 @property (nonatomic, strong) NSDictionary *dataDic;
+
+@property (nonatomic, strong) NSDictionary *quitDic;
 
 @end
 
