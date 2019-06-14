@@ -12,6 +12,5 @@ pod 'SDWebImage', '~> 5.0.3'
  pod 'FLAnimatedImage'
  pod 'YBImageBrowser'
 
-
 end
 

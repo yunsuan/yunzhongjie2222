@@ -13,6 +13,7 @@
 //#import "SystemMessageVC.h"
 //#import "WorkMessageVC.h"
 #import <WebKit/WebKit.h>
+//#import <>
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 
@@ -40,7 +41,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initUI];
-//    [self UpdateRequest];
+    [self UpdateRequest];
     [self NetworkingStart];
     [self configThirdWithOptions:launchOptions];
     
@@ -57,6 +58,8 @@
     //注册通知，退出登陆时回到首页
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(comeBackLoginVC) name:@"goLoginVC" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goHome) name:@"goHome" object:nil];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
     NSString *logIndentifier = [[NSUserDefaults standardUserDefaults] objectForKey:LOGINENTIFIER];
     BOOL flag = [[NSUserDefaults standardUserDefaults] boolForKey:@"Guided"];
@@ -87,74 +90,53 @@
     
 }
 
-//- (void)UpdateRequest{
-//
-//    NSError *error;
-//    NSData *response = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@",@"1371978352"]]] returningResponse:nil error:nil];
-//    if (response == nil) {
-//
-//        //        NSLog(@"你没有连接网络哦");
-//        return;
-//    }
-//    NSDictionary *appInfoDic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-//
-//    if (error) {
-//
-//        NSLog(@"hsUpdateAppError:%@",error);
-//        return;
-//    }
-//    NSArray *array = appInfoDic[@"results"];
-//    NSDictionary *dic = array[0];
-//    NSString *appStoreVersion = dic[@"version"];
-//    if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YQDversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
-//
-//        //        if ([UpdateAlert defaultAlert].alert) {
-//        //
-//        //            if ([UpdateAlert defaultAlert].isMust) {
-//        //
-//        //                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        //
-//        //                    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[UpdateAlert defaultAlert].alert animated:YES completion:^{
-//        //
-//        //                    }];
-//        //                });
-//        //            }
-//        //        }else{
-//
-//        [BaseRequest GET:@"getVersionInfo" parameters:nil success:^(id resposeObject) {
-//
-//            if ([resposeObject[@"code"] integerValue] == 200) {
-//
-//
-//                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"系统更新" message:resposeObject[@"data"][@"content"] preferredStyle:UIAlertControllerStyleAlert];
-//
-//                [alert addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-//
-//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1371978352?mt=8"]];
-//
-//                }]];
-//                if (![resposeObject[@"data"][@"must"] integerValue]) {
-//
-//                    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//
-//
-//                    }]];
-//                }
-//
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//
-//                    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{
-//
-//                    }];
-//                });
-//            }
-//        } failure:^(NSError *error) {
-//
-//        }];
-//    }
-//
-//    //    }
-//}
+- (void)UpdateRequest{
+    
+    [BaseRequest VersionUpdateSuccess:^(id  _Nonnull resposeObject) {
+        
+        NSLog(@"%@",resposeObject);
+        NSArray *array = resposeObject[@"results"];
+        NSDictionary *dic = array[0];
+        NSString *appStoreVersion = dic[@"version"];
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+            
+            [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
+                
+                if ([resposeObject[@"code"] integerValue] == 200) {
+                    
+                    
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"系统更新" message:resposeObject[@"data"][@"content"] preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alert addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1371987180?mt=8"]];
+                        
+                    }]];
+                    if (![resposeObject[@"data"][@"must"] integerValue]) {
+                        
+                        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                            
+                            
+                        }]];
+                    }
+                    
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        
+                        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{
+                            
+                        }];
+                    });
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+        NSLog(@"%@",error);
+    }];
+}
 
 //网络请求
 - (void)NetworkingStart {
@@ -257,7 +239,7 @@
 - (void)configThirdWithOptions:(NSDictionary *)launchOptions{
 //    [self configUSharePlatforms];
 //    [self configBaiduMap];
-//    [self configBugTags];
+    [self configBugTags];
     [self conifgJpushWithOptions:launchOptions];
     [self configJAnalisties];
 }
@@ -334,10 +316,10 @@
 }
 
 ////配置bugtags
-//- (void)configBugTags
-//{
-//    [Bugtags startWithAppKey:@"1560323d00d5dac86cd32d7b0d130787" invocationEvent:BTGInvocationEventNone];
-//}
+- (void)configBugTags
+{
+//    [Bugtags startWithAppKey:@"07c43cc016f72f45636411177a0f0742" invocationEvent:BTGInvocationEventNone];
+}
 
 //删除web缓存
 - (void)deleteWebCache {
@@ -517,7 +499,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //                break;
 //        }
 //        [UserModelArchiver archive];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadType" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
 //    }
 //
 //    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
@@ -547,6 +529,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *title = content.title;  // 推送消息的标题
     //    NSLog(@"1111111%@",userInfo);
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
 //    if (userInfo[@"agent_type"]) {
 //
 //        switch ([userInfo[@"agent_type"] integerValue]) {
@@ -676,7 +659,49 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     //    [self UpdateRequest];
-   
+    [BaseRequest VersionUpdateSuccess:^(id  _Nonnull resposeObject) {
+        
+        NSArray *array = resposeObject[@"results"];
+        NSDictionary *dic = array[0];
+        NSString *appStoreVersion = dic[@"version"];
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+            
+            [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
+                
+                if ([resposeObject[@"code"] integerValue] == 200) {
+                    
+                    
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"系统更新" message:resposeObject[@"data"][@"content"] preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alert addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1371987180?mt=8"]];
+                        
+                    }]];
+                    if (![resposeObject[@"data"][@"must"] integerValue]) {
+                        
+                        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                            
+                            
+                        }]];
+                    }else{
+                        
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            
+                            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{
+                                
+                            }];
+                        });
+                    }
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+        
+    }];
 }
 
 
@@ -687,9 +712,100 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 
+- (void)applicationWillEnterForeground:(UIApplication *)application{
+    
+    [BaseRequest VersionUpdateSuccess:^(id  _Nonnull resposeObject) {
+        
+        NSArray *array = resposeObject[@"results"];
+        NSDictionary *dic = array[0];
+        NSString *appStoreVersion = dic[@"version"];
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+            
+            [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
+                
+                if ([resposeObject[@"code"] integerValue] == 200) {
+                    
+                    
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"系统更新" message:resposeObject[@"data"][@"content"] preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alert addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1371987180?mt=8"]];
+                        
+                    }]];
+                    if (![resposeObject[@"data"][@"must"] integerValue]) {
+                        
+                        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                            
+                            
+                        }]];
+                    }else{
+                        
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            
+                            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{
+                                
+                            }];
+                        });
+                    }
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+        
+    }];
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     //    [self UpdateRequest];
+    
+    [BaseRequest VersionUpdateSuccess:^(id  _Nonnull resposeObject) {
+        
+        NSArray *array = resposeObject[@"results"];
+        NSDictionary *dic = array[0];
+        NSString *appStoreVersion = dic[@"version"];
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+            
+            [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
+                
+                if ([resposeObject[@"code"] integerValue] == 200) {
+                    
+                    
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"系统更新" message:resposeObject[@"data"][@"content"] preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alert addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1371987180?mt=8"]];
+                        
+                    }]];
+                    if (![resposeObject[@"data"][@"must"] integerValue]) {
+                        
+                        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                            
+                            
+                        }]];
+                    }else{
+                        
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            
+                            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{
+                                
+                            }];
+                        });
+                    }
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+        
+    }];
 
 }
 

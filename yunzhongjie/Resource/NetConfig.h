@@ -482,6 +482,9 @@ static NSString *const MiddleAgentQuit_URL = @"middle/agent/quit";
 //经理人离职列表
 static NSString *const MiddleAgentGetQuitList_URL = @"middle/agent/getQuitList";
 
+//对接人信息统计
+static NSString *const MiddleWorkButterCount_URL = @"middle/work/butter/count";
+
 #pragma mark -- 签字流程 --
 
 //签字有效
