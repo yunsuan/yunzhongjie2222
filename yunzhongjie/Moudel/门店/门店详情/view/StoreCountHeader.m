@@ -21,13 +21,14 @@
 
 
 -(void)initUI{
-    self.backgroundColor = [UIColor whiteColor];
     
-    UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(10 *SIZE, 0 *SIZE, 7 *SIZE, 15 *SIZE)];
+    self.contentView.backgroundColor = [UIColor whiteColor];
+    
+    UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(10 *SIZE, 12.5 *SIZE, 7 *SIZE, 15 *SIZE)];
     colorView.backgroundColor = CLBlueBtnColor;
     [self.contentView addSubview:colorView];
     
-    _titelL = [[UILabel alloc]initWithFrame:CGRectMake(30*SIZE, 0*SIZE, 300*SIZE, 14*SIZE)];
+    _titelL = [[UILabel alloc]initWithFrame:CGRectMake(30*SIZE, 12.5*SIZE, 300*SIZE, 14*SIZE)];
     _titelL.text = @"新房";
     _titelL.textColor = CLTitleLabColor;
     _titelL.font = FONT(15);
@@ -41,7 +42,7 @@
 //    [self addSubview:_countL];
     
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 34*SIZE, 360*SIZE, 1*SIZE)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 39*SIZE, 360*SIZE, 1*SIZE)];
     line.backgroundColor = CLBackColor;
     [self.contentView addSubview:line];
     

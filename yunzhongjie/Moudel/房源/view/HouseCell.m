@@ -66,7 +66,7 @@
     [self addSubview:_timeL];
 
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 114*SIZE, 360*SIZE, 1*SIZE)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 119*SIZE, 360*SIZE, 1*SIZE)];
     line.backgroundColor = CLBackColor;
     [self.contentView addSubview:line];
     
