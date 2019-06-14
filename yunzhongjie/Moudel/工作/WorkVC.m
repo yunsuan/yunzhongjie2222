@@ -59,10 +59,11 @@
 //
         [BaseRequest GET:MiddleWorkButterCount_URL parameters:@{} success:^(id  _Nonnull resposeObject) {
 
+            [self->_table.mj_header endRefreshing];
             if ([resposeObject[@"code"] integerValue] == 200) {
 
                 //            [UserModel defaultModel].projectPowerDic = resposeObject[@"data"];
-                self->_contentArr = @[[NSString stringWithFormat:@"待审核%@，在职%@，离职%@",resposeObject[@"data"][@"agent"][@"ex"],resposeObject[@"data"][@"agent"][@"payrool"],resposeObject[@"data"][@"agent"][@"quit"]],[NSString stringWithFormat:@"今日新增%@，累计%@，无效%@",resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"value"]],[NSString stringWithFormat:@"累计%@，到访%@，无效%@",resposeObject[@"data"][@"recommend_count"],resposeObject[@"data"][@"value"],resposeObject[@"data"][@"valueDisabled"]]];
+                self->_contentArr = @[[NSString stringWithFormat:@"待审核%@，在职%@，离职%@",resposeObject[@"data"][@"agent"][@"ex"],resposeObject[@"data"][@"agent"][@"payroll"],resposeObject[@"data"][@"agent"][@"quit"]],[NSString stringWithFormat:@"今日新增%@，累计%@，无效%@",resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"value"]],[NSString stringWithFormat:@"累计%@，到访%@，无效%@",resposeObject[@"data"][@"recommend_count"],resposeObject[@"data"][@"value"],resposeObject[@"data"][@"valueDisabled"]]];
                 [self->_table reloadData];
 //                [self SetData:resposeObject[@"data"]];
 
@@ -72,6 +73,7 @@
             }
         } failure:^(NSError * _Nonnull error) {
 
+            [self->_table.mj_header endRefreshing];
             [self showContent:@"网路错误"];
         }];
 //    }
@@ -200,7 +202,10 @@
     _table.dataSource = self;
     [self.view addSubview:_table];
     
-
+    _table.mj_header = [GZQGifHeader headerWithRefreshingBlock:^{
+       
+        [self RequestMethod];
+    }];
 }
 @end
 
