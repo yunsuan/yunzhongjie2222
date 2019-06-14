@@ -95,25 +95,25 @@
                            @"captcha":_Code.text
                            };
     
-//    [BaseRequest POST:ResetPassword_URL parameters:temp success:^(id resposeObject) {
-//
-//        if ([resposeObject[@"code"] integerValue] == 200) {
-////            LoginVC *next_vc = [[LoginVC alloc]init];
-////            [UserModel defaultModel].Account = _Account.text;
-////            [UserModel defaultModel].Password = _PassWord.text;
-////            [UserModelArchiver archive];
-//            [self alertControllerWithNsstring:@"系统提示" And:@"修改密码成功，请妥善保管好账号" WithDefaultBlack:^{
-//
-//                [self.navigationController popViewControllerAnimated:YES];
-//            }];
-//        }
-//        else{
-//            [self showContent:resposeObject[@"msg"]];
-//        }
-//
-//    } failure:^(NSError *error) {
-//        [self showContent:@"网络错误"];
-//    }];
+    [BaseRequest POST:ForgetPassWord_URL parameters:temp success:^(id resposeObject) {
+
+        if ([resposeObject[@"code"] integerValue] == 200) {
+//            LoginVC *next_vc = [[LoginVC alloc]init];
+//            [UserModel defaultModel].Account = _Account.text;
+//            [UserModel defaultModel].Password = _PassWord.text;
+//            [UserModelArchiver archive];
+            [self alertControllerWithNsstring:@"系统提示" And:@"修改密码成功，请妥善保管好账号" WithDefaultBlack:^{
+
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }
+        else{
+            [self showContent:resposeObject[@"msg"]];
+        }
+
+    } failure:^(NSError *error) {
+        [self showContent:@"网络错误"];
+    }];
 
 }
 
@@ -125,25 +125,25 @@
         NSDictionary *parameter = @{
                                     @"tel":_Account.text
                                     };
-//        [BaseRequest GET:Captcha_URL parameters:parameter success:^(id resposeObject) {
-//            NSLog(@"%@",resposeObject);
-//            if ([resposeObject[@"code"] integerValue] == 200) {
-//                _GetCodeBtn.hidden = YES;
-//                _timeLabel.hidden = NO;
-//                surplusTime = 60;
-//                _timeLabel.text = [NSString stringWithFormat:@"%ldS", (long)surplusTime];
-//                //倒计时
-//                time = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
-//
-//            }
-//            else{
-//                [self showContent:resposeObject[@"msg"]];
-//            }
-//            self->_GetCodeBtn.userInteractionEnabled = YES;
-//        } failure:^(NSError *error) {
-//            self->_GetCodeBtn.userInteractionEnabled = YES;
-//            [self showContent:@"网络错误"];
-//        }];
+        [BaseRequest GET:GetCode_URL parameters:parameter success:^(id resposeObject) {
+            NSLog(@"%@",resposeObject);
+            if ([resposeObject[@"code"] integerValue] == 200) {
+                _GetCodeBtn.hidden = YES;
+                _timeLabel.hidden = NO;
+                surplusTime = 60;
+                _timeLabel.text = [NSString stringWithFormat:@"%ldS", (long)surplusTime];
+                //倒计时
+                time = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+
+            }
+            else{
+                [self showContent:resposeObject[@"msg"]];
+            }
+            self->_GetCodeBtn.userInteractionEnabled = YES;
+        } failure:^(NSError *error) {
+            self->_GetCodeBtn.userInteractionEnabled = YES;
+            [self showContent:@"网络错误"];
+        }];
     }
     else
     {

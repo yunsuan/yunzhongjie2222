@@ -67,33 +67,33 @@
         return;
     }
     
-//    NSDictionary *parameter = @{
-//                                @"old_password":_Account.text,
-//                                @"password":_PassWord.text,
-//                                @"password_verify":_SurePassWord.text
-//                                };
-//    
-//    [BaseRequest POST:UserPersonalChangePassword_URL parameters:parameter success:^(id resposeObject) {
-//        //        NSLog(@"%@",resposeObject);
-//
-//        if ([resposeObject[@"code"] integerValue] == 200) {
-//            
-//            [UserModel defaultModel].passWord = self->_PassWord.text;
-//            [UserModelArchiver archive];
-//
-//            [self alertControllerWithNsstring:@"系统提示" And:[NSString stringWithFormat:@"修改密码成功，你的新密码为：%@，请妥善保管",self->_PassWord.text] WithDefaultBlack:^{
-//                
-//                [self.navigationController popViewControllerAnimated:YES];
-//            }];
-//        }
-//        else{
-//            
-//            [self showContent:resposeObject[@"msg"]];
-//        }
-//
-//    } failure:^(NSError *error) {
-//        [self showContent:@"网络错误"];
-//    }];
+    NSDictionary *parameter = @{
+                                @"old_password":_Account.text,
+                                @"password":_PassWord.text,
+                                @"password_verify":_SurePassWord.text
+                                };
+    
+    [BaseRequest POST:ChangePassWord_URL parameters:parameter success:^(id resposeObject) {
+        //        NSLog(@"%@",resposeObject);
+
+        if ([resposeObject[@"code"] integerValue] == 200) {
+            
+            [UserModel defaultModel].Password = self->_PassWord.text;
+            [UserModelArchiver archive];
+
+            [self alertControllerWithNsstring:@"系统提示" And:[NSString stringWithFormat:@"修改密码成功，你的新密码为：%@，请妥善保管",self->_PassWord.text] WithDefaultBlack:^{
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }
+        else{
+            
+            [self showContent:resposeObject[@"msg"]];
+        }
+
+    } failure:^(NSError *error) {
+        [self showContent:@"网络错误"];
+    }];
 }
 
 

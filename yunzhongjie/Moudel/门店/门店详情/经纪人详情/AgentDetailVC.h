@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString *store_id;
 
+@property (nonatomic , strong) NSString *agent_count;
+
 @end
 
 NS_ASSUME_NONNULL_END

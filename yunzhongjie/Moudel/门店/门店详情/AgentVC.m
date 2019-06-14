@@ -128,6 +128,7 @@
     AgentDetailVC *next_vc = [[AgentDetailVC alloc]init];
     next_vc.store_id = _store_id;
     next_vc.agent_id = _datasource[indexPath.row][@"agent_id"];
+    next_vc.agent_count = _datasource[indexPath.row][@"count"];
     [self.navigationController pushViewController:next_vc animated:YES];
 }
 

@@ -34,12 +34,12 @@
     _titelL.font = FONT(15);
     [self addSubview:_titelL];
     
-//    _countL = [[UILabel alloc]initWithFrame:CGRectMake(50*SIZE, 5*SIZE, 300*SIZE, 14*SIZE)];
+    _countL = [[UILabel alloc]initWithFrame:CGRectMake(50*SIZE, 12.5*SIZE, 300*SIZE, 14*SIZE)];
 //    _countL.text = @"排名：2";
-//    _countL.textAlignment = NSTextAlignmentRight;
-//    _countL.textColor = CLTitleLabColor;
-//    _countL.font = FONT(13);
-//    [self addSubview:_countL];
+    _countL.textAlignment = NSTextAlignmentRight;
+    _countL.textColor = CLTitleLabColor;
+    _countL.font = FONT(13);
+    [self addSubview:_countL];
     
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 39*SIZE, 360*SIZE, 1*SIZE)];
