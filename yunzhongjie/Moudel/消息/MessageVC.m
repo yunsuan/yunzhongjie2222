@@ -38,23 +38,93 @@
     _dataArr = [@[] mutableCopy];
 }
 
+
 - (void)RequestMethod{
     
-    [BaseRequest GET:MessageList_URL parameters:@{} success:^(id resposeObject) {
+    _page = 1;
+    _table.mj_footer.state = MJRefreshStateIdle;
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"page":@(_page)}];
+    [BaseRequest GET:MessageList_URL parameters:dic success:^(id resposeObject) {
+        
+        [self->_table.mj_header endRefreshing];
         
         if ([resposeObject[@"code"] integerValue] == 200) {
             
-            _dataArr = [NSMutableArray arrayWithArray:resposeObject[@"data"]];
-            [_table reloadData];
+            [self->_dataArr removeAllObjects];
+            [self->_table reloadData];
+            if ([resposeObject[@"data"] count]) {
+                
+                [self SetUnComfirmArr:resposeObject[@"data"]];
+                self->_table.mj_footer.state = MJRefreshStateIdle;
+            }else{
+                
+                self->_table.mj_footer.state = MJRefreshStateNoMoreData;
+            }
         }else{
             
             [self showContent:resposeObject[@"msg"]];
         }
     } failure:^(NSError *error) {
         
+        [self->_table.mj_header endRefreshing];
         [self showContent:@"网络错误"];
     }];
 }
+
+- (void)RequestAddMethod{
+    
+    _page += 1;
+    _table.mj_footer.state = MJRefreshStateIdle;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"page":@(_page)}];
+    [BaseRequest GET:MessageList_URL parameters:dic success:^(id resposeObject) {
+        
+        if ([resposeObject[@"code"] integerValue] == 200) {
+            
+            if ([resposeObject[@"data"] count]) {
+                
+                [self SetUnComfirmArr:resposeObject[@"data"]];
+                self->_table.mj_footer.state = MJRefreshStateIdle;
+            }else{
+                
+                self->_table.mj_footer.state = MJRefreshStateNoMoreData;
+            }
+        }
+        else{
+            
+            self->_page -= 1;
+            [self->_table.mj_footer endRefreshing];
+            [self showContent:resposeObject[@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+        self->_page -= 1;
+        [self->_table.mj_footer endRefreshing];
+        [self showContent:@"网络错误"];
+    }];
+    
+}
+
+- (void)SetUnComfirmArr:(NSArray *)data{
+    
+    for (int i = 0; i < data.count; i++) {
+        
+        NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithDictionary:data[i]];
+        [tempDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            
+            if ([obj isKindOfClass:[NSNull class]]) {
+                
+                [tempDic setObject:@"" forKey:key];
+            }
+        }];
+        
+        [_dataArr addObject:tempDic];
+    }
+    
+    [_table reloadData];
+}
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -106,7 +176,15 @@
     _table.delegate = self;
     _table.dataSource = self;
     [self.view addSubview:_table];
+    _table.mj_header = [GZQGifHeader headerWithRefreshingBlock:^{
+        
+        [self RequestMethod];
+    }];
     
+    _table.mj_footer = [GZQGifFooter footerWithRefreshingBlock:^{
+        
+        [self RequestAddMethod];
+    }];
     
 }
 

@@ -24,10 +24,14 @@
 - (void)setDataDic:(NSDictionary *)dataDic{
     
     _titelL.text = dataDic[@"title"];
-    _nameL.text = [NSString stringWithFormat:@"%@",dataDic[@"name"]];
-    _phoneL.text = [NSString stringWithFormat:@"%@",dataDic[@"name"]];
-    _infoL.text = [NSString stringWithFormat:@"%@",dataDic[@""]];
-    _timeL.text = [NSString stringWithFormat:@"%@",dataDic[@""]];
+    _nameL.text = [NSString stringWithFormat:@"姓名：%@",dataDic[@"name"]];
+    _phoneL.text = [NSString stringWithFormat:@"推荐编号：%@",dataDic[@"client_id"]];
+    if ([dataDic[@"message_type"] integerValue] == 18) {
+        
+        _infoL.text = [NSString stringWithFormat:@"推荐项目：%@",dataDic[@"project_name"]];
+    }
+    
+    _timeL.text = [NSString stringWithFormat:@"推荐时间：%@",dataDic[@"create_time"]];
 }
 
 -(void)initUI{
@@ -38,18 +42,19 @@
     _titelL.textColor = CLTitleLabColor;
     _titelL.font = FONT(13);
     [self addSubview:_titelL];
-
-    _nameL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 30*SIZE, 350*SIZE, 14*SIZE)];
-    _nameL.text = @"姓名：李想";
-    _nameL.textColor = CLContentLabColor;
-    _nameL.font = FONT(12);
-    [self addSubview:_nameL];
     
-    _phoneL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 50*SIZE, 350*SIZE, 13*SIZE)];
+    _phoneL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 30*SIZE, 350*SIZE, 13*SIZE)];
     _phoneL.text = @"客户电话：18381383883";
     _phoneL.font = FONT(12);
     _phoneL.textColor = CLContentLabColor;
     [self addSubview:_phoneL];
+
+
+    _nameL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 50*SIZE, 350*SIZE, 14*SIZE)];
+    _nameL.text = @"姓名：李想";
+    _nameL.textColor = CLContentLabColor;
+    _nameL.font = FONT(12);
+    [self addSubview:_nameL];
     
     _infoL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 70*SIZE, 350*SIZE, 13*SIZE)];
     _infoL.text = @"角色：勘察，带看，签约，过户";
@@ -66,6 +71,14 @@
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 114*SIZE, 360*SIZE, 1*SIZE)];
     line.backgroundColor = CLBackColor;
     [self.contentView addSubview:line];
+    
+    _assistBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _assistBtn.frame = CGRectMake(240*SIZE, 55*SIZE, 50*SIZE, 25*SIZE);
+    _assistBtn.backgroundColor = CLLoginBtnColor;
+    [_assistBtn setTitle:@"复制" forState:UIControlStateNormal];
+    _assistBtn.titleLabel.font = [UIFont systemFontOfSize:12*SIZE];
+    [_assistBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [self addSubview:_assistBtn];
     
     _sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _sureBtn.frame = CGRectMake(300*SIZE, 75*SIZE, 50*SIZE, 25*SIZE);
