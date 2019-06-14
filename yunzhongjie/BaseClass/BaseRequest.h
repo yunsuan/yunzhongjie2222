@@ -24,5 +24,6 @@
 
 
 
++ (void)VersionUpdateSuccess:(void(^)(id resposeObject))success failure:(void(^)(NSError *error))failure;
 
 @end

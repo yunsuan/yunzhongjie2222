@@ -9,6 +9,7 @@
 #import "WorkWaitAgentManageVC.h"
 
 #import "WorkWaitAgentCell.h"
+#import "WorkWorkingDimissionView.h"
 //#import "WorkWaitConfirmAgentCell.h"
 
 @interface WorkWaitAgentManageVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -34,6 +35,8 @@
 
 -(void)initDateSouce
 {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RequestMethod) name:@"dimission" object:nil];
     _page = 1;
     _dataArr = [@[] mutableCopy];
 }
@@ -150,6 +153,64 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.dataDic = _dataArr[indexPath.row];
+    
+    cell.workWaitAgentCellBlock = ^{
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"审核" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction *agree = [UIAlertAction actionWithTitle:@"通过" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"remark":"",@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"1",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
+                
+                if ([resposeObject[@"code"] integerValue] == 200) {
+                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
+                }else{
+                    
+                    [self showContent:resposeObject[@"msg"]];
+                }
+            } failure:^(NSError *error) {
+                
+                [self showContent:@"网络错误"];
+            }];
+        }];
+        
+        UIAlertAction *refuse = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            __strong __typeof(&*view)strongView = view;
+            view.workWorkingDimissionViewBlock = ^{
+                
+            
+                [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"0",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
+                    
+                    if ([resposeObject[@"code"] integerValue] == 200) {
+                        
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
+                    }else{
+                        
+                        [self showContent:resposeObject[@"msg"]];
+                    }
+                } failure:^(NSError *error) {
+                    
+                    [self showContent:@"网络错误"];
+                }];
+            };
+            [[UIApplication sharedApplication].keyWindow addSubview:view];
+        }];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alert addAction:agree];
+        [alert addAction:refuse];
+        [alert addAction:cancel];
+        [self.navigationController presentViewController:alert animated:YES completion:^{
+            
+        }];
+    };
+    
     return cell;
 }
 
@@ -172,11 +233,6 @@
 -(void)initUI
 {
     
-    //    if ([[UserModel defaultModel].agent_identity integerValue] ==1) {
-    //        self.rightBtn.hidden = NO;
-    //    }else{
-    //        self.rightBtn.hidden = YES;
-    //    }
     
     [self.view addSubview:self.MainTableView];
 }

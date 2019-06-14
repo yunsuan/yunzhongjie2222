@@ -19,6 +19,7 @@
     NSArray *_titleArr;
     NSArray *_imgArr;
     NSArray *_projectArr;
+    NSArray *_contentArr;
     
     NSArray *_showArr;
     NSMutableArray *_powerArr;
@@ -36,7 +37,7 @@
     [super viewDidLoad];
     [self initDataSource];
     [self initUI];
-//    [self RequestMethod];
+    [self RequestMethod];
 }
 
 - (void)initDataSource{
@@ -45,34 +46,37 @@
     
         _imgArr = @[@"laifang",@"ys_find",@"recommended",@"laifang",@"paihao",@"signing_2",@"shoukuan_2",@"audit",@"rotational"];
         _titleArr = @[@"经纪人管理",@"号码判重",@"新房推荐"];
+    _contentArr = @[@"",@"",@""];
 //    }
 //    _projectArr = [UserModel defaultModel].project_list;
 //    _showArr = [PowerModel defaultModel].WorkListPower;
 }
 
 
-//- (void)RequestMethod{
+- (void)RequestMethod{
 //
 //    if ([[UserModel defaultModel].projectinfo count]) {
 //
-//        [BaseRequest GET:WorkCount_URL parameters:@{@"project_id":[UserModel defaultModel].projectinfo[@"project_id"]} success:^(id  _Nonnull resposeObject) {
-//
-//            if ([resposeObject[@"code"] integerValue] == 200) {
-//
-//                //            [UserModel defaultModel].projectPowerDic = resposeObject[@"data"];
+        [BaseRequest GET:MiddleWorkButterCount_URL parameters:@{} success:^(id  _Nonnull resposeObject) {
+
+            if ([resposeObject[@"code"] integerValue] == 200) {
+
+                //            [UserModel defaultModel].projectPowerDic = resposeObject[@"data"];
+                _contentArr = @[@"",[NSString stringWithFormat:@"今日新增%@，累计%@，无效%@",resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"value"]],[NSString stringWithFormat:@"累计%@，到访%@，无效%@",resposeObject[@"data"][@"recommend_count"],resposeObject[@"data"][@"value"],resposeObject[@"data"][@"valueDisabled"]]];
+                [_table reloadData];
 //                [self SetData:resposeObject[@"data"]];
-//
-//            }else{
-//
-//                [self showContent:resposeObject[@"msg"]];
-//            }
-//        } failure:^(NSError * _Nonnull error) {
-//
-//            [self showContent:@"网路错误"];
-//        }];
+
+            }else{
+
+                [self showContent:resposeObject[@"msg"]];
+            }
+        } failure:^(NSError * _Nonnull error) {
+
+            [self showContent:@"网路错误"];
+        }];
 //    }
 //
-//}
+}
 
 - (void)SetData:(NSDictionary *)data{
     
@@ -142,7 +146,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell SetImg:_imgArr[indexPath.row] title:_titleArr[indexPath.row] content:@""];
+    [cell SetImg:_imgArr[indexPath.row] title:_titleArr[indexPath.row] content:_contentArr[indexPath.row]];
 //    if ([_showArr[indexPath.row] integerValue] == 1) {
 //
 //        cell.hidden = NO;

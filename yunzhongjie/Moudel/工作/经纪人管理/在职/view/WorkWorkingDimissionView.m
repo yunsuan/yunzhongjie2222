@@ -51,7 +51,7 @@
     alphaView.userInteractionEnabled = YES;
     [self addSubview:alphaView];
     
-    _whiteView = [[UIView alloc] initWithFrame:CGRectMake(55 *SIZE, 206 *SIZE, 250 *SIZE, 137 *SIZE)];
+    _whiteView = [[UIView alloc] initWithFrame:CGRectMake(55 *SIZE, 206 *SIZE, 250 *SIZE, 150 *SIZE)];
     
     _whiteView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_whiteView];
