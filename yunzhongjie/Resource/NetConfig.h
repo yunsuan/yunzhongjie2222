@@ -87,7 +87,8 @@ static NSString *const FixPersonInfo_URL = @"middle/user/personal/changeAgentInf
 //登出
 static NSString *const LoginOut_URL = @"middle/user/personal/logOut";
 
-
+//意见反馈
+static NSString *const SendAdvice_URL = @"middle/user/personal/sendAdvice";
 
 
 
@@ -136,7 +137,7 @@ static NSString *const ForgetPassWord_URL = @"user/resetPassword";
 
 #pragma mark ---  我的  ---
 //上传文件
-static NSString *const UploadFile_URL = @"agent/file/upload";
+static NSString *const UploadFile_URL = @"middle/file/upload";
 
 //获取订阅列表
 static NSString *const GetFocusProjectList_URL = @"agent/personal/getFocusProjectList";

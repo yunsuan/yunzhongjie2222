@@ -36,10 +36,10 @@
 }
 
 -(void)Post{
-    [BaseRequest GET:StoreList_URL parameters:@{@"store_id":@"9"} success:^(id resposeObject) {
+    [BaseRequest GET:StoreList_URL parameters:@{@"store_id":[UserModel defaultModel].store_id} success:^(id resposeObject) {
         NSLog(@"%@",resposeObject);
     } failure:^(NSError *error) {
-
+        [self showContent:@"网络错误"];
     }];
 }
 
