@@ -76,6 +76,12 @@ static NSString *const StoreList_URL = @"middle/store/getList";
 //门店详情
 static NSString *const StoreDetail_URL = @"middle/store/getStoreInfo";
 
+//门店详情
+static NSString *const AgentList_URL = @"middle/store/agentList";
+
+//门店详情
+static NSString *const AgentDetail_URL = @"middle/store/agentInfo";
+
 #pragma mark ---  云中介个人  ---
 
 //修改推送设置

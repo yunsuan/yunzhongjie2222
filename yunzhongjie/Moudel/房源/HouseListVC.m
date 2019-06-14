@@ -144,6 +144,7 @@
     cell.adressL.text = _datasource[indexPath.row][@"adress"];
     cell.nameL.text = _datasource[indexPath.row][@"agent"];
     cell.timeL.text = _datasource[indexPath.row][@"time"];
+    [cell.levelview SetImage:[UIImage imageNamed:@"lightning_1"] selectImg:[UIImage imageNamed:@"lightning"] num:[_datasource[indexPath.row][@"star"] integerValue]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;

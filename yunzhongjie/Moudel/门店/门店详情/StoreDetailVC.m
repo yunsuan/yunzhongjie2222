@@ -126,6 +126,7 @@
     _storemainVC.contact = _contact;
     _storemainVC.contact_tel = _contact_tel;
     _agentVC = [[AgentVC alloc]init];
+    _agentVC.store_id = _store_id;
     _chartVC = [[ChartVC alloc]init];
     // 添加为self的子控制器
     [self addChildViewController:_storemainVC];

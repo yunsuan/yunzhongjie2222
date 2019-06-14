@@ -62,8 +62,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x6211;&#x7684;/MineVC.m"
-            timestampString = "582212893.658831"
-
+            timestampString = "582218305.299971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "185"
@@ -79,8 +78,7 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
-                  timestampString = "582212894.429366"
-
+                  timestampString = "582218305.9255739"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
@@ -95,9 +93,7 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
-
-                  timestampString = "582212894.4454679"
-
+                  timestampString = "582218305.928498"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
@@ -113,15 +109,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-
-            filePath = "yunzhongjie/Moudel/&#x623f;&#x6e90;/&#x623f;&#x6e90;&#x8be6;&#x60c5;/DealVC.m"
-            timestampString = "582198166.8288521"
+            filePath = "yunzhongjie/Moudel/&#x95e8;&#x5e97;/&#x95e8;&#x5e97;&#x8be6;&#x60c5;/StoreMainVC.m"
+            timestampString = "582218305.300313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "-RequestWithPage:"
-
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "-btntouch:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

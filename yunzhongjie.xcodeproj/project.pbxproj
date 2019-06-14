@@ -99,6 +99,8 @@
 		10B8B82F22B1F14400CDD004 /* HNChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B8B82322B1F14400CDD004 /* HNChannelModel.m */; };
 		10B8B83222B2222B00CDD004 /* HouseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B8B83122B2222B00CDD004 /* HouseListVC.m */; };
 		10B8B83422B36A3800CDD004 /* region.json in Resources */ = {isa = PBXBuildFile; fileRef = 10B8B83322B36A3800CDD004 /* region.json */; };
+		10B8B83722B3E26A00CDD004 /* LevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B8B83522B3E26A00CDD004 /* LevelView.m */; };
+		10B8B83B22B3EE1E00CDD004 /* AgentDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B8B83A22B3EE1E00CDD004 /* AgentDetailVC.m */; };
 		10FA5AFB229B856200A6CB32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FA5AFA229B856200A6CB32 /* AppDelegate.m */; };
 		10FA5B01229B856200A6CB32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10FA5AFF229B856200A6CB32 /* Main.storyboard */; };
 		10FA5B03229B856300A6CB32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10FA5B02229B856300A6CB32 /* Assets.xcassets */; };
@@ -355,6 +357,10 @@
 		10B8B83022B2222B00CDD004 /* HouseListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseListVC.h; sourceTree = "<group>"; };
 		10B8B83122B2222B00CDD004 /* HouseListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseListVC.m; sourceTree = "<group>"; };
 		10B8B83322B36A3800CDD004 /* region.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = region.json; sourceTree = "<group>"; };
+		10B8B83522B3E26A00CDD004 /* LevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelView.m; sourceTree = "<group>"; };
+		10B8B83622B3E26A00CDD004 /* LevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelView.h; sourceTree = "<group>"; };
+		10B8B83922B3EE1E00CDD004 /* AgentDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgentDetailVC.h; sourceTree = "<group>"; };
+		10B8B83A22B3EE1E00CDD004 /* AgentDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgentDetailVC.m; sourceTree = "<group>"; };
 		10FA5AF6229B856200A6CB32 /* yunzhongjie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yunzhongjie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10FA5AF9229B856200A6CB32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		10FA5AFA229B856200A6CB32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1003,6 +1009,8 @@
 		10956615229BF5DF001957DD /* view */ = {
 			isa = PBXGroup;
 			children = (
+				10B8B83622B3E26A00CDD004 /* LevelView.h */,
+				10B8B83522B3E26A00CDD004 /* LevelView.m */,
 				10956616229BF60A001957DD /* HouseCell.h */,
 				10956617229BF60A001957DD /* HouseCell.m */,
 			);
@@ -1023,6 +1031,7 @@
 		10956620229CD802001957DD /* 门店详情 */ = {
 			isa = PBXGroup;
 			children = (
+				10B8B83822B3EE0A00CDD004 /* 经纪人详情 */,
 				1095662D229CDBD9001957DD /* view */,
 				10956621229CD826001957DD /* StoreDetailVC.h */,
 				10956622229CD826001957DD /* StoreDetailVC.m */,
@@ -1088,6 +1097,15 @@
 				10B8B82422B1F14400CDD004 /* HNTitleView.h */,
 			);
 			path = HNChannelView;
+			sourceTree = "<group>";
+		};
+		10B8B83822B3EE0A00CDD004 /* 经纪人详情 */ = {
+			isa = PBXGroup;
+			children = (
+				10B8B83922B3EE1E00CDD004 /* AgentDetailVC.h */,
+				10B8B83A22B3EE1E00CDD004 /* AgentDetailVC.m */,
+			);
+			path = "经纪人详情";
 			sourceTree = "<group>";
 		};
 		10FA5AED229B856200A6CB32 = {
@@ -1774,6 +1792,7 @@
 				10FA5BB5229B95AB00A6CB32 /* MineVC.m in Sources */,
 				10956596229BE7BD001957DD /* InfoDetailCell.m in Sources */,
 				10956626229CD8F7001957DD /* AgentVC.m in Sources */,
+				10B8B83B22B3EE1E00CDD004 /* AgentDetailVC.m in Sources */,
 				10FA5B86229B8B4D00A6CB32 /* BaseModel.m in Sources */,
 				109565FB229BF217001957DD /* WorkPhoneConfrimFailVC.m in Sources */,
 				1038C15522A63FE50062C7EF /* MessageCell.m in Sources */,
@@ -1884,6 +1903,7 @@
 				1038C17222A7D3110062C7EF /* CustomerListCell.m in Sources */,
 				0C6FA18022B396A000B40A3C /* WorkWorkingAgentManageVC.m in Sources */,
 				10FA5B77229B8B2800A6CB32 /* DropBtn.m in Sources */,
+				10B8B83722B3E26A00CDD004 /* LevelView.m in Sources */,
 				10B8B82522B1F14400CDD004 /* WMPageController.m in Sources */,
 				10956648229FC742001957DD /* AgentCell.m in Sources */,
 				10FA5B9B229B8B6300A6CB32 /* RegisterVC.m in Sources */,

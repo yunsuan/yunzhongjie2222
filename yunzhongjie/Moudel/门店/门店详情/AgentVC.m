@@ -8,11 +8,12 @@
 
 #import "AgentVC.h"
 #import "AgentCell.h"
+#import "AgentDetailVC.h"
 
 @interface AgentVC ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
-    
-    NSArray *_datasource;
+    NSArray * _datasource;
+    NSString* _searchStr;
 }
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic , strong) UISearchBar *searchbar;
@@ -27,34 +28,76 @@
     [super viewDidLoad];
     [self initDataSource];
     [self initUI];
+    [self Post];
     // Do any additional setup after loading the view.
 }
 
 - (void)initDataSource{
-    _datasource = @[@"",@"",@""];
+    _datasource =[NSMutableArray array];
 }
 
 -(void)Post
 {
-    
+    [BaseRequest GET:AgentList_URL
+          parameters:@{
+                       @"store_id":_store_id
+                       }
+             success:^(id resposeObject) {
+                 NSLog(@"%@",resposeObject);
+                 [self.table.mj_header endRefreshing];
+                 if ([resposeObject[@"code"] integerValue]==200) {
+                     _datasource= [self SetData:resposeObject[@"data"]];
+                     [_table reloadData];
+                 }
+                 else{
+                     [self showContent:resposeObject[@"msg"]];
+                 }
+                 
+             } failure:^(NSError *error) {
+                 [self.table.mj_header endRefreshing];
+                 [self showContent:@"网络错误"];
+             }];
+}
+
+-(NSMutableArray *)SetData:(NSMutableArray *)data
+{
+    NSMutableArray * arr =  [NSMutableArray array];
+    for (int i= 0; i<data.count; i++) {
+        NSDictionary *datadic  =  data[i];
+        NSMutableDictionary *dic  = [NSMutableDictionary dictionary];
+        [dic setValue:datadic[@"agent_id"] forKey:@"agent_id"];
+        [dic setValue:datadic[@"name"] forKey:@"name"];
+        [dic setValue:[NSString stringWithFormat:@"联系方式:%@",datadic[@"tel"]] forKey:@"tel"];
+        [dic setValue:[NSString stringWithFormat:@"入职时间:%@",datadic[@"update_time"]] forKey:@"update_time"];
+//        [dic setValue:datadic[@"update_time"] forKey:@"update_time"];
+        [dic setValue:[NSString stringWithFormat:@"新房排名%d",i+1] forKey:@"count"];
+//        [dic setValue:datadic[@"count"] forKey:@"count"];
+        [arr addObject:dic];
+    }
+    return arr;
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSArray *results;
+//    _page = @"1";
+    _searchStr = searchBar.text;
+    [self Post];
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
     self.table.allowsSelection=YES;
     self.table.scrollEnabled=YES;
-//    [self.tableDate removeAllObjects];
-//    [self.tableDate addObjectsFromArray:results];
-//    [self.tableView reloadData];
+    //    [self.tableDate removeAllObjects];
+    //    [self.tableDate addObjectsFromArray:results];
+    //    [self.tableView reloadData];
     
 }
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     searchBar.text=@"";
+//    _page = @"1";
+    _searchStr = @"";
+    [self Post];
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
     self.table.allowsSelection=YES;
@@ -63,8 +106,8 @@
 
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-     [searchBar setShowsCancelButton:YES animated:YES];
-//     _searchbar.showsCancelButton = YES;
+    [searchBar setShowsCancelButton:YES animated:YES];
+    //     _searchbar.showsCancelButton = YES;
     self.table.allowsSelection=NO;
     self.table.scrollEnabled=NO;
 }
@@ -76,8 +119,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 120*SIZE;
+    return 90*SIZE;
     
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AgentDetailVC *next_vc = [[AgentDetailVC alloc]init];
+    next_vc.store_id = _store_id;
+    next_vc.agent_id = _datasource[indexPath.row][@"agent_id"];
+    [self.navigationController pushViewController:next_vc animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -88,14 +139,13 @@
         cell = [[AgentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AgentCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.companyL.text = _datasource[indexPath.row][@"name"];
+    cell.adressL.text = _datasource[indexPath.row][@"tel"];
+    cell.newcountL.text = _datasource[indexPath.row][@"count"];
+    cell.phoneL.text = _datasource[indexPath.row][@"update_time"];
     
     return cell;
 }
-
-
-
-
-
 
 - (void)initUI{
 
