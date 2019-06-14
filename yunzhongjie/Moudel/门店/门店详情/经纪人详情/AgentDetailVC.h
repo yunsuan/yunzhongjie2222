@@ -1,8 +1,8 @@
 //
-//  AgentVC.h
+//  AgentDetailVC.h
 //  yunzhongjie
 //
-//  Created by xiaoq on 2019/5/28.
+//  Created by xiaoq on 2019/6/14.
 //  Copyright © 2019 xiaoq. All rights reserved.
 //
 
@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AgentVC : BaseViewController
+@interface AgentDetailVC : BaseViewController
+
+@property (nonatomic , strong) NSString *agent_id;
 
 @property (nonatomic , strong) NSString *store_id;
 

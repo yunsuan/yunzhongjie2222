@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LevelView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) UILabel *companyL;
 @property (nonatomic , strong) UILabel *adressL;
 @property (nonatomic , strong) UILabel *nameL;
-@property (nonatomic , strong) UILabel *phoneL;
+@property (nonatomic , strong) LevelView *levelview;
+
+//@property (nonatomic , strong) UILabel *phoneL;
 @property (nonatomic , strong) UILabel *timeL;
 
 @end

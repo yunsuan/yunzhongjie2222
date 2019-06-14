@@ -49,12 +49,16 @@
     _nameL.font = FONT(12);
     [self addSubview:_nameL];
     
-    _phoneL = [[UILabel alloc]initWithFrame:CGRectMake(130*SIZE, 70*SIZE, 200*SIZE, 13*SIZE)];
-    _phoneL.text = @"推荐等级：";
-    _phoneL.font = FONT(12);
-    _phoneL.textColor = CLContentLabColor;
-    [self addSubview:_phoneL];
+    _levelview = [[LevelView alloc] initWithFrame:CGRectMake(130*SIZE, 70*SIZE, 200*SIZE, 13*SIZE)];
+    _levelview.titleL.text = @"推荐等级:";
+    [self.contentView addSubview:_levelview];
     
+//    _phoneL = [[UILabel alloc]initWithFrame:CGRectMake(130*SIZE, 70*SIZE, 200*SIZE, 13*SIZE)];
+//    _phoneL.text = @"推荐等级：";
+//    _phoneL.font = FONT(12);
+//    _phoneL.textColor = CLContentLabColor;
+//    [self addSubview:_phoneL];
+//
     _timeL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 95*SIZE, 340*SIZE, 13*SIZE)];
     _timeL.text = @"2018.01.01 09:00 - 2019.01.03 10:00";
     _timeL.font = FONT(12);
