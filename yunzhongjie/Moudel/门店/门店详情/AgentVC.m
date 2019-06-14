@@ -34,6 +34,11 @@
     _datasource = @[@"",@"",@""];
 }
 
+-(void)Post
+{
+    
+}
+
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSArray *results;
@@ -102,6 +107,13 @@
     _table.delegate = self;
     _table.dataSource = self;
     [self.view addSubview:_table];
+    
+    _table.mj_header = [GZQGifHeader headerWithRefreshingBlock:^{
+//        self->_page =@"1";
+        [self.table.mj_header beginRefreshing];
+        [self Post];
+        
+    }];
     
     _searchbar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 360*SIZE, 40*SIZE)];
     _searchbar.searchBarStyle = UISearchBarStyleMinimal;

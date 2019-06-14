@@ -20,6 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) UILabel *peoplenumL;
 
+@property (nonatomic , strong) NSString *longitude;
+
+@property (nonatomic , strong) NSString *latitude;
+
+
 
 @end
 

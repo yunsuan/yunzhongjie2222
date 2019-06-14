@@ -141,6 +141,7 @@
             UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width * i, 0, SCREEN_Width, 202.5 *SIZE)];
             img.contentMode = UIViewContentModeScaleAspectFill;
             img.clipsToBounds = YES;
+    
             NSString *imgname = imgArr[i][@"img_url"];
             if (imgname.length>0) {
                 [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",TestBase_Net,imgArr[i][@"img_url"]]] placeholderImage:[UIImage imageNamed:@"banner_default_2"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
@@ -194,7 +195,7 @@
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
     if (_propertyArr.count){
-        return 1;
+        return _propertyArr.count;
     }else {
         return 0;
     }

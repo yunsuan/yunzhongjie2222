@@ -52,6 +52,8 @@ static NSString *const ProjectGetRule_URL = @"middle/project/getRule";
 //成交列表
 static NSString *const DealList_URL = @"middle/project/brokerList";
 
+//成交统计
+static NSString *const DealCount_URL = @"middle/project/brokerCount";
 
 
 

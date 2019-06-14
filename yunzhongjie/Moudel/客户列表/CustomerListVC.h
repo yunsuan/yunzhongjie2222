@@ -12,12 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CustomerListVC : BaseViewController
 
-@property (nonatomic , strong) NSString *rule_id;
-
+@property (nonatomic , strong) NSString *need_id;
+@property (nonatomic , strong) NSString *urlStr;
 @property (nonatomic , strong) NSString *start_time;
 @property (nonatomic , strong) NSString *end_time;
 @property (nonatomic , strong) NSString *type;
-
+//@property (nonatomic , strong) NSString *Mtype;
 
 
 @end

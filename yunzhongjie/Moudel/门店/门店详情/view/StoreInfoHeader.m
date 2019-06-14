@@ -7,6 +7,7 @@
 //
 
 #import "StoreInfoHeader.h"
+#import <MapKit/MapKit.h>
 
 @implementation StoreInfoHeader
 
@@ -39,6 +40,8 @@
     _storeadressL.textColor = CLTitleLabColor;
     _storeadressL.font = FONT(13);
     [self addSubview:_storeadressL];
+    _storeadressL.userInteractionEnabled = YES;
+    [_storeadressL addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(action_map)]];
     
 
     
@@ -53,5 +56,17 @@
     [self.contentView addSubview:line];
     
 }
+
+-(void)action_map
+{
+    float latitude = [_latitude floatValue];
+    float longitude = [_longitude floatValue];
+    CLLocationCoordinate2D endCoor = CLLocationCoordinate2DMake(latitude, longitude);
+    MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:endCoor addressDictionary:nil]];
+    toLocation.name = _storeadressL.text;
+    [MKMapItem openMapsWithItems:@[currentLocation, toLocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
+}
+
 
 @end

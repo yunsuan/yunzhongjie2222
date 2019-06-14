@@ -167,10 +167,12 @@
 //    NSString *end_time = [self gettime:[NSDate date]];
     NSString *end_time = @"";
     NSString *start_time = @"";
-    NSString *type = @"2";
+    NSString *type = @"rule_id";
+    NSString *url = DealCustomerList_URL;
 //    NSTimeInterval month = 24 * 60 * 60 *30;
     if (tag/10 == 0) {
-        type = @"0";
+//        type = @"0";
+        NSString *url = RecommendCustomerList_URL;
         if (tag==0) {
             
         }
@@ -190,12 +192,13 @@
         
     }
     else if(tag/10 == 1){
-        type = @"1";
+//        type = @"1";
+        url = VisitCustomerList_URL;
         
-        if (tag==0) {
+        if (tag==10) {
             
         }
-        else if(tag == 1)
+        else if(tag == 11)
         {
             
             end_time = [self gettime:[NSDate date]];
@@ -213,10 +216,10 @@
     }
     else{
         
-        if (tag==0) {
+        if (tag==20) {
             
         }
-        else if(tag == 1)
+        else if(tag == 21)
         {
             
             end_time = [self gettime:[NSDate date]];
@@ -233,8 +236,9 @@
     }
     
     CustomerListVC *next_vc = [[CustomerListVC alloc]init];
+    next_vc.urlStr = url;
     next_vc.type = type;
-    next_vc.rule_id = self.rule_id;
+    next_vc.need_id = self.rule_id;
     next_vc.end_time = end_time;
     next_vc.start_time = start_time;
     [self.navigationController pushViewController:next_vc animated:YES];

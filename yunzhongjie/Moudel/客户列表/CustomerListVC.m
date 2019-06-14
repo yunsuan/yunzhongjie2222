@@ -14,7 +14,7 @@
 @interface CustomerListVC ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
     NSMutableArray *_datasource;
-    NSString *_urlStr;
+//    NSString *_urlStr;
     NSString *_searchStr;
     NSString *_page;
 }
@@ -44,14 +44,14 @@
 }
 
 - (void)initDataSource{
-    _urlStr =  RecommendCustomerList_URL;
-    if ([_type isEqualToString:@"1"]) {
-        _urlStr = VisitCustomerList_URL;
-    }
-    if([_type isEqualToString:@"2"])
-    {
-        _urlStr = DealCustomerList_URL;
-    }
+//    _urlStr =  RecommendCustomerList_URL;
+//    if ([_type isEqualToString:@"1"]) {
+//        _urlStr = VisitCustomerList_URL;
+//    }
+//    if([_type isEqualToString:@"2"])
+//    {
+//        _urlStr = DealCustomerList_URL;
+//    }
     _page = @"1";
     _searchStr = @"";
     [self RequestWithPage:_page];
@@ -63,20 +63,18 @@
     if ([_end_time isEqualToString:@""]) {
         prame = @{
                   @"page":page,
-                  @"rule_id":_rule_id,
+                  _type:_need_id,
                   @"search":_searchStr
                   };
     }else{
         prame = @{
                   @"page":page,
-                  @"rule_id":_rule_id,
+                  _type:_need_id,
                   @"search":_searchStr,
                   @"start_time":_start_time,
                   @"end_time":_end_time
                   };
     }
-    
-    
     
     [BaseRequest GET:_urlStr
           parameters:prame
@@ -132,10 +130,10 @@
         [dic setValue:datadic[@"name"] forKey:@"name"];
         [dic setValue:[NSString stringWithFormat:@"联系电话:%@", datadic[@"tel"]] forKey:@"tel"];
         [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@", datadic[@"agent_name"],datadic[@"store_name"]] forKey:@"agent"];
-        if ([_type isEqualToString:@"0"]) {
+        if ([_urlStr isEqualToString:StoreRecommendCustomerList_URL] ||[_urlStr isEqualToString:RecommendCustomerList_URL]) {
             [dic setValue:[NSString stringWithFormat:@"推荐时间:%@", datadic[@"create_time"]] forKey:@"time"];
         }
-        else if ([_type isEqualToString:@"1"])
+        else if ([_urlStr isEqualToString:StoreVisitCustomerList_URL]||[_urlStr isEqualToString:VisitCustomerList_URL])
         {
             [dic setValue:[NSString stringWithFormat:@"到访时间:%@", datadic[@"visit_time"]] forKey:@"time"];
         }
