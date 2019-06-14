@@ -162,7 +162,7 @@
             
             [_dataArr removeObjectAtIndex:indexPath.row];
             [_MainTableView reloadData];
-            [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"1",@"store_type":@""} success:^(id resposeObject) {
+            [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"1",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
                 
                 if ([resposeObject[@"code"] integerValue] == 200) {
                     
@@ -179,13 +179,13 @@
         
         UIAlertAction *refuse = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:self.view.frame];
+            WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:[UIScreen mainScreen].bounds];
             __strong __typeof(&*view)strongView = view;
             view.workWorkingDimissionViewBlock = ^{
                 
                 [_dataArr removeObjectAtIndex:indexPath.row];
                 [_MainTableView reloadData];
-                [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"0",@"store_type":@""} success:^(id resposeObject) {
+                [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"0",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
                     
                     if ([resposeObject[@"code"] integerValue] == 200) {
                         
@@ -199,7 +199,7 @@
                     [self showContent:@"网络错误"];
                 }];
             };
-            [self.view addSubview:view];
+            [[UIApplication sharedApplication].keyWindow addSubview:view];
         }];
         
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
