@@ -105,8 +105,8 @@
         else{
             [dic setValue:[NSString stringWithFormat:@"%@-%@",datadic[@"act_start"],datadic[@"act_end"]] forKey:@"time"];
         }
-        
         [dic setValue:datadic[@"project_id"] forKey:@"project_id"];
+        [dic setValue:datadic[@"star"] forKey:@"star"];
         [dic setValue:datadic[@"rule_id"] forKey:@"rule_id"];
         [arr addObject:dic];
     }
@@ -140,6 +140,7 @@
     else{
         cell.headerImg.image = [UIImage imageNamed:@"project_def"];
     }
+    
     cell.companyL.text = _datasource[indexPath.row][@"project_name"];
     cell.adressL.text = _datasource[indexPath.row][@"adress"];
     cell.nameL.text = _datasource[indexPath.row][@"agent"];
@@ -191,7 +192,7 @@
     //    _searchbar.backgroundImage = [[UIImage alloc] init];
     _searchbar.barTintColor = [UIColor whiteColor];
     _searchbar.backgroundColor = CLBackColor;
-    _searchbar.placeholder = @"请输入姓名/电话";
+    _searchbar.placeholder = @"请输入项目名称";
     //    _searchbar.showsCancelButton = YES;
     _searchbar.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_searchbar];

@@ -12,9 +12,10 @@
 #import "StoreCountCell.h"
 #import "CustomerListVC.h"
 #import "StoreCountHeader.h"
-//#import "YBImageBrowser.h"
 
-@interface ProjectDetailVC ()<UITableViewDelegate,UITableViewDataSource>
+#import "YBImageBrowser.h"
+
+@interface ProjectDetailVC ()<UITableViewDelegate,UITableViewDataSource,YBImageBrowserDelegate,YBImageBrowserDataSource>
 {
     NSArray *_imgArr;
     NSArray *_confirmArr;
@@ -300,6 +301,7 @@
         if (!header) {
             header = [[ProjectHeader alloc]initWithReuseIdentifier: @"ProjectHeader"];
         }
+       
         header.titleL.text = _headerDic[@"project_name"];
         header.stateL.text = [_start isEqualToString:@"1"]?@"分销中":@"以结束";
         header.priceL.attributedText = _headerDic[@"average_price"];
@@ -309,7 +311,25 @@
         [header setImgArr:_headerDic[@"img"]];
         header.propertyArr = [NSMutableArray arrayWithArray:_headerDic[@"property"]];
         [header.propertyColl reloadData];
+        header.imgBtnBlock = ^(NSInteger num, NSArray *imgArr) {
         
+            
+            NSMutableArray *browserDataArr = [NSMutableArray array];
+            [imgArr enumerateObjectsUsingBlock:^(NSDictionary * dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                YBImageBrowseCellData *data = [YBImageBrowseCellData new];
+                data.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",TestBase_Net,dic[@"img_url"]]];
+//                data.sourceObject =  header.imgScroll.subviews[idx];
+                [browserDataArr addObject:data];
+            }];
+            
+            YBImageBrowser *browser = [YBImageBrowser new];
+            browser.dataSourceArray = browserDataArr;
+            browser.toolBars 
+            browser.currentIndex = num;
+            [browser show];
+            
+        };
 //        [header.imgBtnBlock = ^(NSInteger num, NSArray *imgArr) {
 //
 //            NSMutableArray *tempArr = [NSMutableArray array];

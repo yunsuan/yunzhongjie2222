@@ -28,6 +28,12 @@ PODS:
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
+  - YBImageBrowser (2.2.2):
+    - SDWebImage (~> 5.0.0)
+    - YYImage
+  - YYImage (1.0.4):
+    - YYImage/Core (= 1.0.4)
+  - YYImage/Core (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking
@@ -39,6 +45,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - SDWebImage (~> 5.0.3)
+  - YBImageBrowser
 
 SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/cocoapods/specs.git:
@@ -52,6 +59,8 @@ SPEC REPOS:
     - MBProgressHUD
     - MJRefresh
     - SDWebImage
+    - YBImageBrowser
+    - YYImage
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -64,7 +73,9 @@ SPEC CHECKSUMS:
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  YBImageBrowser: 40e810cb2214f572d75c23b5b50b9a4bdeff7d44
+  YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
 
-PODFILE CHECKSUM: 6a28c7fe3b31846629f85ebb8481b19153d00b4f
+PODFILE CHECKSUM: 1da04d1114cffbb2ffafe41c082d88be448431c8
 
 COCOAPODS: 1.7.0
