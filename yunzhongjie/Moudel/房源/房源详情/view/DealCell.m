@@ -55,14 +55,14 @@
     _houseL.textColor = CLContentLabColor;
     [self addSubview:_houseL];
     
-    _timeL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 100*SIZE, 340*SIZE, 13*SIZE)];
-    _timeL.text = @"推荐时间：2019.01.01 18:00";
-    _timeL.font = FONT(12);
-    _timeL.textColor = CLContentLabColor;
-    [self addSubview:_timeL];
+//    _timeL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 100*SIZE, 340*SIZE, 13*SIZE)];
+//    _timeL.text = @"推荐时间：2019.01.01 18:00";
+//    _timeL.font = FONT(12);
+//    _timeL.textColor = CLContentLabColor;
+//    [self addSubview:_timeL];
     
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 119*SIZE, 360*SIZE, 1*SIZE)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 99*SIZE, 360*SIZE, 1*SIZE)];
     line.backgroundColor = CLBackColor;
     [self.contentView addSubview:line];
     

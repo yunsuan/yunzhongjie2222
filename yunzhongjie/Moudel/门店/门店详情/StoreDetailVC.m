@@ -116,12 +116,21 @@
     
     // 创建控制器
     _storemainVC = [[StoreMainVC alloc] init];
+    _storemainVC.store_id = _store_id;
+    _storemainVC.store_code = _store_code;
+    _storemainVC.store_name = _store_name;
+    _storemainVC.store_adress = _store_adress;
+    _storemainVC.agent_num = _agent_num;
+    _storemainVC.longitude = _longitude;
+    _storemainVC.latitude = _latitude;
+    _storemainVC.contact = _contact;
+    _storemainVC.contact_tel = _contact_tel;
     _agentVC = [[AgentVC alloc]init];
     _chartVC = [[ChartVC alloc]init];
     // 添加为self的子控制器
-//    [self addChildViewController:_storemainVC];
-//    [self addChildViewController:_agentVC];
-//    [self addChildViewController:_chartVC];
+    [self addChildViewController:_storemainVC];
+    [self addChildViewController:_agentVC];
+    [self addChildViewController:_chartVC];
     _chartVC.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width * 2, 0, self.scrollView.frame.size.width, CGRectGetHeight(self.scrollView.frame));
    
     _storemainVC.view.frame = CGRectMake(0, 0, self.scrollView.frame.size.width, CGRectGetHeight(self.scrollView.frame));

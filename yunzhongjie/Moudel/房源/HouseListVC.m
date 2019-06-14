@@ -10,12 +10,14 @@
 #import "HouseCell.h"
 #import "HouseDetail.h"
 
-@interface HouseListVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface HouseListVC ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
     NSMutableArray *_datasource;
     NSString *_page;
+    NSString *_searchStr;
 }
 @property (nonatomic, strong) UITableView *table;
+@property (nonatomic , strong) UISearchBar *searchbar;
 @end
 
 @implementation HouseListVC
@@ -24,6 +26,7 @@
     [super viewDidLoad];
     [self initUI];
     _page = @"1";
+    _searchStr = @"";
     [self RequestWithPage:@"1"];
 }
 
@@ -31,7 +34,8 @@
 {
     [BaseRequest GET:HouseList_URL
               parameters:@{
-                           @"page":page
+                           @"page":page,
+                           @"search":_searchStr
                            }
                  success:^(id resposeObject) {
                      NSLog(@"%@",resposeObject);
@@ -156,7 +160,7 @@
 }
 
 -(void)initUI{
-    _table = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_BAR_HEIGHT+40*SIZE, SCREEN_Width, SCREEN_Height - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT-40*SIZE) style:UITableViewStylePlain];
+    _table = [[UITableView alloc] initWithFrame:CGRectMake(0,40*SIZE, SCREEN_Width, SCREEN_Height - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT-40*SIZE) style:UITableViewStylePlain];
     _table.rowHeight = UITableViewAutomaticDimension;
     _table.estimatedRowHeight = 100 *SIZE;
     _table.backgroundColor = self.view.backgroundColor;
@@ -180,6 +184,52 @@
         [self RequestWithPage:self->_page];
     }];
 
+    _searchbar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 360*SIZE, 40*SIZE)];
+    _searchbar.searchBarStyle = UISearchBarStyleMinimal;
+    _searchbar.delegate = self;
+    //    _searchbar.backgroundImage = [[UIImage alloc] init];
+    _searchbar.barTintColor = [UIColor whiteColor];
+    _searchbar.backgroundColor = CLBackColor;
+    _searchbar.placeholder = @"请输入姓名/电话";
+    //    _searchbar.showsCancelButton = YES;
+    _searchbar.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_searchbar];
 }
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    _page = @"1";
+    _searchStr = searchBar.text;
+    [self RequestWithPage:_page];
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar resignFirstResponder];
+    self.table.allowsSelection=YES;
+    self.table.scrollEnabled=YES;
+    //    [self.tableDate removeAllObjects];
+    //    [self.tableDate addObjectsFromArray:results];
+    //    [self.tableView reloadData];
+    
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text=@"";
+    _page = @"1";
+    _searchStr = @"";
+    [self RequestWithPage:_page];
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar resignFirstResponder];
+    self.table.allowsSelection=YES;
+    self.table.scrollEnabled=YES;
+}
+
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [searchBar setShowsCancelButton:YES animated:YES];
+    //     _searchbar.showsCancelButton = YES;
+    self.table.allowsSelection=NO;
+    self.table.scrollEnabled=NO;
+}
+
 
 @end

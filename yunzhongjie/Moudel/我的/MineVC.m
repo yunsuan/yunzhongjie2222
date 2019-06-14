@@ -197,7 +197,7 @@
                     if ([resposeObject[@"code"] integerValue] == 200) {
     
                         [UserModel defaultModel].head_img = dic[@"head_img"];
-                        [UserModelArchiver infoArchive];
+                        [UserModelArchiver archive];
                         [self->_table reloadData];
                     }else{
     

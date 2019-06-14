@@ -165,11 +165,11 @@
             
             
             [UserModelArchiver archive];
-            
+            [self.navigationController popViewControllerAnimated:YES];
 //            [UserModel defaultModel].sex = @"1";
 //            [UserModelArchiver archive];
 //            [_contentArr replaceObjectAtIndex:1 withObject:@"男"];
-            [_personTable reloadData];
+//            [_personTable reloadData];
         }else{
             
             [self showContent:resposeObject[@"msg"]];
@@ -266,7 +266,7 @@
 //                    [UserModel defaultModel].sex = @"1";
 //                    [UserModelArchiver archive];
                     [_contentArr replaceObjectAtIndex:1 withObject:@"男"];
-//                    [tableView reloadData];
+                    [tableView reloadData];
 //                }else{
 //
 //                    [self showContent:resposeObject[@"msg"]];
@@ -288,7 +288,7 @@
 //                    [UserModelArchiver archive];
 ////                    [self initDataSource];
                     [_contentArr replaceObjectAtIndex:1 withObject:@"女"];
-//                    [tableView reloadData];
+                    [tableView reloadData];
 //                }else{
 //
 //                    [self showContent:resposeObject[@"msg"]];
@@ -322,9 +322,9 @@
 //
 //                    [UserModel defaultModel].birth = [self->_formatter stringFromDate:date];
 //                    [UserModelArchiver archive];
-                    [_contentArr replaceObjectAtIndex:2 withObject:[self->_formatter stringFromDate:date]];
+                    [_contentArr replaceObjectAtIndex:3 withObject:[self->_formatter stringFromDate:date]];
 ////                    [self initDataSource];
-//                    [tableView reloadData];
+                    [tableView reloadData];
 //                }else{
 //
 //                    [self showContent:resposeObject[@"msg"]];
@@ -384,7 +384,7 @@
 ////                    [self initDataSource];
 //                    [UserModelArchiver archive];
                     [_contentArr replaceObjectAtIndex:4 withObject:[NSString stringWithFormat:@"%@-%@-%@",province,city,area]];
-//                    [self->_personTable reloadData];
+                    [self->_personTable reloadData];
 ////                    [self.navigationController popViewControllerAnimated:YES];
 //                }else{
 //                    [self showContent:resposeObject[@"msg"]];

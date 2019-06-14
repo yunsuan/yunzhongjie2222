@@ -16,9 +16,9 @@
     NSString *_page;
     NSString *_tag_search;
     NSString *_search;
-    NSString *_all;
-    NSString *_pay;
-    NSString *_unpay;
+//    NSString *_all;
+//    NSString *_pay;
+//    NSString *_unpay;
 }
 @property (nonatomic , strong) CountBtn *allBtn;
 @property (nonatomic , strong) CountBtn *payBtn;
@@ -41,10 +41,32 @@
     _tag_search = @"0";
     _search = @"";
     _page = @"1";
+    [self RequestHeader];
     [self RequestWithPage:_page];
     
 }
 
+-(void)RequestHeader
+{
+    
+    [BaseRequest GET:DealCount_URL
+          parameters:@{
+                       @"rule_id":_rule_id
+                       }
+             success:^(id resposeObject) {
+                 if ([resposeObject[@"code"] integerValue]==200) {
+                     
+                     [_allBtn SettitleL:@"全部笔数" contentL:[NSString stringWithFormat:@"%@",resposeObject[@"data"][@"all_price"]]];
+                     [_payBtn SettitleL:@"已结笔数" contentL:[NSString stringWithFormat:@"%@",resposeObject[@"data"][@"y_price"]]];
+                     [_unpayBtn SettitleL:@"未接笔数" contentL:[NSString stringWithFormat:@"%@",resposeObject[@"data"][@"n_price"]]];
+                 }
+                 else{
+                     [self showContent:resposeObject[@"msg"]];
+                 }
+    } failure:^(NSError *error) {
+        [self showContent:@"网络错误"];
+    }];
+}
 -(void)RequestWithPage:(NSString *)page
 {
     
@@ -103,16 +125,17 @@
     for (int i= 0; i<dataarr.count; i++) {
         NSDictionary *datadic  =  dataarr[i];
         NSMutableDictionary *dic  = [NSMutableDictionary dictionary];
-        [dic setValue:[NSString stringWithFormat:@"客户:%@/%@",datadic[@"name"],datadic[@"tel"]] forKey:@"customer"];
+        [dic setValue:datadic[@"name"] forKey:@"name"];
+        [dic setValue:[NSString stringWithFormat:@"联系方式:%@",datadic[@"tel"]] forKey:@"tel"];
         [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@/%@",datadic[@"name"],datadic[@"store_name"],datadic[@"tel"]] forKey:@"agent"];
-        NSString *type = @"类型:成交佣金";
-        if ([datadic[@"broker_type"] integerValue]==2) {
-            type = @"类型:到访佣金";
-        }
-        if ([datadic[@"broker_type"] integerValue]==3) {
-            type = @"类型:推荐佣金";
-        }
-        [dic setValue:type forKey:@"type"];
+//        NSString *type = @"类型:成交佣金";
+//        if ([datadic[@"broker_type"] integerValue]==2) {
+//            type = @"类型:到访佣金";
+//        }
+//        if ([datadic[@"broker_type"] integerValue]==3) {
+//            type = @"类型:推荐佣金";
+//        }
+//        [dic setValue:type forKey:@"type"];
         [dic setValue:[NSString stringWithFormat:@"推荐时间:%@",datadic[@"create_time"]] forKey:@"time"];
 //        [dic setValue:datadic[@"absolute_address"] forKey:@"adress"];
 //        [dic setValue:datadic[@"project_name"] forKey:@"project_name"];
@@ -149,13 +172,27 @@
     [_payBtn SetBtnState:UnSelect_State];
     [_unpayBtn SetBtnState:UnSelect_State];
     [btn SetBtnState:Select_State];
-    
+    if (btn == _allBtn) {
+        _tag_search = @"0";
+        _page = @"1";
+        [self RequestWithPage:_page];
+    }else if (btn == _payBtn)
+    {
+        _tag_search = @"1";
+        _page = @"1";
+        [self RequestWithPage:_page];
+    }
+    else{
+        _tag_search = @"2";
+        _page = @"1";
+        [self RequestWithPage:_page];
+    }
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return _datasource.count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -163,7 +200,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-        return 120*SIZE;
+        return 100*SIZE;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -173,7 +210,12 @@
         if (!cell) {
             cell = [[DealCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DealCell"];
         }
-    
+    cell.customerL.text = _datasource[indexPath.row][@"name"];
+     cell.agentL.text = _datasource[indexPath.row][@"tel"];
+    cell.typeL.text = _datasource[indexPath.row][@"agent"];
+     cell.houseL.text = _datasource[indexPath.row][@"time"];
+//     cell.timeL.text = _datasource[indexPath.row][@"time"];
+
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
 }
@@ -190,19 +232,19 @@
 //    [_allBtn setTitle:@"" forState:UIControlStateNormal];
     _allBtn = [[CountBtn alloc]initWithFrame: CGRectMake(10*SIZE, 10*SIZE, 100*SIZE , 50*SIZE)];
     [_allBtn SetBtnState:Select_State];
-    [_allBtn SettitleL:@"全部笔数" contentL:@"2000"];
+//    [_allBtn SettitleL:@"全部笔数" contentL:@"2000"];
     [_allBtn addTarget:self action:@selector(actin_touch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_allBtn];
     
     _payBtn = [[CountBtn alloc]initWithFrame: CGRectMake(130*SIZE, 10*SIZE, 100*SIZE , 50*SIZE)];
     [_payBtn SetBtnState:UnSelect_State];
-    [_payBtn SettitleL:@"已结笔数" contentL:@"1000"];
+//    [_payBtn SettitleL:@"已结笔数" contentL:@"1000"];
     [_payBtn addTarget:self action:@selector(actin_touch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_payBtn];
     
     _unpayBtn = [[CountBtn alloc]initWithFrame: CGRectMake(250*SIZE, 10*SIZE, 100*SIZE , 50*SIZE)];
     [_unpayBtn SetBtnState:UnSelect_State];
-    [_unpayBtn SettitleL:@"未结笔数" contentL:@"1000"];
+//    [_unpayBtn SettitleL:@"未结笔数" contentL:@"1000"];
     [_unpayBtn addTarget:self action:@selector(actin_touch:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_unpayBtn];
     
@@ -245,6 +287,7 @@
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     _page = @"1";
+    _search = searchBar.text;
 //    _searchStr = searchBar.text;
     [self RequestWithPage:_page];
     [searchBar setShowsCancelButton:NO animated:YES];
@@ -261,6 +304,7 @@
 {
     searchBar.text=@"";
     _page = @"1";
+    _search  = @"";
 //    _searchStr = @"";
     [self RequestWithPage:_page];
     [searchBar setShowsCancelButton:NO animated:YES];
