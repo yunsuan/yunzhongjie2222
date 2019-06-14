@@ -11,6 +11,7 @@ pod 'SDWebImage', '~> 5.0.3'
  pod 'IQKeyboardManager'
  pod 'FLAnimatedImage'
  pod 'YBImageBrowser'
+ pod 'Bugtags'
 
 end
 

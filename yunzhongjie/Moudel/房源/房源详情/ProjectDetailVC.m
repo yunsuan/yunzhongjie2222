@@ -325,7 +325,7 @@
             
             YBImageBrowser *browser = [YBImageBrowser new];
             browser.dataSourceArray = browserDataArr;
-            browser.toolBars 
+//            browser.toolBars
             browser.currentIndex = num;
             [browser show];
             

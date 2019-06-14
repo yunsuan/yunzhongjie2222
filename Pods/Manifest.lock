@@ -14,6 +14,9 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - Bugtags (3.1.2):
+    - Bugtags/Core (= 3.1.2)
+  - Bugtags/Core (3.1.2)
   - CYLTabBarController (1.26.0):
     - CYLTabBarController/Core (= 1.26.0)
   - CYLTabBarController/Core (1.26.0)
@@ -37,6 +40,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - Bugtags
   - CYLTabBarController
   - FLAnimatedImage
   - IQKeyboardManager
@@ -50,6 +54,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/cocoapods/specs.git:
     - AFNetworking
+    - Bugtags
     - CYLTabBarController
     - FLAnimatedImage
     - IQKeyboardManager
@@ -64,6 +69,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Bugtags: 3a70c73c3415938f842556d8d9f9dcf592ccfd86
   CYLTabBarController: 266188f29eb76fbbb476b7af33a2ab6c45246a63
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   IQKeyboardManager: 2ca9d64893247556f53523dcd8d78641f0ba7c23
@@ -76,6 +82,6 @@ SPEC CHECKSUMS:
   YBImageBrowser: 40e810cb2214f572d75c23b5b50b9a4bdeff7d44
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
 
-PODFILE CHECKSUM: 1da04d1114cffbb2ffafe41c082d88be448431c8
+PODFILE CHECKSUM: c584be49c445c659ad9f04b3c12c05902e6430b2
 
 COCOAPODS: 1.7.0
