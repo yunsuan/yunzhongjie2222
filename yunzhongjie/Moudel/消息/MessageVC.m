@@ -10,6 +10,7 @@
 #import "MessageCell.h"
 
 #import "SignSelectWorkerView.h"
+#import "WorkWorkingDimissionView.h"
 #import "SignFailView.h"
 #import "InvalidView.h"
 
@@ -42,6 +43,7 @@
 
 - (void)initDataSource{
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RequestMethod) name:@"dimission" object:nil];
     _page = 1;
     _dataArr = [@[] mutableCopy];
 }
@@ -398,12 +400,46 @@
             
             UIAlertAction *agree = [UIAlertAction actionWithTitle:@"通过" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
-                
+                [_dataArr removeObjectAtIndex:indexPath.row];
+                [_table reloadData];
+                [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"1",@"store_type":@""} success:^(id resposeObject) {
+                    
+                    if ([resposeObject[@"code"] integerValue] == 200) {
+                        
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
+                    }else{
+                        
+                        [self showContent:resposeObject[@"msg"]];
+                    }
+                } failure:^(NSError *error) {
+                    
+                    [self showContent:@"网络错误"];
+                }];
             }];
             
             UIAlertAction *refuse = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
-                
+                WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:self.view.frame];
+                __strong __typeof(&*view)strongView = view;
+                view.workWorkingDimissionViewBlock = ^{
+                    
+                    [_dataArr removeObjectAtIndex:indexPath.row];
+                    [_table reloadData];
+                    [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"0",@"store_type":@""} success:^(id resposeObject) {
+                        
+                        if ([resposeObject[@"code"] integerValue] == 200) {
+                            
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
+                        }else{
+                            
+                            [self showContent:resposeObject[@"msg"]];
+                        }
+                    } failure:^(NSError *error) {
+                        
+                        [self showContent:@"网络错误"];
+                    }];
+                };
+                [self.view addSubview:view];
             }];
             
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
