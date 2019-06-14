@@ -21,17 +21,38 @@
     return self;
 }
 
+- (void)ActionSureBtn:(UIButton *)btn{
+    
+    if (self.messageCellSureBtnBlock) {
+        
+        self.messageCellSureBtnBlock(self.tag);
+    }
+}
+
 - (void)setDataDic:(NSDictionary *)dataDic{
     
-    _titelL.text = dataDic[@"title"];
-    _nameL.text = [NSString stringWithFormat:@"姓名：%@",dataDic[@"name"]];
-    _phoneL.text = [NSString stringWithFormat:@"推荐编号：%@",dataDic[@"client_id"]];
     if ([dataDic[@"message_type"] integerValue] == 18) {
         
+        _titelL.text = @"号码判重";
+        _nameL.text = [NSString stringWithFormat:@"客户姓名：%@",dataDic[@"name"]];
+        _phoneL.text = [NSString stringWithFormat:@"推荐编号：%@",dataDic[@"client_id"]];
+        _timeL.text = [NSString stringWithFormat:@"推荐时间：%@",dataDic[@"create_time"]];
+        _infoL.text = [NSString stringWithFormat:@"推荐项目：%@",dataDic[@"project_name"]];
+    }else if ([dataDic[@"message_type"] integerValue] == 1){
+        
+        _titelL.text = @"到访确认";
+        _nameL.text = [NSString stringWithFormat:@"客户姓名：%@",dataDic[@"name"]];
+        _phoneL.text = [NSString stringWithFormat:@"推荐编号：%@",dataDic[@"client_id"]];
+        _timeL.text = [NSString stringWithFormat:@"推荐时间：%@",dataDic[@"create_time"]];
+        _infoL.text = [NSString stringWithFormat:@"推荐项目：%@",dataDic[@"project_name"]];
+    }else{
+        
+        _titelL.text = @"门店认证审核";
+        _nameL.text = [NSString stringWithFormat:@"客户姓名：%@",dataDic[@"name"]];
+        _phoneL.text = [NSString stringWithFormat:@"推荐编号：%@",dataDic[@"client_id"]];
+        _timeL.text = [NSString stringWithFormat:@"推荐时间：%@",dataDic[@"create_time"]];
         _infoL.text = [NSString stringWithFormat:@"推荐项目：%@",dataDic[@"project_name"]];
     }
-    
-    _timeL.text = [NSString stringWithFormat:@"推荐时间：%@",dataDic[@"create_time"]];
 }
 
 -(void)initUI{
@@ -85,6 +106,7 @@
     _sureBtn.backgroundColor = CLLoginBtnColor;
     [_sureBtn setTitle:@"确认" forState:UIControlStateNormal];
     _sureBtn.titleLabel.font = [UIFont systemFontOfSize:12*SIZE];
+    [_sureBtn addTarget:self action:@selector(ActionSureBtn:) forControlEvents:UIControlEventTouchUpInside];
     [_sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self addSubview:_sureBtn];
     
