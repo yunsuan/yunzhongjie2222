@@ -21,6 +21,15 @@
     return self;
 }
 
+- (void)setDataDic:(NSDictionary *)dataDic{
+    
+    _titelL.text = dataDic[@"title"];
+    _nameL.text = [NSString stringWithFormat:@"%@",dataDic[@"name"]];
+    _phoneL.text = [NSString stringWithFormat:@"%@",dataDic[@"name"]];
+    _infoL.text = [NSString stringWithFormat:@"%@",dataDic[@""]];
+    _timeL.text = [NSString stringWithFormat:@"%@",dataDic[@""]];
+}
+
 -(void)initUI{
     self.backgroundColor = [UIColor whiteColor];
 

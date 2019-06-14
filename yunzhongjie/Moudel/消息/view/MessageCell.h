@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) UILabel *timeL;
 @property (nonatomic , strong) UIButton *assistBtn;
 @property (nonatomic , strong) UIButton *sureBtn;
+
+@property (nonatomic, strong) NSDictionary *dataDic;
+
 @end
 
 NS_ASSUME_NONNULL_END

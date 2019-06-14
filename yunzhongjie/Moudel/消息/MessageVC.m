@@ -12,7 +12,9 @@
 @interface MessageVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     
-    NSArray *_datasource;
+    NSInteger _page;
+    
+    NSMutableArray *_dataArr;
 }
 
 @property (nonatomic, strong) UITableView *table;
@@ -24,18 +26,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self initDataSource];
     [self initUI];
-    // Do any additional setup after loading the view.
+    [self RequestMethod];
 }
 
 - (void)initDataSource{
     
+    _page = 1;
+    _dataArr = [@[] mutableCopy];
+}
+
+- (void)RequestMethod{
+    
+    [BaseRequest GET:MessageList_URL parameters:@{} success:^(id resposeObject) {
+        
+        if ([resposeObject[@"code"] integerValue] == 200) {
+            
+            _dataArr = [NSMutableArray arrayWithArray:resposeObject[@"data"]];
+            [_table reloadData];
+        }else{
+            
+            [self showContent:resposeObject[@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+        [self showContent:@"网络错误"];
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 7;
+    return _dataArr.count;;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -62,6 +85,7 @@
     //
     //        cell.hidden = YES;
     //    }
+    cell.dataDic = _dataArr[indexPath.row];
     return cell;
 }
 

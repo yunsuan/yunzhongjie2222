@@ -11,6 +11,9 @@
 		0C6FA18122B396A000B40A3C /* WorkWaitAgentManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA17A22B396A000B40A3C /* WorkWaitAgentManageVC.m */; };
 		0C6FA18222B396A000B40A3C /* WorkDimissionAgentManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA17E22B396A000B40A3C /* WorkDimissionAgentManageVC.m */; };
 		0C6FA18322B396A000B40A3C /* WorkAgentManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA17F22B396A000B40A3C /* WorkAgentManageVC.m */; };
+		0C6FA18722B3A8CF00B40A3C /* WorkWaitAgentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA18622B3A8CF00B40A3C /* WorkWaitAgentCell.m */; };
+		0C6FA18A22B3AB0100B40A3C /* WorkWaitConfirmAgentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA18922B3AB0100B40A3C /* WorkWaitConfirmAgentCell.m */; };
+		0C6FA18E22B3ADC900B40A3C /* WorkWorkingConfirmAgentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA18D22B3ADC900B40A3C /* WorkWorkingConfirmAgentCell.m */; };
 		1038C15122A63F0A0062C7EF /* HouseDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15022A63F0A0062C7EF /* HouseDetail.m */; };
 		1038C15522A63FE50062C7EF /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15422A63FE50062C7EF /* MessageCell.m */; };
 		1038C15922A64F4A0062C7EF /* ProjectDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15822A64F4A0062C7EF /* ProjectDetailVC.m */; };
@@ -178,6 +181,12 @@
 		0C6FA17D22B396A000B40A3C /* WorkDimissionAgentManageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkDimissionAgentManageVC.h; sourceTree = "<group>"; };
 		0C6FA17E22B396A000B40A3C /* WorkDimissionAgentManageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkDimissionAgentManageVC.m; sourceTree = "<group>"; };
 		0C6FA17F22B396A000B40A3C /* WorkAgentManageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkAgentManageVC.m; sourceTree = "<group>"; };
+		0C6FA18522B3A8CF00B40A3C /* WorkWaitAgentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkWaitAgentCell.h; sourceTree = "<group>"; };
+		0C6FA18622B3A8CF00B40A3C /* WorkWaitAgentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkWaitAgentCell.m; sourceTree = "<group>"; };
+		0C6FA18822B3AB0100B40A3C /* WorkWaitConfirmAgentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkWaitConfirmAgentCell.h; sourceTree = "<group>"; };
+		0C6FA18922B3AB0100B40A3C /* WorkWaitConfirmAgentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkWaitConfirmAgentCell.m; sourceTree = "<group>"; };
+		0C6FA18C22B3ADC900B40A3C /* WorkWorkingConfirmAgentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkWorkingConfirmAgentCell.h; sourceTree = "<group>"; };
+		0C6FA18D22B3ADC900B40A3C /* WorkWorkingConfirmAgentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkWorkingConfirmAgentCell.m; sourceTree = "<group>"; };
 		1038C14F22A63F0A0062C7EF /* HouseDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseDetail.h; sourceTree = "<group>"; };
 		1038C15022A63F0A0062C7EF /* HouseDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseDetail.m; sourceTree = "<group>"; };
 		1038C15322A63FE50062C7EF /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
@@ -487,11 +496,11 @@
 		0C6FA17422B396A000B40A3C /* 经纪人管理 */ = {
 			isa = PBXGroup;
 			children = (
-				0C6FA17522B396A000B40A3C /* 在职 */,
 				0C6FA17822B396A000B40A3C /* WorkAgentManageVC.h */,
+				0C6FA17F22B396A000B40A3C /* WorkAgentManageVC.m */,
+				0C6FA17522B396A000B40A3C /* 在职 */,
 				0C6FA17922B396A000B40A3C /* 待审核 */,
 				0C6FA17C22B396A000B40A3C /* 离职 */,
-				0C6FA17F22B396A000B40A3C /* WorkAgentManageVC.m */,
 			);
 			path = "经纪人管理";
 			sourceTree = "<group>";
@@ -499,6 +508,7 @@
 		0C6FA17522B396A000B40A3C /* 在职 */ = {
 			isa = PBXGroup;
 			children = (
+				0C6FA18B22B3ADB900B40A3C /* cell */,
 				0C6FA17622B396A000B40A3C /* WorkWorkingAgentManageVC.h */,
 				0C6FA17722B396A000B40A3C /* WorkWorkingAgentManageVC.m */,
 			);
@@ -508,6 +518,7 @@
 		0C6FA17922B396A000B40A3C /* 待审核 */ = {
 			isa = PBXGroup;
 			children = (
+				0C6FA18422B3A8B500B40A3C /* cell */,
 				0C6FA17A22B396A000B40A3C /* WorkWaitAgentManageVC.m */,
 				0C6FA17B22B396A000B40A3C /* WorkWaitAgentManageVC.h */,
 			);
@@ -521,6 +532,26 @@
 				0C6FA17E22B396A000B40A3C /* WorkDimissionAgentManageVC.m */,
 			);
 			path = "离职";
+			sourceTree = "<group>";
+		};
+		0C6FA18422B3A8B500B40A3C /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				0C6FA18522B3A8CF00B40A3C /* WorkWaitAgentCell.h */,
+				0C6FA18622B3A8CF00B40A3C /* WorkWaitAgentCell.m */,
+				0C6FA18822B3AB0100B40A3C /* WorkWaitConfirmAgentCell.h */,
+				0C6FA18922B3AB0100B40A3C /* WorkWaitConfirmAgentCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		0C6FA18B22B3ADB900B40A3C /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				0C6FA18C22B3ADC900B40A3C /* WorkWorkingConfirmAgentCell.h */,
+				0C6FA18D22B3ADC900B40A3C /* WorkWorkingConfirmAgentCell.m */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		1038C14E22A5159A0062C7EF /* 房源详情 */ = {
@@ -875,9 +906,9 @@
 			isa = PBXGroup;
 			children = (
 				109565D2229BF217001957DD /* WorkRecommendWaitVC.h */,
+				109565F2229BF217001957DD /* WorkRecommendWaitVC.m */,
 				109565D3229BF217001957DD /* 确认到访 */,
 				109565DB229BF217001957DD /* 待确认详情 */,
-				109565F2229BF217001957DD /* WorkRecommendWaitVC.m */,
 				109565F3229BF217001957DD /* view */,
 			);
 			path = "待确认";
@@ -1735,6 +1766,7 @@
 				1038C15522A63FE50062C7EF /* MessageCell.m in Sources */,
 				1038C17522AF4DE60062C7EF /* RoomBrokerageTableHeader.m in Sources */,
 				10FA5BAF229B956100A6CB32 /* WorkVC.m in Sources */,
+				0C6FA18A22B3AB0100B40A3C /* WorkWaitConfirmAgentCell.m in Sources */,
 				109565FA229BF217001957DD /* WorkPhoneConfrimFailCell.m in Sources */,
 				10FA5BB8229B95BF00A6CB32 /* MessageVC.m in Sources */,
 				10FA5BA7229B8B7A00A6CB32 /* UserModelArchiver.m in Sources */,
@@ -1775,6 +1807,7 @@
 				10956629229CD92D001957DD /* StoreMainVC.m in Sources */,
 				10FA5B6B229B8B2800A6CB32 /* AdressChooseView.m in Sources */,
 				10FA5C0D229BC04A00A6CB32 /* PersonalIntroVC.m in Sources */,
+				0C6FA18E22B3ADC900B40A3C /* WorkWorkingConfirmAgentCell.m in Sources */,
 				10956598229BE7BD001957DD /* TitleContentBaseCell.m in Sources */,
 				10956601229BF217001957DD /* WorkRecommendFailVC.m in Sources */,
 				10FA5BB2229B959500A6CB32 /* StoreVC.m in Sources */,
@@ -1798,6 +1831,7 @@
 				10956639229D0983001957DD /* StoreInfoHeader.m in Sources */,
 				10B8B82B22B1F14400CDD004 /* HNButton.m in Sources */,
 				10956623229CD826001957DD /* StoreDetailVC.m in Sources */,
+				0C6FA18722B3A8CF00B40A3C /* WorkWaitAgentCell.m in Sources */,
 				1095659A229BE7BD001957DD /* GZQFlowLayout.m in Sources */,
 				1095659E229BE7BD001957DD /* TagCollCell.m in Sources */,
 				10FA5C08229BC04A00A6CB32 /* PushSettingVC.m in Sources */,
