@@ -50,7 +50,14 @@
         _titelL.text = @"门店认证审核";
         _nameL.text = [NSString stringWithFormat:@"申请人：%@",dataDic[@"agent_name"]];
         _phoneL.text = [NSString stringWithFormat:@"联系电话：%@",dataDic[@"agent_tel"]];
-        _timeL.text = [NSString stringWithFormat:@"申请权限：%@",dataDic[@"role"]];
+        if ([dataDic[@"is_store_staff"] integerValue] == 1) {
+            
+            _timeL.text = [NSString stringWithFormat:@"申请权限：%@\n是否为本店员工：%@",dataDic[@"role"],@"是"];
+        }else{
+            
+            _timeL.text = [NSString stringWithFormat:@"申请权限：%@\n是否为本店员工：%@",dataDic[@"role"],@"否"];
+        }
+        
         _infoL.text = [NSString stringWithFormat:@"申请时间：%@",dataDic[@"create_time"]];
     }
 }

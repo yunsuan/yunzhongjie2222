@@ -24,6 +24,8 @@ typedef void(^WorkWaitAgentCellBlock)(void);
 
 @property (nonatomic, strong) UILabel *storeL;
 
+@property (nonatomic, strong) UILabel *isEmpL;
+
 @property (nonatomic, strong) UIButton *confirmBtn;
 
 @property (nonatomic, strong) UIView *lineView;

@@ -36,6 +36,13 @@
     _timeL.text = [NSString stringWithFormat:@"申请时间：%@",dataDic[@"update_time"]];
     //    _projectL.text = [NSString stringWithFormat:@"申请项目：%@",dataDic[@""]];
     _storeL.text = [NSString stringWithFormat:@"申请门店：%@",dataDic[@"store_name"]];
+    if ([dataDic[@"is_store_staff"] integerValue] == 1) {
+        
+        _isEmpL.text = @"是否为本店员工：是";
+    }else{
+        
+        _isEmpL.text = @"是否为本店员工：否";
+    }
 }
 
 - (void)initUI{
@@ -57,6 +64,11 @@
     //    _roleL.textColor = CLTitleLabColor;
     //    _roleL.font = [UIFont systemFontOfSize:13 *SIZE];
     //    [self.contentView addSubview:_roleL];
+    
+    _isEmpL = [[UILabel alloc] init];
+    _isEmpL.textColor = CLTitleLabColor;
+    _isEmpL.font = [UIFont systemFontOfSize:13 *SIZE];
+    [self.contentView addSubview:_isEmpL];
     
     _timeL = [[UILabel alloc] init];
     _timeL.textColor = CLTitleLabColor;
@@ -110,6 +122,13 @@
         make.width.mas_lessThanOrEqualTo (200 *SIZE);
     }];
     
+    [_isEmpL mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(self.contentView).offset(12 *SIZE);
+        make.top.equalTo(self->_phoneL.mas_bottom).offset(10 *SIZE);
+        make.width.mas_lessThanOrEqualTo (200 *SIZE);
+    }];
+    
     //    [_roleL mas_makeConstraints:^(MASConstraintMaker *make) {
     //
     //        make.left.equalTo(self.contentView).offset(12 *SIZE);
@@ -120,7 +139,7 @@
     [_storeL mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.equalTo(self.contentView).offset(12 *SIZE);
-        make.top.equalTo(self->_phoneL.mas_bottom).offset(10 *SIZE);
+        make.top.equalTo(self->_isEmpL.mas_bottom).offset(10 *SIZE);
         make.width.mas_lessThanOrEqualTo (200 *SIZE);
     }];
     
