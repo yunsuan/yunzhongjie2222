@@ -545,9 +545,11 @@
 
                 if ([resposeObject[@"code"] integerValue] == 200) {
 
-                    [weakSelf alertControllerWithNsstring:@"失效确认成功" And:@""];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"recommendReload" object:nil];
-                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                     [[NSNotificationCenter defaultCenter] postNotificationName:@"recommendReload" object:nil];
+                    [weakSelf alertControllerWithNsstring:@"失效确认成功" And:@"" WithDefaultBlack:^{
+                        
+                        [weakSelf.navigationController popViewControllerAnimated:YES];
+                    }];
                 }else{
 
                     [weakSelf alertControllerWithNsstring:@"温馨提示" And:resposeObject[@"msg"]];

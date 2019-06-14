@@ -346,14 +346,14 @@
 {
     
     WorkRecommendWaitDetailVC *nextVC = [[WorkRecommendWaitDetailVC alloc] initWithString:_dataArr[indexPath.row][@"client_id"]];
-//    if (_dataArr[indexPath.row][@"need_confirm"]) {
-//
-//        nextVC.needConfirm = _dataArr[indexPath.row][@"need_confirm"];
-//    }else{
-//
-//        nextVC.needConfirm = @"1";
-//    }
-//
+    if (_dataArr[indexPath.row][@"need_confirm"]) {
+
+        nextVC.needConfirm = _dataArr[indexPath.row][@"need_confirm"];
+    }else{
+
+        nextVC.needConfirm = @"1";
+    }
+
     [self.navigationController pushViewController:nextVC animated:YES];
 }
 

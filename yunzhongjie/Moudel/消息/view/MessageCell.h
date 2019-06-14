@@ -10,7 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^MessageCellSureBtnBlock)(NSInteger index);
+
 @interface MessageCell : UITableViewCell
+
+@property (nonatomic, copy) MessageCellSureBtnBlock messageCellSureBtnBlock;
+
 @property (nonatomic , strong) UILabel *titelL;
 @property (nonatomic , strong) UILabel *nameL;
 @property (nonatomic , strong) UILabel *phoneL;
@@ -18,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) UILabel *timeL;
 @property (nonatomic , strong) UIButton *assistBtn;
 @property (nonatomic , strong) UIButton *sureBtn;
+
+@property (nonatomic, strong) NSDictionary *dataDic;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -456,25 +456,29 @@ static NSString *const TakeLookDisabledList_URL = @"agent/take/push/disabled/lis
 
 #pragma mark ---  工作  ---
 
+#pragma mark -- 经纪人管理 --
+//经纪人在职列表
+static NSString *const AgentGetPayrollList_URL = @"middle/agent/getPayrollList";
+
 #pragma mark -- 签字流程 --
 
 //签字有效
-static NSString *const AgentSignValue_URL = @"agent/sign/value";
+static NSString *const AgentSignValue_URL = @"middle/sign/value";
 
 //签字下一阶段人员
-static NSString *const AgentSignNextAgent_URL = @"agent/sign/nextAgent";
+static NSString *const AgentSignNextAgent_URL = @"middle/sign/nextAgent";
 
 //x签字无效
-static NSString *const AgentSignDisabled_URL = @"agent/sign/disabled";
+static NSString *const AgentSignDisabled_URL = @"middle/sign/disabled";
 
 //获取推荐客户需求信息
-static NSString *const AgentProjectClientNeedGet_URL = @"agent/project/client/need/get";
+static NSString *const AgentProjectClientNeedGet_URL = @"middle/project/client/need/get";
 
 //获取项目配置字段
-static NSString *const ProjectConfigColunm_URL = @"user/project/config/column";
+static NSString *const ProjectConfigColunm_URL = @"middle/project/config/column";
 
 //修改推荐客户需求信息
-static NSString *const ProjectClientNeedUpdate_URL = @"agent/project/client/need/update";
+static NSString *const ProjectClientNeedUpdate_URL = @"middle/project/client/need/update";
 //static NSString *const RecommendList_URL = @"agent/work/getRecommendList";
 
 //经纪人信息统计
@@ -484,7 +488,7 @@ static NSString *const AgentInfoCount_URL = @"agent/work/broker/count";
 static NSString *const Butterinfocount_URL = @"agent/work/butter/count";
 
 //确认所需字段
-static NSString *const ClientNeedInfo_URL = @"agent/client/needInfo";
+static NSString *const ClientNeedInfo_URL = @"middle/client/needInfo";
 
 //更新数据
 static NSString *const FlushDate_URL = @"agent/work/flushDate";
@@ -514,16 +518,16 @@ static NSString *const BrokerAppeal_URL = @"agent/work/broker/appeal";
 static NSString *const BrokerAppealDetail_URL = @"agent/work/broker/appealDetail";
 
 //对接经纪人判断为有效到访
-static NSString *const ConfirmValue_URL = @"agent/client/confirmValue";
+static NSString *const ConfirmValue_URL = @"middle/client/confirmValue";
 
 //对接经纪人判断为无效
-static NSString *const ConfirmDisabled_URL = @"agent/client/confirmDisabled";
+static NSString *const ConfirmDisabled_URL = @"middle/client/confirmDisabled";
 
 //经纪人待确认客户详细
-static NSString *const WaitConfirmDetail_URL = @"agent/work/broker/waitConfirmDetail";
+static NSString *const WaitConfirmDetail_URL = @"middle/work/broker/waitConfirmDetail";
 
 //经纪人无效客户详细
-static NSString *const DisabledDetail_URL = @"agent/work/broker/disabledDetail";
+static NSString *const DisabledDetail_URL = @"middle/work/broker/disabledDetail";
 
 //获取申诉信息
 //static NSString *const AppealGetOne_URL = @"agent/appeal/getOne";
@@ -532,7 +536,7 @@ static NSString *const DisabledDetail_URL = @"agent/work/broker/disabledDetail";
 static NSString *const AppealCancel_URL = @"agent/client/appealCancel";
 
 //经纪人有效到访客户详细
-static NSString *const ValueDetail_URL = @"agent/work/broker/valueDetail";
+static NSString *const ValueDetail_URL = @"middle/work/broker/valueDetail";
 
 //项目待确认列表
 static NSString *const ProjectWaitConfirm_URL = @"agent/work/project/waitConfirm";
@@ -577,36 +581,36 @@ static NSString *const ProjectDeailDisableDetail_URL = @"agent/work/project/deal
 static NSString *const ProjectDealAppealList_URL = @"agent/work/project/dealAppealList";
 
 //对接人待确认列表
-static NSString *const ButterWaitConfirm_URL = @"agent/work/butter/waitConfirm/v3.5";
+static NSString *const ButterWaitConfirm_URL = @"middle/work/butter/waitConfirm";
 
 //对接人有效列表
-static NSString *const ButterValue_URL = @"agent/work/butter/value";
+static NSString *const ButterValue_URL = @"middle/work/butter/value";
 
 //对接人无效客户列表
-static NSString *const ButterDisabled_URL = @"agent/work/butter/disabled";
+static NSString *const ButterDisabled_URL = @"middle/work/butter/disabled";
 
 #pragma mark -- 二次确认 --
 
 //待确认列表
-static NSString *const ButterTelConfirmList_URL = @"agent/work/butter/tel/confirm/list";
+static NSString *const ButterTelConfirmList_URL = @"middle/work/butter/tel/confirm/list";
 
 //待确认详情
-static NSString *const ButterTelConfirmDetail_URL = @"agent/work/butter/tel/confirm/detail";
+static NSString *const ButterTelConfirmDetail_URL = @"middle/work/butter/tel/confirm/detail";
 
 //号码有效
-static NSString *const ClientTelCheckValue_URL = @"agent/client/telCheckValue";
+static NSString *const ClientTelCheckValue_URL = @"middle/client/telCheckValue";
 
 //号码重复
-static NSString *const ClientTelCheckDisabled_URL = @"agent/client/telCheckDisabled";
+static NSString *const ClientTelCheckDisabled_URL = @"middle/client/telCheckDisabled";
 
 //有效列表
-static NSString *const ButterTelValueList_URL = @"agent/work/butter/tel/value/list";
+static NSString *const ButterTelValueList_URL = @"middle/work/butter/tel/value/list";
 
 //有效详情
-static NSString *const ButterTelValueDetail_URL = @"agent/work/butter/tel/value/detail";
+static NSString *const ButterTelValueDetail_URL = @"middle/work/butter/tel/value/detail";
 
 //无效列表
-static NSString *const ButterTelDisabledList_URL = @"agent/work/butter/tel/disabled/list";
+static NSString *const ButterTelDisabledList_URL = @"middle/work/butter/tel/disabled/list";
 #pragma 二手房/租房
 
 #pragma mark -- 二手房-认证

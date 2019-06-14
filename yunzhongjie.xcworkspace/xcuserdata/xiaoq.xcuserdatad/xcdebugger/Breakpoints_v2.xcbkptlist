@@ -63,6 +63,7 @@
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x6211;&#x7684;/MineVC.m"
             timestampString = "582212893.658831"
+
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "185"
@@ -79,6 +80,7 @@
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
                   timestampString = "582212894.429366"
+
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
@@ -93,7 +95,9 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
+
                   timestampString = "582212894.4454679"
+
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
@@ -109,13 +113,15 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "yunzhongjie/Moudel/&#x95e8;&#x5e97;/&#x95e8;&#x5e97;&#x8be6;&#x60c5;/StoreMainVC.m"
-            timestampString = "582212893.6593029"
+
+            filePath = "yunzhongjie/Moudel/&#x623f;&#x6e90;/&#x623f;&#x6e90;&#x8be6;&#x60c5;/DealVC.m"
+            timestampString = "582198166.8288521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "-btntouch:"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-RequestWithPage:"
+
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

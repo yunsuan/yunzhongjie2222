@@ -42,10 +42,12 @@
 }
 
 -(void)Post{
+
     
     _storecount = 0;
     _agentcount = 0;
-    [BaseRequest GET:StoreList_URL parameters:nil success:^(id resposeObject) {
+    [BaseRequest GET:StoreList_URL parameters:@{@"store_id":[UserModel defaultModel].store_id} success:^(id resposeObject) {
+
         NSLog(@"%@",resposeObject);
          [self.table.mj_header endRefreshing];
         if ([resposeObject[@"code"] integerValue]==200) {

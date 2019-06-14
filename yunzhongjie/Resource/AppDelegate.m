@@ -41,7 +41,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initUI];
 //    [self UpdateRequest];
-//    [self NetworkingStart];
+    [self NetworkingStart];
     [self configThirdWithOptions:launchOptions];
     
     
