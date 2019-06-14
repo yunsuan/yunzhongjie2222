@@ -178,50 +178,50 @@
     //获取配套UI
     //    dispatch_group_async(group, queue1, ^{
     
-    [BaseRequest GET:HouseRecordUI_URL parameters:@{@"type":@"2"} success:^(id resposeObject) {
-        if ([resposeObject[@"code"] integerValue] == 200) {
-//            [UserModel defaultModel].storeArr = [NSMutableArray arrayWithArray:resposeObject[@"data"]];
-//            [UserModelArchiver archive];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
+//    [BaseRequest GET:HouseRecordUI_URL parameters:@{@"type":@"2"} success:^(id resposeObject) {
+//        if ([resposeObject[@"code"] integerValue] == 200) {
+////            [UserModel defaultModel].storeArr = [NSMutableArray arrayWithArray:resposeObject[@"data"]];
+////            [UserModelArchiver archive];
+//        }
+//    } failure:^(NSError *error) {
+//
+//    }];
     
-    [BaseRequest GET:HouseRecordUI_URL parameters:@{@"type":@"1"} success:^(id resposeObject) {
-        if ([resposeObject[@"code"] integerValue] == 200) {
-//            [UserModel defaultModel].houseArr = [NSMutableArray arrayWithArray:resposeObject[@"data"]];
-//            [UserModelArchiver archive];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
+//    [BaseRequest GET:HouseRecordUI_URL parameters:@{@"type":@"1"} success:^(id resposeObject) {
+//        if ([resposeObject[@"code"] integerValue] == 200) {
+////            [UserModel defaultModel].houseArr = [NSMutableArray arrayWithArray:resposeObject[@"data"]];
+////            [UserModelArchiver archive];
+//        }
+//    } failure:^(NSError *error) {
+//
+//    }];
     
     //    });
     //完成勘察UI
     //    dispatch_group_async(group, queue1, ^{
-    
-    [BaseRequest GET:HouseRecordUI_URL parameters:@{@"type":@"3"} success:^(id resposeObject) {
-        if ([resposeObject[@"code"] integerValue] == 200) {
-//            [UserModel defaultModel].officeArr = [NSMutableArray arrayWithArray:resposeObject[@"data"]];
-            [UserModelArchiver archive];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
+//
+//    [BaseRequest GET:HouseRecordUI_URL parameters:@{@"type":@"3"} success:^(id resposeObject) {
+//        if ([resposeObject[@"code"] integerValue] == 200) {
+////            [UserModel defaultModel].officeArr = [NSMutableArray arrayWithArray:resposeObject[@"data"]];
+//            [UserModelArchiver archive];
+//        }
+//    } failure:^(NSError *error) {
+//
+//    }];
     
     //    });
     //获取源标签
     //    dispatch_group_async(group, queue1, ^{
-    [BaseRequest GET:ProjectResources_URL parameters:nil success:^(id resposeObject) {
-        if ([resposeObject[@"code"] integerValue] == 200) {
-            NSArray *arr = resposeObject[@"data"];
-            NSMutableDictionary *dic =[NSMutableDictionary dictionary];
-            NSMutableArray *allarr = [NSMutableArray array];
-            NSMutableArray *selctarr = [NSMutableArray array];
-            for (NSUInteger i=0; i<arr.count; i++) {
-                [dic setValue:arr[i] forKey:arr[i][@"tag"]];
-                [allarr addObject:arr[i][@"tag"]];
-            }
+//    [BaseRequest GET:ProjectResources_URL parameters:nil success:^(id resposeObject) {
+//        if ([resposeObject[@"code"] integerValue] == 200) {
+//            NSArray *arr = resposeObject[@"data"];
+//            NSMutableDictionary *dic =[NSMutableDictionary dictionary];
+//            NSMutableArray *allarr = [NSMutableArray array];
+//            NSMutableArray *selctarr = [NSMutableArray array];
+//            for (NSUInteger i=0; i<arr.count; i++) {
+//                [dic setValue:arr[i] forKey:arr[i][@"tag"]];
+//                [allarr addObject:arr[i][@"tag"]];
+//            }
 //            [UserModel defaultModel].tagDic = dic;
 //            [UserModel defaultModel].tagAllArr = allarr;
 //            if (![UserModel defaultModel].tagSelectArr) {
@@ -231,22 +231,22 @@
 //                [UserModel defaultModel].tagSelectArr = selctarr;
 //            }
 //            [UserModelArchiver archive];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
-    
+//        }
+//    } failure:^(NSError *error) {
+//
+//    }];
+//
     //    });
     //开放城市
     //    dispatch_group_async(group, queue1, ^{
-    [BaseRequest GET:OpenCity_URL parameters:nil success:^(id resposeObject) {
-        if ([resposeObject[@"code"] integerValue] == 200) {
-//            [UserModel defaultModel].cityArr = [NSMutableArray arrayWithArray:resposeObject[@"data"]];
-//            [UserModelArchiver archive];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
+//    [BaseRequest GET:OpenCity_URL parameters:nil success:^(id resposeObject) {
+//        if ([resposeObject[@"code"] integerValue] == 200) {
+////            [UserModel defaultModel].cityArr = [NSMutableArray arrayWithArray:resposeObject[@"data"]];
+////            [UserModelArchiver archive];
+//        }
+//    } failure:^(NSError *error) {
+//
+//    }];
     
     //    });
 }

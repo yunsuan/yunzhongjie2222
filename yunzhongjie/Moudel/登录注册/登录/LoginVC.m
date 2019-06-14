@@ -256,7 +256,7 @@
     [_registerBtn setTitleColor:CLContentLabColor forState:UIControlStateNormal];
     _registerBtn.titleLabel.font = [UIFont systemFontOfSize:14*SIZE];
     [_registerBtn addTarget:self action:@selector(ActionRegisterBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_registerBtn];
+//    [self.view addSubview:_registerBtn];
     
     _FindPassWordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _FindPassWordBtn.frame =  CGRectMake(279 *SIZE, 10 *SIZE + CGRectGetMaxY(_LoginBtn.frame), 65*SIZE, 25*SIZE);
