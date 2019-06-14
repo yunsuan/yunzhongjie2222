@@ -747,10 +747,10 @@
 		109565A1229BF216001957DD /* 号码判重 */ = {
 			isa = PBXGroup;
 			children = (
-				109565A2229BF216001957DD /* 可带看 */,
 				109565AB229BF216001957DD /* WorkPhoneConfirmVC.h */,
-				109565AC229BF216001957DD /* 不可带看 */,
 				109565B5229BF216001957DD /* WorkPhoneConfirmVC.m */,
+				109565A2229BF216001957DD /* 可带看 */,
+				109565AC229BF216001957DD /* 不可带看 */,
 				109565B6229BF216001957DD /* 待确认 */,
 			);
 			path = "号码判重";
@@ -789,9 +789,9 @@
 			isa = PBXGroup;
 			children = (
 				109565AD229BF216001957DD /* WorkPhoneConfrimFailVC.h */,
+				109565B4229BF216001957DD /* WorkPhoneConfrimFailVC.m */,
 				109565AE229BF216001957DD /* 不可带看详情 */,
 				109565B1229BF216001957DD /* view */,
-				109565B4229BF216001957DD /* WorkPhoneConfrimFailVC.m */,
 			);
 			path = "不可带看";
 			sourceTree = "<group>";
@@ -818,8 +818,8 @@
 			isa = PBXGroup;
 			children = (
 				109565B7229BF216001957DD /* WorkPhoneConfrimWaitVC.h */,
-				109565B8229BF216001957DD /* 待确认详情 */,
 				109565BB229BF216001957DD /* WorkPhoneConfrimWaitVC.m */,
+				109565B8229BF216001957DD /* 待确认详情 */,
 				109565BC229BF217001957DD /* view */,
 			);
 			path = "待确认";
@@ -917,11 +917,11 @@
 		109565D3229BF217001957DD /* 确认到访 */ = {
 			isa = PBXGroup;
 			children = (
-				109565D4229BF217001957DD /* WorkCompleteCustomVC1.m */,
-				109565D5229BF217001957DD /* WorkCompleteCustomVC2.m */,
 				109565D6229BF217001957DD /* WorkCompleteCustomVC1.h */,
-				109565D7229BF217001957DD /* view */,
+				109565D4229BF217001957DD /* WorkCompleteCustomVC1.m */,
 				109565DA229BF217001957DD /* WorkCompleteCustomVC2.h */,
+				109565D5229BF217001957DD /* WorkCompleteCustomVC2.m */,
+				109565D7229BF217001957DD /* view */,
 			);
 			path = "确认到访";
 			sourceTree = "<group>";

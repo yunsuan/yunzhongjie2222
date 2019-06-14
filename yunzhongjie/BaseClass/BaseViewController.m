@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = CLBackColor;//[UIColor whiteColor];
     [self initialBaseViewInterface];
 }
 
@@ -46,7 +46,7 @@
 #pragma mark - init
 - (void)initialBaseViewInterface {
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = CLBackColor;
     [self.view addSubview:self.navBackgroundView];
     
     [self.navBackgroundView addSubview:self.titleLabel];

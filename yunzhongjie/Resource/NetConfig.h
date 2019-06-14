@@ -486,7 +486,7 @@ static NSString *const AgentInfoCount_URL = @"agent/work/broker/count";
 static NSString *const Butterinfocount_URL = @"agent/work/butter/count";
 
 //确认所需字段
-static NSString *const ClientNeedInfo_URL = @"agent/client/needInfo";
+static NSString *const ClientNeedInfo_URL = @"middle/client/needInfo";
 
 //更新数据
 static NSString *const FlushDate_URL = @"agent/work/flushDate";
@@ -516,16 +516,16 @@ static NSString *const BrokerAppeal_URL = @"agent/work/broker/appeal";
 static NSString *const BrokerAppealDetail_URL = @"agent/work/broker/appealDetail";
 
 //对接经纪人判断为有效到访
-static NSString *const ConfirmValue_URL = @"agent/client/confirmValue";
+static NSString *const ConfirmValue_URL = @"middle/client/confirmValue";
 
 //对接经纪人判断为无效
-static NSString *const ConfirmDisabled_URL = @"agent/client/confirmDisabled";
+static NSString *const ConfirmDisabled_URL = @"middle/client/confirmDisabled";
 
 //经纪人待确认客户详细
-static NSString *const WaitConfirmDetail_URL = @"agent/work/broker/waitConfirmDetail";
+static NSString *const WaitConfirmDetail_URL = @"middle/work/broker/waitConfirmDetail";
 
 //经纪人无效客户详细
-static NSString *const DisabledDetail_URL = @"agent/work/broker/disabledDetail";
+static NSString *const DisabledDetail_URL = @"middle/work/broker/disabledDetail";
 
 //获取申诉信息
 //static NSString *const AppealGetOne_URL = @"agent/appeal/getOne";
@@ -534,7 +534,7 @@ static NSString *const DisabledDetail_URL = @"agent/work/broker/disabledDetail";
 static NSString *const AppealCancel_URL = @"agent/client/appealCancel";
 
 //经纪人有效到访客户详细
-static NSString *const ValueDetail_URL = @"agent/work/broker/valueDetail";
+static NSString *const ValueDetail_URL = @"middle/work/broker/valueDetail";
 
 //项目待确认列表
 static NSString *const ProjectWaitConfirm_URL = @"agent/work/project/waitConfirm";
