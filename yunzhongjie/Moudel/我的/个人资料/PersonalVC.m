@@ -56,7 +56,7 @@
     else{
         name = @"";
     }
-    NSString *sex;
+    NSString *sex = @"";
     if ([UserModelArchiver unarchive].sex) {
         if ([[UserModelArchiver unarchive].sex integerValue]==1) {
             sex = @"男";
@@ -79,14 +79,14 @@
     else{
         tel = @"";
     }
-    NSString *birth;
+    NSString *birth = @"";
     if ([UserModelArchiver unarchive].birth) {
         birth = [UserModelArchiver unarchive].birth;
     }
     else{
         birth = @"";
     }
-    NSString *adress;
+    NSString *adress = @"";
     if ([UserModelArchiver unarchive].province) {
         //        adress = [NSString stringWithFormat:@"%@/%@/%@",[UserModelArchiver unarchive].province,[UserModelArchiver unarchive].city,[UserModelArchiver unarchive].district];
         NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"region" ofType:@"json"]];

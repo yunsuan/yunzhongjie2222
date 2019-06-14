@@ -8,6 +8,7 @@
 
 #import "WorkVC.h"
 //#import "PowerMannerger.h"
+#import "WorkAgentManageVC.h"
 #import "WorkPhoneConfirmVC.h"
 #import "WorkRecommendVC.h"
 #import "WorkCell.h"
@@ -159,6 +160,8 @@
 //        CallTelegramVC * nextVC = [[CallTelegramVC alloc] initWithProjectId:[UserModel defaultModel].projectinfo[@"project_id"] info_id:[UserModel defaultModel].projectinfo[@"info_id"]];
 //        nextVC.powerDic = [PowerModel defaultModel].telCallPower;
 //        [self.navigationController pushViewController:nextVC animated:YES];
+        WorkAgentManageVC *nextVC = [[WorkAgentManageVC alloc] init];
+        [self.navigationController pushViewController:nextVC animated:YES];
     }else if (indexPath.row == 1){
         
         WorkPhoneConfirmVC *nextVC = [[WorkPhoneConfirmVC alloc] init];

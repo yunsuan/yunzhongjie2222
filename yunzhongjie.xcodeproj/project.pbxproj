@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C6FA18022B396A000B40A3C /* WorkWorkingAgentManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA17722B396A000B40A3C /* WorkWorkingAgentManageVC.m */; };
+		0C6FA18122B396A000B40A3C /* WorkWaitAgentManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA17A22B396A000B40A3C /* WorkWaitAgentManageVC.m */; };
+		0C6FA18222B396A000B40A3C /* WorkDimissionAgentManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA17E22B396A000B40A3C /* WorkDimissionAgentManageVC.m */; };
+		0C6FA18322B396A000B40A3C /* WorkAgentManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA17F22B396A000B40A3C /* WorkAgentManageVC.m */; };
 		1038C15122A63F0A0062C7EF /* HouseDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15022A63F0A0062C7EF /* HouseDetail.m */; };
 		1038C15522A63FE50062C7EF /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15422A63FE50062C7EF /* MessageCell.m */; };
 		1038C15922A64F4A0062C7EF /* ProjectDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15822A64F4A0062C7EF /* ProjectDetailVC.m */; };
@@ -166,6 +170,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C6FA17622B396A000B40A3C /* WorkWorkingAgentManageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkWorkingAgentManageVC.h; sourceTree = "<group>"; };
+		0C6FA17722B396A000B40A3C /* WorkWorkingAgentManageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkWorkingAgentManageVC.m; sourceTree = "<group>"; };
+		0C6FA17822B396A000B40A3C /* WorkAgentManageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkAgentManageVC.h; sourceTree = "<group>"; };
+		0C6FA17A22B396A000B40A3C /* WorkWaitAgentManageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkWaitAgentManageVC.m; sourceTree = "<group>"; };
+		0C6FA17B22B396A000B40A3C /* WorkWaitAgentManageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkWaitAgentManageVC.h; sourceTree = "<group>"; };
+		0C6FA17D22B396A000B40A3C /* WorkDimissionAgentManageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkDimissionAgentManageVC.h; sourceTree = "<group>"; };
+		0C6FA17E22B396A000B40A3C /* WorkDimissionAgentManageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkDimissionAgentManageVC.m; sourceTree = "<group>"; };
+		0C6FA17F22B396A000B40A3C /* WorkAgentManageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkAgentManageVC.m; sourceTree = "<group>"; };
 		1038C14F22A63F0A0062C7EF /* HouseDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseDetail.h; sourceTree = "<group>"; };
 		1038C15022A63F0A0062C7EF /* HouseDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseDetail.m; sourceTree = "<group>"; };
 		1038C15322A63FE50062C7EF /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
@@ -472,6 +484,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C6FA17422B396A000B40A3C /* 经纪人管理 */ = {
+			isa = PBXGroup;
+			children = (
+				0C6FA17522B396A000B40A3C /* 在职 */,
+				0C6FA17822B396A000B40A3C /* WorkAgentManageVC.h */,
+				0C6FA17922B396A000B40A3C /* 待审核 */,
+				0C6FA17C22B396A000B40A3C /* 离职 */,
+				0C6FA17F22B396A000B40A3C /* WorkAgentManageVC.m */,
+			);
+			path = "经纪人管理";
+			sourceTree = "<group>";
+		};
+		0C6FA17522B396A000B40A3C /* 在职 */ = {
+			isa = PBXGroup;
+			children = (
+				0C6FA17622B396A000B40A3C /* WorkWorkingAgentManageVC.h */,
+				0C6FA17722B396A000B40A3C /* WorkWorkingAgentManageVC.m */,
+			);
+			path = "在职";
+			sourceTree = "<group>";
+		};
+		0C6FA17922B396A000B40A3C /* 待审核 */ = {
+			isa = PBXGroup;
+			children = (
+				0C6FA17A22B396A000B40A3C /* WorkWaitAgentManageVC.m */,
+				0C6FA17B22B396A000B40A3C /* WorkWaitAgentManageVC.h */,
+			);
+			path = "待审核";
+			sourceTree = "<group>";
+		};
+		0C6FA17C22B396A000B40A3C /* 离职 */ = {
+			isa = PBXGroup;
+			children = (
+				0C6FA17D22B396A000B40A3C /* WorkDimissionAgentManageVC.h */,
+				0C6FA17E22B396A000B40A3C /* WorkDimissionAgentManageVC.m */,
+			);
+			path = "离职";
+			sourceTree = "<group>";
+		};
 		1038C14E22A5159A0062C7EF /* 房源详情 */ = {
 			isa = PBXGroup;
 			children = (
@@ -774,8 +825,8 @@
 			isa = PBXGroup;
 			children = (
 				109565C3229BF217001957DD /* WorkRecommendVC.h */,
-				109565C4229BF217001957DD /* 已失效 */,
 				109565CA229BF217001957DD /* WorkRecommendVC.m */,
+				109565C4229BF217001957DD /* 已失效 */,
 				109565CB229BF217001957DD /* 已确认 */,
 				109565D1229BF217001957DD /* 待确认 */,
 			);
@@ -1324,6 +1375,7 @@
 		10FA5B97229B8B6300A6CB32 /* 工作 */ = {
 			isa = PBXGroup;
 			children = (
+				0C6FA17422B396A000B40A3C /* 经纪人管理 */,
 				109565A1229BF216001957DD /* 号码判重 */,
 				109565C2229BF217001957DD /* 推荐客户 */,
 				109565BF229BF217001957DD /* cell */,
@@ -1424,10 +1476,10 @@
 			isa = PBXGroup;
 			children = (
 				10FA5BD6229BC04A00A6CB32 /* PersonalVC.h */,
+				10FA5BE1229BC04A00A6CB32 /* PersonalVC.m */,
 				10FA5BD7229BC04A00A6CB32 /* 姓名 */,
 				10FA5BDA229BC04A00A6CB32 /* 个人说明 */,
 				10FA5BDD229BC04A00A6CB32 /* view */,
-				10FA5BE1229BC04A00A6CB32 /* PersonalVC.m */,
 			);
 			path = "个人资料";
 			sourceTree = "<group>";
@@ -1667,6 +1719,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C6FA18122B396A000B40A3C /* WorkWaitAgentManageVC.m in Sources */,
 				10FA5C09229BC04A00A6CB32 /* PushSettingCell.m in Sources */,
 				10FA5B87229B8B4D00A6CB32 /* CYLTabBarControllerConfig.m in Sources */,
 				1095662C229CD947001957DD /* ChartVC.m in Sources */,
@@ -1687,6 +1740,7 @@
 				10FA5BA7229B8B7A00A6CB32 /* UserModelArchiver.m in Sources */,
 				1038C15F22A650740062C7EF /* DealVC.m in Sources */,
 				10B8B82D22B1F14400CDD004 /* HNChannelView.m in Sources */,
+				0C6FA18322B396A000B40A3C /* WorkAgentManageVC.m in Sources */,
 				10FA5C0E229BC04A00A6CB32 /* PersonalHeader.m in Sources */,
 				10FA5B76229B8B2800A6CB32 /* SinglePickView.m in Sources */,
 				10956612229BF217001957DD /* SignFailView.m in Sources */,
@@ -1708,6 +1762,7 @@
 				10956594229BE7BD001957DD /* TypeTagCollCell.m in Sources */,
 				10956645229D0A20001957DD /* StoreCountCell.m in Sources */,
 				10FA5B6D229B8B2800A6CB32 /* BDDynamicTreeCell.m in Sources */,
+				0C6FA18222B396A000B40A3C /* WorkDimissionAgentManageVC.m in Sources */,
 				1038C16822A67E7E0062C7EF /* DealCell.m in Sources */,
 				1095660D229BF217001957DD /* SignListCell.m in Sources */,
 				109565FD229BF217001957DD /* WorkPhoneConfrimWaitDetailVC.m in Sources */,
@@ -1779,6 +1834,7 @@
 				1095660C229BF217001957DD /* SignNeedInfoVC.m in Sources */,
 				10FA5B74229B8B2800A6CB32 /* BorderTextField.m in Sources */,
 				1038C17222A7D3110062C7EF /* CustomerListCell.m in Sources */,
+				0C6FA18022B396A000B40A3C /* WorkWorkingAgentManageVC.m in Sources */,
 				10FA5B77229B8B2800A6CB32 /* DropBtn.m in Sources */,
 				10B8B82522B1F14400CDD004 /* WMPageController.m in Sources */,
 				10956648229FC742001957DD /* AgentCell.m in Sources */,

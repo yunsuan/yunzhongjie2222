@@ -29,7 +29,7 @@
 //#define QQAppkey @"Yik2oC5WcDQ5IOrpc"
 //#define WechatAppId @"wx3e34d92e8b8cb53e"
 //#define WechatSecret @"200ee15186843d67c0d9ba6a66f3a6ba"
-#define JpushAppKey @"2dd909361c253b51e0cd05a9"
+#define JpushAppKey @"e1aa395c0f2ec24152a53d77"
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
@@ -42,7 +42,7 @@
     [self initUI];
 //    [self UpdateRequest];
 //    [self NetworkingStart];
-//    [self configThirdWithOptions:launchOptions];
+    [self configThirdWithOptions:launchOptions];
     
     
     return YES;
