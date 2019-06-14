@@ -46,6 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSMutableArray *propertyArr;
 
+@property (nonatomic, strong) UIView *lineView;
+
 -(void)setImgArr:(NSMutableArray *)imgArr;
 
 

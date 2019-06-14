@@ -116,13 +116,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 0) {
+        
         return 64*SIZE;
     }
     else{
         return 210*SIZE;
     }
-    
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -159,6 +158,24 @@
         return cell;
     }
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0) {
+        
+        NSString *phone = _confirmArr[indexPath.row][@"tel"];
+        if (phone.length) {
+            
+            //获取目标号码字符串,转换成URL
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phone]];
+            //调用系统方法拨号
+            [[UIApplication sharedApplication] openURL:url];
+        }else{
+            
+            [self alertControllerWithNsstring:@"温馨提示" And:@"暂时未获取到联系电话"];
+        }
+    }
 }
 
 
@@ -247,10 +264,11 @@
 }
 
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 301*SIZE;
+        
+        return UITableViewAutomaticDimension;
     }
     else
     {
@@ -258,6 +276,16 @@
     }
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return CGFLOAT_MIN;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    return [[UIView alloc] init];
+}
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 
@@ -318,6 +346,7 @@
     _table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height - NAVIGATION_BAR_HEIGHT - TAB_BAR_MORE) style:UITableViewStyleGrouped];
     _table.rowHeight = UITableViewAutomaticDimension;
     _table.estimatedRowHeight = 100 *SIZE;
+    _table.estimatedSectionHeaderHeight = 300 *SIZE;
     _table.backgroundColor = self.view.backgroundColor;
     _table.separatorStyle = UITableViewCellSeparatorStyleNone;
     _table.delegate = self;

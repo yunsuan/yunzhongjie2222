@@ -35,88 +35,6 @@
     return self;
 }
 
-
--(void)initUI{
-    
-    _imgScroll = [[UIScrollView alloc] init];//WithFrame:CGRectMake(0, 0, SCREEN_Width, 202.5 *SIZE)];
-    _imgScroll.pagingEnabled = YES;
-    _imgScroll.delegate = self;
-    _imgScroll.showsVerticalScrollIndicator = NO;
-    _imgScroll.showsHorizontalScrollIndicator = NO;
-    _imgScroll.backgroundColor = [UIColor whiteColor];
-    [self.contentView addSubview:_imgScroll];
-    
-    _numL = [[UILabel alloc] initWithFrame:CGRectMake(319 *SIZE, 164.5 *SIZE, 30 *SIZE, 30 *SIZE)];
-    _numL.backgroundColor = COLOR(255, 255, 255, 0.6);
-    _numL.textColor = CLTitleLabColor;
-    _numL.font = [UIFont systemFontOfSize:10 *SIZE];
-    _numL.textAlignment = NSTextAlignmentCenter;
-    _numL.layer.cornerRadius = 15 *SIZE;
-    _numL.clipsToBounds = YES;
-    _numL.adjustsFontSizeToFitWidth = YES;
-    [self.contentView addSubview:_numL];
-    
-//    _tagArr = [@[] mutableCopy];
-    self.backgroundColor = [UIColor whiteColor];
-//    _imgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 360*SIZE, 200*SIZE)];
-//    _imgV.backgroundColor = [UIColor redColor];
-//    [self addSubview:_imgV];
-    
-    _titleL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 205*SIZE, 300*SIZE, 15*SIZE)];
-//    _titleL.text = @"云算公馆";
-    _titleL.textColor = CLTitleLabColor;
-    _titleL.font = FONT(15);
-    [self addSubview:_titleL];
-    
-    _stateL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 205*SIZE, 340*SIZE, 15*SIZE)];
-//    _stateL.text = @"云算公馆";
-    _stateL.textColor = CLBlueBtnColor;
-    _stateL.textAlignment = NSTextAlignmentRight;
-    _stateL.font = FONT(13);
-    [self addSubview:_stateL];
-    _priceL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 25*SIZE, 300*SIZE, 14*SIZE)];
-//    _priceL.text = @"门店名称：大禹东路二店";
-    _priceL.textColor = CLTitleLabColor;
-    _priceL.font = FONT(13);
-    [self addSubview:_priceL];
-
-    _addressImg = [[UIImageView alloc] init];//WithFrame:CGRectMake(11 *SIZE, 354.5 *SIZE, 16 *SIZE, 16 *SIZE)];
-    _addressImg.image = [UIImage imageNamed:@"map"];
-    [self.contentView addSubview:_addressImg];
-    
-    _addressL = [[UILabel alloc] init];//WithFrame:CGRectMake(31 *SIZE, 155 *SIZE + CGRectGetMaxY(_imgScroll.frame), 250 *SIZE, 11 *SIZE)];
-    _addressL.textColor = CLContentLabColor;
-    _addressL.font = [UIFont systemFontOfSize:12 *SIZE];
-    [self.contentView addSubview:_addressL];
-    _addressL.userInteractionEnabled = YES;
-    [_addressL addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(action_map)]];
-    
-    _propertyFlowLayout = [[GZQFlowLayout alloc] initWithType:AlignWithLeft betweenOfCell:4 *SIZE];
-    _propertyFlowLayout.itemSize = CGSizeMake(65 *SIZE, 17 *SIZE);
-    
-    _propertyColl = [[UICollectionView alloc] initWithFrame:CGRectMake(10 *SIZE, 235.5 *SIZE, 225 *SIZE, 50 *SIZE) collectionViewLayout:_propertyFlowLayout];
-    _propertyColl.backgroundColor = [UIColor whiteColor];
-    _propertyColl.delegate = self;
-    _propertyColl.dataSource = self;
-    [_propertyColl registerClass:[TagCollCell class] forCellWithReuseIdentifier:@"TagCollCell"];
-    [self.contentView addSubview:_propertyColl];
-//    _storeadressL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 45*SIZE, 300*SIZE, 14*SIZE)];
-//    _storeadressL.text = @"门店地址：四川省成都市郫都区大禹东路96号";
-//    _storeadressL.textColor = CLTitleLabColor;
-//    _storeadressL.font = FONT(13);
-//    [self addSubview:_storeadressL];
-//
-//    _peoplenumL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 65*SIZE, 300*SIZE, 14*SIZE)];
-//    _peoplenumL.text = @"经纪人总数：20";
-//    _peoplenumL.textColor = CLTitleLabColor;
-//    _peoplenumL.font = FONT(13);
-//    [self addSubview:_peoplenumL];
-//
-
-    [self masonryUI];
-    
-}
-
 - (void)setImgArr:(NSMutableArray *)imgArr{
     
     _imgArr = [NSMutableArray arrayWithArray:imgArr];
@@ -229,6 +147,94 @@
     return cell;
 }
 
+
+-(void)initUI{
+    
+    self.contentView.backgroundColor = CLWhiteColor;
+    
+    _imgScroll = [[UIScrollView alloc] init];//WithFrame:CGRectMake(0, 0, SCREEN_Width, 202.5 *SIZE)];
+    _imgScroll.pagingEnabled = YES;
+    _imgScroll.delegate = self;
+    _imgScroll.showsVerticalScrollIndicator = NO;
+    _imgScroll.showsHorizontalScrollIndicator = NO;
+    _imgScroll.backgroundColor = [UIColor whiteColor];
+    [self.contentView addSubview:_imgScroll];
+    
+    _numL = [[UILabel alloc] initWithFrame:CGRectMake(319 *SIZE, 164.5 *SIZE, 30 *SIZE, 30 *SIZE)];
+    _numL.backgroundColor = COLOR(255, 255, 255, 0.6);
+    _numL.textColor = CLTitleLabColor;
+    _numL.font = [UIFont systemFontOfSize:10 *SIZE];
+    _numL.textAlignment = NSTextAlignmentCenter;
+    _numL.layer.cornerRadius = 15 *SIZE;
+    _numL.clipsToBounds = YES;
+    _numL.adjustsFontSizeToFitWidth = YES;
+    [self.contentView addSubview:_numL];
+    
+    //    _tagArr = [@[] mutableCopy];
+    //    _imgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 360*SIZE, 200*SIZE)];
+    //    _imgV.backgroundColor = [UIColor redColor];
+    //    [self addSubview:_imgV];
+    
+    _titleL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 205*SIZE, 300*SIZE, 15*SIZE)];
+    //    _titleL.text = @"云算公馆";
+    _titleL.textColor = CLTitleLabColor;
+    _titleL.font = FONT(15);
+    [self.contentView addSubview:_titleL];
+    
+    _stateL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 205*SIZE, 340*SIZE, 15*SIZE)];
+    //    _stateL.text = @"云算公馆";
+    _stateL.textColor = CLBlueBtnColor;
+    _stateL.textAlignment = NSTextAlignmentRight;
+    _stateL.font = FONT(13);
+    [self.contentView addSubview:_stateL];
+    _priceL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 25*SIZE, 300*SIZE, 14*SIZE)];
+    //    _priceL.text = @"门店名称：大禹东路二店";
+    _priceL.textColor = CLTitleLabColor;
+    _priceL.font = FONT(13);
+    [self.contentView addSubview:_priceL];
+    
+    _addressImg = [[UIImageView alloc] init];//WithFrame:CGRectMake(11 *SIZE, 354.5 *SIZE, 16 *SIZE, 16 *SIZE)];
+    _addressImg.image = [UIImage imageNamed:@"map"];
+    [self.contentView addSubview:_addressImg];
+    
+    _addressL = [[UILabel alloc] init];//WithFrame:CGRectMake(31 *SIZE, 155 *SIZE + CGRectGetMaxY(_imgScroll.frame), 250 *SIZE, 11 *SIZE)];
+    _addressL.textColor = CLContentLabColor;
+    _addressL.font = [UIFont systemFontOfSize:12 *SIZE];
+    [self.contentView addSubview:_addressL];
+    _addressL.userInteractionEnabled = YES;
+    [_addressL addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(action_map)]];
+    
+    _propertyFlowLayout = [[GZQFlowLayout alloc] initWithType:AlignWithLeft betweenOfCell:4 *SIZE];
+    _propertyFlowLayout.itemSize = CGSizeMake(65 *SIZE, 17 *SIZE);
+    
+    _propertyColl = [[UICollectionView alloc] initWithFrame:CGRectMake(10 *SIZE, 235.5 *SIZE, 225 *SIZE, 50 *SIZE) collectionViewLayout:_propertyFlowLayout];
+    _propertyColl.backgroundColor = [UIColor whiteColor];
+    _propertyColl.delegate = self;
+    _propertyColl.dataSource = self;
+    [_propertyColl registerClass:[TagCollCell class] forCellWithReuseIdentifier:@"TagCollCell"];
+    [self.contentView addSubview:_propertyColl];
+    //    _storeadressL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 45*SIZE, 300*SIZE, 14*SIZE)];
+    //    _storeadressL.text = @"门店地址：四川省成都市郫都区大禹东路96号";
+    //    _storeadressL.textColor = CLTitleLabColor;
+    //    _storeadressL.font = FONT(13);
+    //    [self addSubview:_storeadressL];
+    //
+    //    _peoplenumL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 65*SIZE, 300*SIZE, 14*SIZE)];
+    //    _peoplenumL.text = @"经纪人总数：20";
+    //    _peoplenumL.textColor = CLTitleLabColor;
+    //    _peoplenumL.font = FONT(13);
+    //    [self addSubview:_peoplenumL];
+    //
+    
+    _lineView = [[UIView alloc] init];
+    _lineView.backgroundColor = CLLineColor;
+    [self.contentView addSubview:_lineView];
+    
+    [self masonryUI];
+    
+}
+
+
 - (void)masonryUI{
     
     [_imgScroll mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -304,16 +310,17 @@
         make.width.mas_equalTo(250 *SIZE);
     }];
     
-    UIView *line = [[UIView alloc] init];
-    line.backgroundColor = CLBackColor;
-    [self.contentView addSubview:line];
+//    UIView *line = [[UIView alloc] init];
+//    line.backgroundColor = CLBackColor;
+//    [self.contentView addSubview:line];
     
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(0);
         make.top.equalTo(_addressL.mas_bottom).offset(5 *SIZE);
         make.width.mas_equalTo(360 *SIZE);
+        make.height.mas_equalTo(1 *SIZE);
+        make.bottom.equalTo(self.contentView).offset(0);
     }];
-    
 }
 
 
