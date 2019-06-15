@@ -30,7 +30,7 @@
 //#define QQAppkey @"Yik2oC5WcDQ5IOrpc"
 //#define WechatAppId @"wx3e34d92e8b8cb53e"
 //#define WechatSecret @"200ee15186843d67c0d9ba6a66f3a6ba"
-#define JpushAppKey @"e1aa395c0f2ec24152a53d77"
+#define JpushAppKey @"3577af5de4be315fde355f7"
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
@@ -98,7 +98,7 @@
         NSArray *array = resposeObject[@"results"];
         NSDictionary *dic = array[0];
         NSString *appStoreVersion = dic[@"version"];
-        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YGJversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
             [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
                 
@@ -664,7 +664,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSArray *array = resposeObject[@"results"];
         NSDictionary *dic = array[0];
         NSString *appStoreVersion = dic[@"version"];
-        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YGJversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
             [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
                 
@@ -719,7 +719,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSArray *array = resposeObject[@"results"];
         NSDictionary *dic = array[0];
         NSString *appStoreVersion = dic[@"version"];
-        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YGJversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
             [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
                 
@@ -768,7 +768,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSArray *array = resposeObject[@"results"];
         NSDictionary *dic = array[0];
         NSString *appStoreVersion = dic[@"version"];
-        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YGJversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
             [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
                 

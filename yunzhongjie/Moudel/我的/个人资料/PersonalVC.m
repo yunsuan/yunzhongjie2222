@@ -80,7 +80,7 @@
         tel = @"";
     }
     NSString *birth = @"";
-    if ([UserModelArchiver unarchive].birth) {
+    if ([UserModelArchiver unarchive].birth && [UserModelArchiver unarchive].birth.length>6) {
         birth = [UserModelArchiver unarchive].birth;
     }
     else{
