@@ -31,35 +31,22 @@
 
 - (void)setDataDic:(NSDictionary *)dataDic{
     
-    if ([dataDic[@"message_type"] integerValue] == 18) {
+    _titelL.text = @"门店认证审核";
+    _nameL.text = [NSString stringWithFormat:@"申请人：%@",dataDic[@"agent_name"]];
+    _phoneL.text = [NSString stringWithFormat:@"联系电话：%@",dataDic[@"agent_tel"]];
+    
+    _infoL.text = [NSString stringWithFormat:@"申请权限：%@",dataDic[@"role"]];
+    if ([dataDic[@"is_store_staff"] integerValue] == 1) {
         
-        _titelL.text = @"号码判重";
-        _nameL.text = [NSString stringWithFormat:@"客户姓名：%@",dataDic[@"name"]];
-        _phoneL.text = [NSString stringWithFormat:@"推荐编号：%@",dataDic[@"client_id"]];
-        _timeL.text = [NSString stringWithFormat:@"推荐时间：%@",dataDic[@"create_time"]];
-        _infoL.text = [NSString stringWithFormat:@"推荐项目：%@",dataDic[@"project_name"]];
-    }else if ([dataDic[@"message_type"] integerValue] == 1){
-        
-        _titelL.text = @"到访确认";
-        _nameL.text = [NSString stringWithFormat:@"客户姓名：%@",dataDic[@"name"]];
-        _phoneL.text = [NSString stringWithFormat:@"推荐编号：%@",dataDic[@"client_id"]];
-        _timeL.text = [NSString stringWithFormat:@"推荐时间：%@",dataDic[@"create_time"]];
-        _infoL.text = [NSString stringWithFormat:@"推荐项目：%@",dataDic[@"project_name"]];
+        _isEmL.text = @"是否为本店员工：是";
     }else{
         
-        _titelL.text = @"门店认证审核";
-        _nameL.text = [NSString stringWithFormat:@"申请人：%@",dataDic[@"agent_name"]];
-        _phoneL.text = [NSString stringWithFormat:@"联系电话：%@",dataDic[@"agent_tel"]];
-        if ([dataDic[@"is_store_staff"] integerValue] == 1) {
-            
-            _timeL.text = [NSString stringWithFormat:@"申请权限：%@\n是否为本店员工：%@",dataDic[@"role"],@"是"];
-        }else{
-            
-            _timeL.text = [NSString stringWithFormat:@"申请权限：%@\n是否为本店员工：%@",dataDic[@"role"],@"否"];
-        }
-        
-        _infoL.text = [NSString stringWithFormat:@"申请时间：%@",dataDic[@"create_time"]];
+        _isEmL.text = @"是否为本店员工：否";
     }
+    
+    
+    
+    _timeL.text = [NSString stringWithFormat:@"申请时间：%@",dataDic[@"create_time"]];
 }
 
 -(void)initUI{
@@ -90,18 +77,26 @@
     _infoL.textColor = CLContentLabColor;
     [self addSubview:_infoL];
     
-    _timeL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 90*SIZE, 350*SIZE, 13*SIZE)];
+    _timeL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 110*SIZE, 350*SIZE, 13*SIZE)];
     _timeL.text = @"失效时间：2019.01.01 17:40";
     _timeL.font = FONT(12);
     _timeL.textColor = CLContentLabColor;
+    _timeL.numberOfLines = 0;
     [self addSubview:_timeL];
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 114*SIZE, 360*SIZE, 1*SIZE)];
+    _isEmL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 90*SIZE, 350*SIZE, 13*SIZE)];
+    _isEmL.text = @"失效时间：2019.01.01 17:40";
+    _isEmL.font = FONT(12);
+    _isEmL.textColor = CLContentLabColor;
+    _isEmL.numberOfLines = 0;
+    [self addSubview:_isEmL];
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 134*SIZE, 360*SIZE, 1*SIZE)];
     line.backgroundColor = CLBackColor;
     [self.contentView addSubview:line];
     
     _assistBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _assistBtn.frame = CGRectMake(240*SIZE, 55*SIZE, 50*SIZE, 25*SIZE);
+    _assistBtn.frame = CGRectMake(240*SIZE, 75*SIZE, 50*SIZE, 25*SIZE);
     _assistBtn.backgroundColor = CLLoginBtnColor;
     [_assistBtn setTitle:@"复制" forState:UIControlStateNormal];
     _assistBtn.titleLabel.font = [UIFont systemFontOfSize:12*SIZE];
@@ -109,7 +104,7 @@
 //    [self addSubview:_assistBtn];
     
     _sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _sureBtn.frame = CGRectMake(300*SIZE, 75*SIZE, 50*SIZE, 25*SIZE);
+    _sureBtn.frame = CGRectMake(300*SIZE, 95*SIZE, 50*SIZE, 25*SIZE);
     _sureBtn.backgroundColor = CLLoginBtnColor;
     [_sureBtn setTitle:@"确认" forState:UIControlStateNormal];
     _sureBtn.titleLabel.font = [UIFont systemFontOfSize:12*SIZE];

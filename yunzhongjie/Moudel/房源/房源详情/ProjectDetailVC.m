@@ -14,6 +14,7 @@
 #import "StoreCountHeader.h"
 
 #import "YBImageBrowser.h"
+#import "ToolBarView.h"
 
 @interface ProjectDetailVC ()<UITableViewDelegate,UITableViewDataSource,YBImageBrowserDelegate,YBImageBrowserDataSource>
 {
@@ -325,11 +326,14 @@
             
             YBImageBrowser *browser = [YBImageBrowser new];
             browser.dataSourceArray = browserDataArr;
-//            browser.toolBars
+//            ToolBarView *view = [ToolBarView new];
+//            browser.toolBars = @[view];
             browser.currentIndex = num;
             [browser show];
             
         };
+        
+        
 //        [header.imgBtnBlock = ^(NSInteger num, NSArray *imgArr) {
 //
 //            NSMutableArray *tempArr = [NSMutableArray array];

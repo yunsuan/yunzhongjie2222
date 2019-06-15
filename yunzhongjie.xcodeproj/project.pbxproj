@@ -102,6 +102,8 @@
 		10B8B83722B3E26A00CDD004 /* LevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B8B83522B3E26A00CDD004 /* LevelView.m */; };
 		10B8B83B22B3EE1E00CDD004 /* AgentDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B8B83A22B3EE1E00CDD004 /* AgentDetailVC.m */; };
 		10B8B83F22B4222200CDD004 /* ToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B8B83E22B4222200CDD004 /* ToolBarView.m */; };
+		10B8B84222B42F1C00CDD004 /* MessageAuditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B8B84122B42F1C00CDD004 /* MessageAuditCell.m */; };
+		10B8B84522B43E4C00CDD004 /* AlbumCollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B8B84422B43E4C00CDD004 /* AlbumCollCell.m */; };
 		10FA5AFB229B856200A6CB32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FA5AFA229B856200A6CB32 /* AppDelegate.m */; };
 		10FA5B01229B856200A6CB32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10FA5AFF229B856200A6CB32 /* Main.storyboard */; };
 		10FA5B03229B856300A6CB32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10FA5B02229B856300A6CB32 /* Assets.xcassets */; };
@@ -364,6 +366,10 @@
 		10B8B83A22B3EE1E00CDD004 /* AgentDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgentDetailVC.m; sourceTree = "<group>"; };
 		10B8B83D22B4222200CDD004 /* ToolBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolBarView.h; sourceTree = "<group>"; };
 		10B8B83E22B4222200CDD004 /* ToolBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolBarView.m; sourceTree = "<group>"; };
+		10B8B84022B42F1C00CDD004 /* MessageAuditCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageAuditCell.h; sourceTree = "<group>"; };
+		10B8B84122B42F1C00CDD004 /* MessageAuditCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageAuditCell.m; sourceTree = "<group>"; };
+		10B8B84322B43E4B00CDD004 /* AlbumCollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCollCell.h; sourceTree = "<group>"; };
+		10B8B84422B43E4C00CDD004 /* AlbumCollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCollCell.m; sourceTree = "<group>"; };
 		10FA5AF6229B856200A6CB32 /* yunzhongjie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yunzhongjie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10FA5AF9229B856200A6CB32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		10FA5AFA229B856200A6CB32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -597,6 +603,8 @@
 			children = (
 				1038C15322A63FE50062C7EF /* MessageCell.h */,
 				1038C15422A63FE50062C7EF /* MessageCell.m */,
+				10B8B84022B42F1C00CDD004 /* MessageAuditCell.h */,
+				10B8B84122B42F1C00CDD004 /* MessageAuditCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1114,6 +1122,8 @@
 		10B8B83C22B421DE00CDD004 /* 相册 */ = {
 			isa = PBXGroup;
 			children = (
+				10B8B84322B43E4B00CDD004 /* AlbumCollCell.h */,
+				10B8B84422B43E4C00CDD004 /* AlbumCollCell.m */,
 				10B8B83D22B4222200CDD004 /* ToolBarView.h */,
 				10B8B83E22B4222200CDD004 /* ToolBarView.m */,
 			);
@@ -1809,6 +1819,7 @@
 				10FA5B86229B8B4D00A6CB32 /* BaseModel.m in Sources */,
 				109565FB229BF217001957DD /* WorkPhoneConfrimFailVC.m in Sources */,
 				1038C15522A63FE50062C7EF /* MessageCell.m in Sources */,
+				10B8B84522B43E4C00CDD004 /* AlbumCollCell.m in Sources */,
 				1038C17522AF4DE60062C7EF /* RoomBrokerageTableHeader.m in Sources */,
 				10FA5BAF229B956100A6CB32 /* WorkVC.m in Sources */,
 				0C6FA18A22B3AB0100B40A3C /* WorkWaitConfirmAgentCell.m in Sources */,
@@ -1816,6 +1827,7 @@
 				10FA5BB8229B95BF00A6CB32 /* MessageVC.m in Sources */,
 				10FA5BA7229B8B7A00A6CB32 /* UserModelArchiver.m in Sources */,
 				1038C15F22A650740062C7EF /* DealVC.m in Sources */,
+				10B8B84222B42F1C00CDD004 /* MessageAuditCell.m in Sources */,
 				10B8B82D22B1F14400CDD004 /* HNChannelView.m in Sources */,
 				0C6FA18322B396A000B40A3C /* WorkAgentManageVC.m in Sources */,
 				10FA5C0E229BC04A00A6CB32 /* PersonalHeader.m in Sources */,
