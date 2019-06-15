@@ -105,7 +105,7 @@
             dic = @{};
         }
         NSString *appStoreVersion = dic[@"version"];
-        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YGJversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
             [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
                 
@@ -678,7 +678,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             dic = @{};
         }
         NSString *appStoreVersion = dic[@"version"];
-        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YGJversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
             [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
                 
@@ -740,7 +740,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             dic = @{};
         }
         NSString *appStoreVersion = dic[@"version"];
-        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YGJversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
             [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
                 
@@ -796,7 +796,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             dic = @{};
         }
         NSString *appStoreVersion = dic[@"version"];
-        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
+        if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YGJversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
             [BaseRequest GET:@"getMiddleVersionInfo" parameters:@{} success:^(id resposeObject) {
                 
