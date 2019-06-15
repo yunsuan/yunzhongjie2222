@@ -100,7 +100,7 @@
     _inBtn.layer.cornerRadius = 5 *SIZE;
     _inBtn.clipsToBounds = YES;
     [_inBtn addTarget:self action:@selector(ActionInBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [_inBtn setTitle:@"开启云中介" forState:UIControlStateNormal];
+    [_inBtn setTitle:@"开启云算管家" forState:UIControlStateNormal];
     [_inBtn setBackgroundColor:CLBlueBtnColor];
     _inBtn.hidden = YES;
     [_inBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
