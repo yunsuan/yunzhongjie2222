@@ -25,7 +25,7 @@
     //    _selectImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"default"]];
     //    _selectImg.frame = CGRectMake(10*SIZE, 29*SIZE, 15*SIZE, 15*SIZE);
     //    [self addSubview:_selectImg];
-    _headerImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"company"]];
+    _headerImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ic_def_head"]];
     _headerImg.frame = CGRectMake(10*SIZE, 10*SIZE, 70*SIZE, 70*SIZE);
         _headerImg.layer.masksToBounds = YES;
         _headerImg.layer.cornerRadius = 35*SIZE;

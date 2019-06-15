@@ -51,72 +51,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "yunzhongjie/Moudel/&#x5de5;&#x4f5c;/&#x7ecf;&#x7eaa;&#x4eba;&#x7ba1;&#x7406;/&#x5728;&#x804c;/WorkWorkingAgentManageVC.m"
-            timestampString = "582283490.650004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yunzhongjie/Moudel/&#x5de5;&#x4f5c;/&#x7ecf;&#x7eaa;&#x4eba;&#x7ba1;&#x7406;/&#x5728;&#x804c;/WorkWorkingAgentManageVC.m"
-            timestampString = "582283490.650134"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yunzhongjie/Moudel/&#x5de5;&#x4f5c;/&#x7ecf;&#x7eaa;&#x4eba;&#x7ba1;&#x7406;/&#x5728;&#x804c;/WorkWorkingAgentManageVC.m"
-            timestampString = "582283490.6502301"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yunzhongjie/Moudel/&#x5de5;&#x4f5c;/&#x7ecf;&#x7eaa;&#x4eba;&#x7ba1;&#x7406;/&#x5728;&#x804c;/WorkWorkingAgentManageVC.m"
-            timestampString = "582283490.650313"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "yunzhongjie/BaseClass/BaseRequest.m"
-            timestampString = "582285017.477263"
+            timestampString = "582288731.454474"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -132,7 +68,7 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guzhiqiang/Desktop/yunzhongjie2222/yunzhongjie/BaseClass/BaseRequest.m"
-                  timestampString = "582285017.773957"
+                  timestampString = "582288732.021539"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "138"
@@ -147,60 +83,12 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guzhiqiang/Desktop/yunzhongjie2222/yunzhongjie/BaseClass/BaseRequest.m"
-                  timestampString = "582285017.776376"
+                  timestampString = "582288732.033406"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "138"
                   endingLineNumber = "138"
                   offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yunzhongjie/BaseClass/BaseRequest.m"
-            timestampString = "582285021.293968"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "+POST:parameters:success:failure:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[BaseRequest POST:parameters:success:failure:]"
-                  moduleName = "yunzhongjie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guzhiqiang/Desktop/yunzhongjie2222/yunzhongjie/BaseClass/BaseRequest.m"
-                  timestampString = "582285021.427557"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "632">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__47+[BaseRequest POST:parameters:success:failure:]_block_invoke"
-                  moduleName = "yunzhongjie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guzhiqiang/Desktop/yunzhongjie2222/yunzhongjie/BaseClass/BaseRequest.m"
-                  timestampString = "582285021.440312"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "48">
                </Location>
             </Locations>
          </BreakpointContent>
