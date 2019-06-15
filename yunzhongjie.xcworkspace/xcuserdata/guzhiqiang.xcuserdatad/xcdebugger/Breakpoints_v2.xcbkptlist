@@ -59,6 +59,38 @@
             endingLineNumber = "138"
             landmarkName = "+UpdateFile:url:parameters:success:failure:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[BaseRequest UpdateFile:url:parameters:success:failure:]"
+                  moduleName = "yunzhongjie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guzhiqiang/Desktop/yunzhongjie2222/yunzhongjie/BaseClass/BaseRequest.m"
+                  timestampString = "582292427.7010289"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "616">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__57+[BaseRequest UpdateFile:url:parameters:success:failure:]_block_invoke"
+                  moduleName = "yunzhongjie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guzhiqiang/Desktop/yunzhongjie2222/yunzhongjie/BaseClass/BaseRequest.m"
+                  timestampString = "582292427.704982"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
