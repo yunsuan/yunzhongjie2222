@@ -324,7 +324,9 @@
         cell = [[MineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MineCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    if (indexPath.section ==0&&indexPath.row ==4) {
+        cell.contentL.text = YGJversion;
+    }
     cell.titleL.text = _titleArr[indexPath.section][indexPath.row];
     cell.titleImg.image = IMAGE_WITH_NAME(_imgArr[indexPath.section][indexPath.row]);
     return cell;
