@@ -30,13 +30,13 @@
         _headerImg.layer.masksToBounds = YES;
         _headerImg.layer.cornerRadius = 35*SIZE;
     [self addSubview:_headerImg];
-    _companyL = [[UILabel alloc]initWithFrame:CGRectMake(80*SIZE, 10*SIZE, 200*SIZE, 15*SIZE)];
+    _companyL = [[UILabel alloc]initWithFrame:CGRectMake(90*SIZE, 10*SIZE, 200*SIZE, 15*SIZE)];
     _companyL.text = @"2019";
     _companyL.textColor = CLTitleLabColor;
     _companyL.font = FONT(13);
     [self addSubview:_companyL];
     
-    _adressL = [[UILabel alloc]initWithFrame:CGRectMake(80*SIZE, 40*SIZE, 200*SIZE, 14*SIZE)];
+    _adressL = [[UILabel alloc]initWithFrame:CGRectMake(90*SIZE, 40*SIZE, 200*SIZE, 14*SIZE)];
     _adressL.text = @"联系方式：18888888888";
     _adressL.textColor = CLContentLabColor;
     _adressL.font = FONT(12);
@@ -49,7 +49,7 @@
 //    _nameL.font = FONT(12);
 //    [self addSubview:_nameL];
     
-    _phoneL = [[UILabel alloc]initWithFrame:CGRectMake(80*SIZE, 70*SIZE, 200*SIZE, 13*SIZE)];
+    _phoneL = [[UILabel alloc]initWithFrame:CGRectMake(90*SIZE, 70*SIZE, 200*SIZE, 13*SIZE)];
     _phoneL.text = @"入职时间：2019.01.01 17:55";
     _phoneL.font = FONT(12);
     _phoneL.textColor = CLContentLabColor;
