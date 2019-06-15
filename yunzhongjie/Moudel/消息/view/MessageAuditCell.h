@@ -1,8 +1,8 @@
 //
-//  MessageCell.h
+//  MessageAuditCell.h
 //  yunzhongjie
 //
-//  Created by xiaoq on 2019/6/4.
+//  Created by xiaoq on 2019/6/15.
 //  Copyright © 2019 xiaoq. All rights reserved.
 //
 
@@ -10,18 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^MessageCellSureBtnBlock)(NSInteger index);
+typedef void(^MessageAuditCellSureBtnBlock)(NSInteger index);
 
-@interface MessageCell : UITableViewCell
+@interface MessageAuditCell : UITableViewCell
 
-@property (nonatomic, copy) MessageCellSureBtnBlock messageCellSureBtnBlock;
+@property (nonatomic, copy) MessageAuditCellSureBtnBlock messageAuditCellSureBtnBlock;
 
 @property (nonatomic , strong) UILabel *titelL;
 @property (nonatomic , strong) UILabel *nameL;
 @property (nonatomic , strong) UILabel *phoneL;
 @property (nonatomic , strong) UILabel *infoL;
 @property (nonatomic , strong) UILabel *timeL;
-@property (nonatomic , strong) UILabel *isEmL;
 @property (nonatomic , strong) UIButton *assistBtn;
 @property (nonatomic , strong) UIButton *sureBtn;
 

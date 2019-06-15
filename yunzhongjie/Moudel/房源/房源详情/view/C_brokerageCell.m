@@ -59,7 +59,7 @@
         make.left.equalTo(_ruleView).offset(41 *SIZE);
         make.top.equalTo(_ruleView).offset(58 *SIZE);
         make.width.mas_equalTo(290 *SIZE);
-//        make.bottom.equalTo(_ruleView).offset(-31 *SIZE);
+        make.bottom.equalTo(_ruleView).offset(-50 *SIZE);
     }];
 }
 
@@ -78,7 +78,7 @@
         make.left.equalTo(_ruleView).offset(41 *SIZE);
         make.top.equalTo(_ruleView).offset(58 *SIZE);
         make.width.mas_equalTo(304 *SIZE);
-        make.bottom.equalTo(_ruleView).offset(-31 *SIZE);
+        make.bottom.equalTo(_ruleView).offset(-50 *SIZE);
     }];
 }
 

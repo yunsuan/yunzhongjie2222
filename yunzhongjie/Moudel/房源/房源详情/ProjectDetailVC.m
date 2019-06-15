@@ -14,6 +14,7 @@
 #import "StoreCountHeader.h"
 
 #import "YBImageBrowser.h"
+#import "ToolBarView.h"
 
 @interface ProjectDetailVC ()<UITableViewDelegate,UITableViewDataSource,YBImageBrowserDelegate,YBImageBrowserDataSource>
 {
@@ -73,7 +74,7 @@
 {
     
     _imgArr = datadic[@"project"][@"img"];
-    _confirmArr = datadic[@"project"][@"confirm"];
+    _confirmArr = datadic[@"project"][@"resident"];
     _countArr = [@[@{@"title":@"推荐客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"recommend"][@"all"]]},@{@"title":@"推荐客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"recommend"][@"month"]]},@{@"title":@"推荐客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"recommend"][@"day"]]},@{@"title":@"到访客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"visit"][@"all"]]},@{@"title":@"到访客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"visit"][@"month"]]},@{@"title":@"到访客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"visit"][@"day"]]},@{@"title":@"成交客户",@"content": [NSString stringWithFormat:@"%@",datadic[@"deal"][@"all"]]},@{@"title":@"成交客户",@"content": [NSString stringWithFormat:@"%@",datadic[@"deal"][@"month"]]},@{@"title":@"成交客户",@"content": [NSString stringWithFormat:@"%@",datadic[@"deal"][@"day"]]}] mutableCopy];
     
     [_headerDic setValue:datadic[@"project"][@"project_name"] forKey:@"project_name"];
@@ -325,11 +326,14 @@
             
             YBImageBrowser *browser = [YBImageBrowser new];
             browser.dataSourceArray = browserDataArr;
-//            browser.toolBars
+//            ToolBarView *view = [ToolBarView new];
+//            browser.toolBars = @[view];
             browser.currentIndex = num;
             [browser show];
             
         };
+        
+        
 //        [header.imgBtnBlock = ^(NSInteger num, NSArray *imgArr) {
 //
 //            NSMutableArray *tempArr = [NSMutableArray array];

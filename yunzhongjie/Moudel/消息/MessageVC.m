@@ -8,6 +8,7 @@
 
 #import "MessageVC.h"
 #import "MessageCell.h"
+#import "MessageAuditCell.h"
 
 #import "SignSelectWorkerView.h"
 #import "WorkWorkingDimissionView.h"
@@ -143,60 +144,86 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    if ([self->_dataArr[indexPath.row][@"message_type"] integerValue] == 19){
     
-    return 115*SIZE;
+        return 135*SIZE;
+    }else{
+        
+        return 115*SIZE;
+    }
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
-    if (!cell) {
+    if ([self->_dataArr[indexPath.row][@"message_type"] integerValue] == 19){
         
-        cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MessageCell"];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.tag = indexPath.row;
-    
-    cell.dataDic = _dataArr[indexPath.row];
-    
-    
-    cell.messageCellSureBtnBlock = ^(NSInteger index) {
-        
-        if ([self->_dataArr[index][@"message_type"] integerValue] == 1) {
+        MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
+        if (!cell) {
             
-            if ([self->_dataArr[index][@"need_confirm"] integerValue] == 1) {
+            cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MessageCell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.tag = indexPath.row;
+        
+        cell.dataDic = _dataArr[indexPath.row];
+        
+        
+        cell.messageCellSureBtnBlock = ^(NSInteger index) {
+            
+            if ([self->_dataArr[index][@"message_type"] integerValue] == 1) {
                 
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"签字确认" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-                
-                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                if ([self->_dataArr[index][@"need_confirm"] integerValue] == 1) {
                     
-                }];
-                
-                UIAlertAction *valid = [UIAlertAction actionWithTitle:@"客户有效" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"签字确认" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
                     
-                    [BaseRequest GET:AgentSignNextAgent_URL parameters:@{@"client_id":self->_dataArr[index][@"client_id"]} success:^(id resposeObject) {
+                    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                         
-                        NSLog(@"%@",resposeObject);
-                        if ([resposeObject[@"code"] integerValue] == 200) {
+                    }];
+                    
+                    UIAlertAction *valid = [UIAlertAction actionWithTitle:@"客户有效" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        [BaseRequest GET:AgentSignNextAgent_URL parameters:@{@"client_id":self->_dataArr[index][@"client_id"]} success:^(id resposeObject) {
                             
-                            if ([resposeObject[@"data"][@"agentGroup"] count]) {
+                            NSLog(@"%@",resposeObject);
+                            if ([resposeObject[@"code"] integerValue] == 200) {
                                 
-                                SignSelectWorkerView *view = [[SignSelectWorkerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
-                                __strong __typeof(&*view)strongView = view;
-                                view.dataArr = [NSMutableArray arrayWithArray:resposeObject[@"data"][@"agentGroup"]];
-                                view.signSelectWorkerViewBlock = ^{
+                                if ([resposeObject[@"data"][@"agentGroup"] count]) {
                                     
-                                    NSMutableDictionary *dic;
-                                    if (![self isEmpty:strongView.markTV.text]) {
+                                    SignSelectWorkerView *view = [[SignSelectWorkerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+                                    __strong __typeof(&*view)strongView = view;
+                                    view.dataArr = [NSMutableArray arrayWithArray:resposeObject[@"data"][@"agentGroup"]];
+                                    view.signSelectWorkerViewBlock = ^{
                                         
-                                        dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"agent_id":view.agentId,@"comment":view.markTV.text}];
-                                    }else{
-                                        
-                                        dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"agent_id":view.agentId}];
-                                    }
-                                    [BaseRequest GET:AgentSignValue_URL parameters:dic success:^(id resposeObject) {
+                                        NSMutableDictionary *dic;
+                                        if (![self isEmpty:strongView.markTV.text]) {
+                                            
+                                            dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"agent_id":view.agentId,@"comment":view.markTV.text}];
+                                        }else{
+                                            
+                                            dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"agent_id":view.agentId}];
+                                        }
+                                        [BaseRequest GET:AgentSignValue_URL parameters:dic success:^(id resposeObject) {
+                                            
+                                            NSLog(@"%@",resposeObject);
+                                            if ([resposeObject[@"code"] integerValue] == 200) {
+                                                
+                                                [self showContent:resposeObject[@"msg"]];
+                                                [self RequestMethod];
+                                            }else{
+                                                
+                                                [self showContent:resposeObject[@"msg"]];
+                                            }
+                                        } failure:^(NSError *error) {
+                                            
+                                            [self showContent:@"网络错误"];
+                                        }];
+                                    };
+                                    [[UIApplication sharedApplication].keyWindow addSubview:view];
+                                }else{
+                                    
+                                    [BaseRequest GET:AgentSignValue_URL parameters:@{@"client_id":self->_dataArr[index][@"client_id"]} success:^(id resposeObject) {
                                         
                                         NSLog(@"%@",resposeObject);
                                         if ([resposeObject[@"code"] integerValue] == 200) {
@@ -211,58 +238,7 @@
                                         
                                         [self showContent:@"网络错误"];
                                     }];
-                                };
-                                [[UIApplication sharedApplication].keyWindow addSubview:view];
-                            }else{
-                                
-                                [BaseRequest GET:AgentSignValue_URL parameters:@{@"client_id":self->_dataArr[index][@"client_id"]} success:^(id resposeObject) {
-                                    
-                                    NSLog(@"%@",resposeObject);
-                                    if ([resposeObject[@"code"] integerValue] == 200) {
-                                        
-                                        [self showContent:resposeObject[@"msg"]];
-                                        [self RequestMethod];
-                                    }else{
-                                        
-                                        [self showContent:resposeObject[@"msg"]];
-                                    }
-                                } failure:^(NSError *error) {
-                                    
-                                    [self showContent:@"网络错误"];
-                                }];
-                            }
-                        }else{
-                            
-                            [self showContent:resposeObject[@"msg"]];
-                        }
-                    } failure:^(NSError *error) {
-                        
-                        [self showContent:@"网络错误"];
-                    }];
-                }];
-                
-                UIAlertAction *invalid = [UIAlertAction actionWithTitle:@"客户无效" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
-                    SignFailView *view = [[SignFailView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
-                    
-                    __strong __typeof(&*view)strongView = view;
-                    view.signFailViewBlock = ^{
-                        
-                        NSMutableDictionary *dic;
-                        if (![self isEmpty:strongView.markTV.text]) {
-                            
-                            dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"disabled_state":view.agentId,@"comment":view.markTV.text}];
-                        }else{
-                            
-                            dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"disabled_state":view.agentId}];
-                        }
-                        [BaseRequest GET:AgentSignDisabled_URL parameters:dic success:^(id resposeObject) {
-                            
-                            NSLog(@"%@",resposeObject);
-                            if ([resposeObject[@"code"] integerValue] == 200) {
-                                
-                                [self showContent:resposeObject[@"msg"]];
-                                [self RequestMethod];
+                                }
                             }else{
                                 
                                 [self showContent:resposeObject[@"msg"]];
@@ -271,101 +247,110 @@
                             
                             [self showContent:@"网络错误"];
                         }];
-                    };
-                    [[UIApplication sharedApplication].keyWindow addSubview:view];
-                }];
-                
-                [alert addAction:valid];
-                [alert addAction:invalid];
-                [alert addAction:cancel];
-                [self.navigationController presentViewController:alert animated:YES completion:^{
+                    }];
                     
-                }];
-            }else{
-                
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认到访" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-                
-                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }];
-                
-                UIAlertAction *valid = [UIAlertAction actionWithTitle:@"已到访" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
-                    NSDictionary *dic = self->_dataArr[index];
-                    WorkCompleteCustomVC1 *nextVC = [[WorkCompleteCustomVC1 alloc] initWithClientID:dic[@"client_id"] name:dic[@"name"] dataDic:dic];
-                    [self.navigationController pushViewController:nextVC animated:YES];
-                }];
-                
-                UIAlertAction *invalid = [UIAlertAction actionWithTitle:@"未到访" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
-                    InvalidView * invalidView = [[InvalidView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
-                    invalidView.client_id = self->_dataArr[indexPath.row][@"client_id"];
-                    invalidView.invalidViewBlock = ^(NSDictionary *dic) {
+                    UIAlertAction *invalid = [UIAlertAction actionWithTitle:@"客户无效" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         
-                        [BaseRequest POST:ConfirmDisabled_URL parameters:dic success:^(id resposeObject) {
+                        SignFailView *view = [[SignFailView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+                        
+                        __strong __typeof(&*view)strongView = view;
+                        view.signFailViewBlock = ^{
                             
-                            if ([resposeObject[@"code"] integerValue] == 200) {
+                            NSMutableDictionary *dic;
+                            if (![self isEmpty:strongView.markTV.text]) {
                                 
-                                [self alertControllerWithNsstring:@"失效确认成功" And:@""];
-                                [[NSNotificationCenter defaultCenter] postNotificationName:@"recommendReload" object:nil];
-                                
+                                dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"disabled_state":view.agentId,@"comment":view.markTV.text}];
                             }else{
                                 
-                                [self alertControllerWithNsstring:@"温馨提示" And:resposeObject[@"msg"]];
+                                dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"disabled_state":view.agentId}];
                             }
-                        } failure:^(NSError *error) {
-                            
-                            [self alertControllerWithNsstring:@"温馨提示" And:@"操作失败" WithDefaultBlack:^{
+                            [BaseRequest GET:AgentSignDisabled_URL parameters:dic success:^(id resposeObject) {
                                 
+                                NSLog(@"%@",resposeObject);
+                                if ([resposeObject[@"code"] integerValue] == 200) {
+                                    
+                                    [self showContent:resposeObject[@"msg"]];
+                                    [self RequestMethod];
+                                }else{
+                                    
+                                    [self showContent:resposeObject[@"msg"]];
+                                }
+                            } failure:^(NSError *error) {
+                                
+                                [self showContent:@"网络错误"];
                             }];
-                        }];
-                    };
+                        };
+                        [[UIApplication sharedApplication].keyWindow addSubview:view];
+                    }];
                     
-                    invalidView.invalidViewBlockFail = ^(NSString *str) {
+                    [alert addAction:valid];
+                    [alert addAction:invalid];
+                    [alert addAction:cancel];
+                    [self.navigationController presentViewController:alert animated:YES completion:^{
                         
-                        [self alertControllerWithNsstring:@"温馨提示" And:str];
-                    };
-                    [[UIApplication sharedApplication].keyWindow addSubview:invalidView];
-                }];
-                
-                [alert addAction:valid];
-                [alert addAction:invalid];
-                [alert addAction:cancel];
-                [self.navigationController presentViewController:alert animated:YES completion:^{
+                    }];
+                }else{
                     
-                }];
-            }
-
-        }else if ([self->_dataArr[index][@"message_type"] integerValue] == 18){
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认号码" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-            
-            UIAlertAction *unuse = [UIAlertAction actionWithTitle:@"可带看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-                [BaseRequest GET:ClientTelCheckValue_URL parameters:@{@"client_id":self->_dataArr[indexPath.row][@"client_id"]} success:^(id resposeObject) {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认到访" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
                     
-                    if ([resposeObject[@"code"] integerValue] == 200) {
+                    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                         
-                        [self->_dataArr removeObjectAtIndex:indexPath.row];
-                        [tableView reloadData];
-                        [[NSNotificationCenter defaultCenter] postNotificationName:@"PhoneConfirm" object:nil];
-                    }else{
+                    }];
+                    
+                    UIAlertAction *valid = [UIAlertAction actionWithTitle:@"已到访" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         
-                        [self showContent:resposeObject[@"msg"]];
-                    }
-                } failure:^(NSError *error) {
+                        NSDictionary *dic = self->_dataArr[index];
+                        WorkCompleteCustomVC1 *nextVC = [[WorkCompleteCustomVC1 alloc] initWithClientID:dic[@"client_id"] name:dic[@"name"] dataDic:dic];
+                        [self.navigationController pushViewController:nextVC animated:YES];
+                    }];
                     
-                    [self showContent:@"网络错误"];
-                }];
-            }];
-            
-            UIAlertAction *used = [UIAlertAction actionWithTitle:@"不可带看" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                    UIAlertAction *invalid = [UIAlertAction actionWithTitle:@"未到访" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        InvalidView * invalidView = [[InvalidView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+                        invalidView.client_id = self->_dataArr[indexPath.row][@"client_id"];
+                        invalidView.invalidViewBlock = ^(NSDictionary *dic) {
+                            
+                            [BaseRequest POST:ConfirmDisabled_URL parameters:dic success:^(id resposeObject) {
+                                
+                                if ([resposeObject[@"code"] integerValue] == 200) {
+                                    
+                                    [self alertControllerWithNsstring:@"失效确认成功" And:@""];
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:@"recommendReload" object:nil];
+                                    
+                                }else{
+                                    
+                                    [self alertControllerWithNsstring:@"温馨提示" And:resposeObject[@"msg"]];
+                                }
+                            } failure:^(NSError *error) {
+                                
+                                [self alertControllerWithNsstring:@"温馨提示" And:@"操作失败" WithDefaultBlack:^{
+                                    
+                                }];
+                            }];
+                        };
+                        
+                        invalidView.invalidViewBlockFail = ^(NSString *str) {
+                            
+                            [self alertControllerWithNsstring:@"温馨提示" And:str];
+                        };
+                        [[UIApplication sharedApplication].keyWindow addSubview:invalidView];
+                    }];
+                    
+                    [alert addAction:valid];
+                    [alert addAction:invalid];
+                    [alert addAction:cancel];
+                    [self.navigationController presentViewController:alert animated:YES completion:^{
+                        
+                    }];
+                }
                 
-                [self alertControllerWithNsstring:@"温馨提示" And:@"请仔细核对，一旦确认该号码重复，将无法再次推荐" WithCancelBlack:^{
+            }else if ([self->_dataArr[index][@"message_type"] integerValue] == 18){
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认号码" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+                
+                UIAlertAction *unuse = [UIAlertAction actionWithTitle:@"可带看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     
-                } WithDefaultBlack:^{
-                    
-                    [BaseRequest GET:ClientTelCheckDisabled_URL parameters:@{@"client_id":self->_dataArr[indexPath.row][@"client_id"]} success:^(id resposeObject) {
+                    [BaseRequest GET:ClientTelCheckValue_URL parameters:@{@"client_id":self->_dataArr[indexPath.row][@"client_id"]} success:^(id resposeObject) {
                         
                         if ([resposeObject[@"code"] integerValue] == 200) {
                             
@@ -381,47 +366,49 @@
                         [self showContent:@"网络错误"];
                     }];
                 }];
-            }];
-            
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 
-            }];
-            
-            [alert addAction:unuse];
-            [alert addAction:used];
-            [alert addAction:cancel];
-            
-            [self.navigationController presentViewController:alert animated:YES completion:^{
-                
-            }];
-        }else{
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"审核" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-            
-            UIAlertAction *agree = [UIAlertAction actionWithTitle:@"通过" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-                [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"remark":@"",@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"auth_id"]],@"type":@"1",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
+                UIAlertAction *used = [UIAlertAction actionWithTitle:@"不可带看" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                     
-                    if ([resposeObject[@"code"] integerValue] == 200) {
+                    [self alertControllerWithNsstring:@"温馨提示" And:@"请仔细核对，一旦确认该号码重复，将无法再次推荐" WithCancelBlack:^{
                         
-                        [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
-                    }else{
+                    } WithDefaultBlack:^{
                         
-                        [self showContent:resposeObject[@"msg"]];
-                    }
-                } failure:^(NSError *error) {
-                    
-                    [self showContent:@"网络错误"];
+                        [BaseRequest GET:ClientTelCheckDisabled_URL parameters:@{@"client_id":self->_dataArr[indexPath.row][@"client_id"]} success:^(id resposeObject) {
+                            
+                            if ([resposeObject[@"code"] integerValue] == 200) {
+                                
+                                [self->_dataArr removeObjectAtIndex:indexPath.row];
+                                [tableView reloadData];
+                                [[NSNotificationCenter defaultCenter] postNotificationName:@"PhoneConfirm" object:nil];
+                            }else{
+                                
+                                [self showContent:resposeObject[@"msg"]];
+                            }
+                        } failure:^(NSError *error) {
+                            
+                            [self showContent:@"网络错误"];
+                        }];
+                    }];
                 }];
-            }];
-            
-            UIAlertAction *refuse = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
-                WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:self.view.frame];
-                __strong __typeof(&*view)strongView = view;
-                view.workWorkingDimissionViewBlock = ^{
+                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                     
-                    [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"auth_id"]],@"type":@"0",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
+                }];
+                
+                [alert addAction:unuse];
+                [alert addAction:used];
+                [alert addAction:cancel];
+                
+                [self.navigationController presentViewController:alert animated:YES completion:^{
+                    
+                }];
+            }else{
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"审核" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+                
+                UIAlertAction *agree = [UIAlertAction actionWithTitle:@"通过" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                    [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"remark":@"",@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"auth_id"]],@"type":@"1",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
                         
                         if ([resposeObject[@"code"] integerValue] == 200) {
                             
@@ -434,24 +421,350 @@
                         
                         [self showContent:@"网络错误"];
                     }];
-                };
-                [[UIApplication sharedApplication].keyWindow addSubview:view];
-            }];
-            
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                }];
                 
-            }];
-            
-            [alert addAction:agree];
-            [alert addAction:refuse];
-            [alert addAction:cancel];
-            [self.navigationController presentViewController:alert animated:YES completion:^{
+                UIAlertAction *refuse = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                    WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:self.view.frame];
+                    __strong __typeof(&*view)strongView = view;
+                    view.workWorkingDimissionViewBlock = ^{
+                        
+                        [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"auth_id"]],@"type":@"0",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
+                            
+                            if ([resposeObject[@"code"] integerValue] == 200) {
+                                
+                                [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
+                            }else{
+                                
+                                [self showContent:resposeObject[@"msg"]];
+                            }
+                        } failure:^(NSError *error) {
+                            
+                            [self showContent:@"网络错误"];
+                        }];
+                    };
+                    [[UIApplication sharedApplication].keyWindow addSubview:view];
+                }];
                 
-            }];
+                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                
+                [alert addAction:agree];
+                [alert addAction:refuse];
+                [alert addAction:cancel];
+                [self.navigationController presentViewController:alert animated:YES completion:^{
+                    
+                }];
+            }
+        };
+        
+        return cell;
+    }else{
+        
+        MessageAuditCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageAuditCell"];
+        if (!cell) {
+            
+            cell = [[MessageAuditCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MessageAuditCell"];
         }
-    };
-    
-    return cell;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.tag = indexPath.row;
+        
+        cell.dataDic = _dataArr[indexPath.row];
+        
+        
+        cell.messageAuditCellSureBtnBlock = ^(NSInteger index) {
+            
+            if ([self->_dataArr[index][@"message_type"] integerValue] == 1) {
+                
+                if ([self->_dataArr[index][@"need_confirm"] integerValue] == 1) {
+                    
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"签字确认" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+                    
+                    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }];
+                    
+                    UIAlertAction *valid = [UIAlertAction actionWithTitle:@"客户有效" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        [BaseRequest GET:AgentSignNextAgent_URL parameters:@{@"client_id":self->_dataArr[index][@"client_id"]} success:^(id resposeObject) {
+                            
+                            NSLog(@"%@",resposeObject);
+                            if ([resposeObject[@"code"] integerValue] == 200) {
+                                
+                                if ([resposeObject[@"data"][@"agentGroup"] count]) {
+                                    
+                                    SignSelectWorkerView *view = [[SignSelectWorkerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+                                    __strong __typeof(&*view)strongView = view;
+                                    view.dataArr = [NSMutableArray arrayWithArray:resposeObject[@"data"][@"agentGroup"]];
+                                    view.signSelectWorkerViewBlock = ^{
+                                        
+                                        NSMutableDictionary *dic;
+                                        if (![self isEmpty:strongView.markTV.text]) {
+                                            
+                                            dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"agent_id":view.agentId,@"comment":view.markTV.text}];
+                                        }else{
+                                            
+                                            dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"agent_id":view.agentId}];
+                                        }
+                                        [BaseRequest GET:AgentSignValue_URL parameters:dic success:^(id resposeObject) {
+                                            
+                                            NSLog(@"%@",resposeObject);
+                                            if ([resposeObject[@"code"] integerValue] == 200) {
+                                                
+                                                [self showContent:resposeObject[@"msg"]];
+                                                [self RequestMethod];
+                                            }else{
+                                                
+                                                [self showContent:resposeObject[@"msg"]];
+                                            }
+                                        } failure:^(NSError *error) {
+                                            
+                                            [self showContent:@"网络错误"];
+                                        }];
+                                    };
+                                    [[UIApplication sharedApplication].keyWindow addSubview:view];
+                                }else{
+                                    
+                                    [BaseRequest GET:AgentSignValue_URL parameters:@{@"client_id":self->_dataArr[index][@"client_id"]} success:^(id resposeObject) {
+                                        
+                                        NSLog(@"%@",resposeObject);
+                                        if ([resposeObject[@"code"] integerValue] == 200) {
+                                            
+                                            [self showContent:resposeObject[@"msg"]];
+                                            [self RequestMethod];
+                                        }else{
+                                            
+                                            [self showContent:resposeObject[@"msg"]];
+                                        }
+                                    } failure:^(NSError *error) {
+                                        
+                                        [self showContent:@"网络错误"];
+                                    }];
+                                }
+                            }else{
+                                
+                                [self showContent:resposeObject[@"msg"]];
+                            }
+                        } failure:^(NSError *error) {
+                            
+                            [self showContent:@"网络错误"];
+                        }];
+                    }];
+                    
+                    UIAlertAction *invalid = [UIAlertAction actionWithTitle:@"客户无效" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        SignFailView *view = [[SignFailView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+                        
+                        __strong __typeof(&*view)strongView = view;
+                        view.signFailViewBlock = ^{
+                            
+                            NSMutableDictionary *dic;
+                            if (![self isEmpty:strongView.markTV.text]) {
+                                
+                                dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"disabled_state":view.agentId,@"comment":view.markTV.text}];
+                            }else{
+                                
+                                dic = [NSMutableDictionary dictionaryWithDictionary:@{@"client_id":self->_dataArr[index][@"client_id"],@"disabled_state":view.agentId}];
+                            }
+                            [BaseRequest GET:AgentSignDisabled_URL parameters:dic success:^(id resposeObject) {
+                                
+                                NSLog(@"%@",resposeObject);
+                                if ([resposeObject[@"code"] integerValue] == 200) {
+                                    
+                                    [self showContent:resposeObject[@"msg"]];
+                                    [self RequestMethod];
+                                }else{
+                                    
+                                    [self showContent:resposeObject[@"msg"]];
+                                }
+                            } failure:^(NSError *error) {
+                                
+                                [self showContent:@"网络错误"];
+                            }];
+                        };
+                        [[UIApplication sharedApplication].keyWindow addSubview:view];
+                    }];
+                    
+                    [alert addAction:valid];
+                    [alert addAction:invalid];
+                    [alert addAction:cancel];
+                    [self.navigationController presentViewController:alert animated:YES completion:^{
+                        
+                    }];
+                }else{
+                    
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认到访" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+                    
+                    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }];
+                    
+                    UIAlertAction *valid = [UIAlertAction actionWithTitle:@"已到访" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        NSDictionary *dic = self->_dataArr[index];
+                        WorkCompleteCustomVC1 *nextVC = [[WorkCompleteCustomVC1 alloc] initWithClientID:dic[@"client_id"] name:dic[@"name"] dataDic:dic];
+                        [self.navigationController pushViewController:nextVC animated:YES];
+                    }];
+                    
+                    UIAlertAction *invalid = [UIAlertAction actionWithTitle:@"未到访" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        InvalidView * invalidView = [[InvalidView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+                        invalidView.client_id = self->_dataArr[indexPath.row][@"client_id"];
+                        invalidView.invalidViewBlock = ^(NSDictionary *dic) {
+                            
+                            [BaseRequest POST:ConfirmDisabled_URL parameters:dic success:^(id resposeObject) {
+                                
+                                if ([resposeObject[@"code"] integerValue] == 200) {
+                                    
+                                    [self alertControllerWithNsstring:@"失效确认成功" And:@""];
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:@"recommendReload" object:nil];
+                                    
+                                }else{
+                                    
+                                    [self alertControllerWithNsstring:@"温馨提示" And:resposeObject[@"msg"]];
+                                }
+                            } failure:^(NSError *error) {
+                                
+                                [self alertControllerWithNsstring:@"温馨提示" And:@"操作失败" WithDefaultBlack:^{
+                                    
+                                }];
+                            }];
+                        };
+                        
+                        invalidView.invalidViewBlockFail = ^(NSString *str) {
+                            
+                            [self alertControllerWithNsstring:@"温馨提示" And:str];
+                        };
+                        [[UIApplication sharedApplication].keyWindow addSubview:invalidView];
+                    }];
+                    
+                    [alert addAction:valid];
+                    [alert addAction:invalid];
+                    [alert addAction:cancel];
+                    [self.navigationController presentViewController:alert animated:YES completion:^{
+                        
+                    }];
+                }
+                
+            }else if ([self->_dataArr[index][@"message_type"] integerValue] == 18){
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认号码" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+                
+                UIAlertAction *unuse = [UIAlertAction actionWithTitle:@"可带看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                    [BaseRequest GET:ClientTelCheckValue_URL parameters:@{@"client_id":self->_dataArr[indexPath.row][@"client_id"]} success:^(id resposeObject) {
+                        
+                        if ([resposeObject[@"code"] integerValue] == 200) {
+                            
+                            [self->_dataArr removeObjectAtIndex:indexPath.row];
+                            [tableView reloadData];
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"PhoneConfirm" object:nil];
+                        }else{
+                            
+                            [self showContent:resposeObject[@"msg"]];
+                        }
+                    } failure:^(NSError *error) {
+                        
+                        [self showContent:@"网络错误"];
+                    }];
+                }];
+                
+                UIAlertAction *used = [UIAlertAction actionWithTitle:@"不可带看" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                    
+                    [self alertControllerWithNsstring:@"温馨提示" And:@"请仔细核对，一旦确认该号码重复，将无法再次推荐" WithCancelBlack:^{
+                        
+                    } WithDefaultBlack:^{
+                        
+                        [BaseRequest GET:ClientTelCheckDisabled_URL parameters:@{@"client_id":self->_dataArr[indexPath.row][@"client_id"]} success:^(id resposeObject) {
+                            
+                            if ([resposeObject[@"code"] integerValue] == 200) {
+                                
+                                [self->_dataArr removeObjectAtIndex:indexPath.row];
+                                [tableView reloadData];
+                                [[NSNotificationCenter defaultCenter] postNotificationName:@"PhoneConfirm" object:nil];
+                            }else{
+                                
+                                [self showContent:resposeObject[@"msg"]];
+                            }
+                        } failure:^(NSError *error) {
+                            
+                            [self showContent:@"网络错误"];
+                        }];
+                    }];
+                }];
+                
+                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                
+                [alert addAction:unuse];
+                [alert addAction:used];
+                [alert addAction:cancel];
+                
+                [self.navigationController presentViewController:alert animated:YES completion:^{
+                    
+                }];
+            }else{
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"审核" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+                
+                UIAlertAction *agree = [UIAlertAction actionWithTitle:@"通过" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                    [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"remark":@"",@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"auth_id"]],@"type":@"1",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
+                        
+                        if ([resposeObject[@"code"] integerValue] == 200) {
+                            
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
+                        }else{
+                            
+                            [self showContent:resposeObject[@"msg"]];
+                        }
+                    } failure:^(NSError *error) {
+                        
+                        [self showContent:@"网络错误"];
+                    }];
+                }];
+                
+                UIAlertAction *refuse = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                    WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:self.view.frame];
+                    __strong __typeof(&*view)strongView = view;
+                    view.workWorkingDimissionViewBlock = ^{
+                        
+                        [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"auth_id"]],@"type":@"0",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
+                            
+                            if ([resposeObject[@"code"] integerValue] == 200) {
+                                
+                                [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
+                            }else{
+                                
+                                [self showContent:resposeObject[@"msg"]];
+                            }
+                        } failure:^(NSError *error) {
+                            
+                            [self showContent:@"网络错误"];
+                        }];
+                    };
+                    [[UIApplication sharedApplication].keyWindow addSubview:view];
+                }];
+                
+                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                
+                [alert addAction:agree];
+                [alert addAction:refuse];
+                [alert addAction:cancel];
+                [self.navigationController presentViewController:alert animated:YES completion:^{
+                    
+                }];
+            }
+        };
+        
+        return cell;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
