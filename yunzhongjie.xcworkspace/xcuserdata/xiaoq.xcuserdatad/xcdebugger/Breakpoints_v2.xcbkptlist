@@ -62,7 +62,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x6211;&#x7684;/MineVC.m"
-            timestampString = "582283053.948807"
+            timestampString = "582291316.572754"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
@@ -78,12 +78,12 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
-                  timestampString = "582283054.386114"
+                  timestampString = "582291317.045935"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "206"
                   endingLineNumber = "206"
-                  offsetFromSymbolStart = "156">
+                  offsetFromSymbolStart = "118">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -93,12 +93,12 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
-                  timestampString = "582283054.390157"
+                  timestampString = "582291317.049055"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "206"
                   endingLineNumber = "206"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -190,7 +190,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x623f;&#x6e90;/HouseListVC.m"
-            timestampString = "582283053.9492249"
+            timestampString = "582291316.573136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -206,7 +206,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x623f;&#x6e90;/&#x623f;&#x6e90;&#x8be6;&#x60c5;/ProjectDetailVC.m"
-            timestampString = "582283053.949296"
+            timestampString = "582291316.573229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -238,7 +238,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x5ba2;&#x6237;&#x5217;&#x8868;/CustomerListVC.m"
-            timestampString = "582283143.689279"
+            timestampString = "582291238.628456"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
