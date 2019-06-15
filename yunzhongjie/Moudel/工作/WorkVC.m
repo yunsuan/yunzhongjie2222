@@ -42,6 +42,7 @@
 
 - (void)initDataSource{
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RequestMethod) name:@"dimission" object:nil];
 //    if ([UserModel defaultModel].agent_company_info_id) {
     
         _imgArr = @[@"laifang",@"ys_find",@"recommended",@"laifang",@"paihao",@"signing_2",@"shoukuan_2",@"audit",@"rotational"];

@@ -56,12 +56,12 @@
     _whiteView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_whiteView];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 24 *SIZE, 250 *SIZE, 13 *SIZE)];
-    label.textColor = CLTitleLabColor;
-    label.font = [UIFont systemFontOfSize:14 *SIZE];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.text = @"离职申请";
-    [_whiteView addSubview:label];
+    _refuseL = [[UILabel alloc] initWithFrame:CGRectMake(0, 24 *SIZE, 250 *SIZE, 13 *SIZE)];
+    _refuseL.textColor = CLTitleLabColor;
+    _refuseL.font = [UIFont systemFontOfSize:14 *SIZE];
+    _refuseL.textAlignment = NSTextAlignmentCenter;
+    _refuseL.text = @"离职申请";
+    [_whiteView addSubview:_refuseL];
     
     _markTV = [[UITextView alloc] initWithFrame:CGRectMake(25 *SIZE, 40 *SIZE, 200 *SIZE, 50 *SIZE)];
     _markTV.keyboardType = UIKeyboardTypeDefault;

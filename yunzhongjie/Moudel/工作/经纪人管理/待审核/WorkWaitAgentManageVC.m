@@ -178,6 +178,7 @@
         UIAlertAction *refuse = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
             WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            view.refuseL.text = @"拒绝原因";
             __strong __typeof(&*view)strongView = view;
             view.workWorkingDimissionViewBlock = ^{
                 
@@ -187,6 +188,7 @@
                     if ([resposeObject[@"code"] integerValue] == 200) {
                         
                         [[NSNotificationCenter defaultCenter] postNotificationName:@"dimission" object:nil];
+                        [self showContent:@"该申请已拒绝"];
                     }else{
                         
                         [self showContent:resposeObject[@"msg"]];

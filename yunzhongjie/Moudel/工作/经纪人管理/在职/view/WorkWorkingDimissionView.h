@@ -16,6 +16,8 @@ typedef void(^WorkWorkingDimissionViewBlock)(void);
 
 @property (nonatomic, copy)  WorkWorkingDimissionViewBlock workWorkingDimissionViewBlock;
 
+@property (nonatomic, strong) UILabel *refuseL;
+
 @property (nonatomic, strong) UITextView *markTV;
 
 @property (nonatomic, strong) UIView *whiteView;

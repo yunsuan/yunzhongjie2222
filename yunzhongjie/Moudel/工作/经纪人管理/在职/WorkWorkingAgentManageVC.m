@@ -170,7 +170,7 @@
         
         UIAlertAction *store = [UIAlertAction actionWithTitle:@"仅离职门店" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:self.view.frame];
+            WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:[UIScreen mainScreen].bounds];
             __strong __typeof(&*view)strongView = view;
             view.workWorkingDimissionViewBlock = ^{
                 
@@ -189,17 +189,17 @@
                     [self showContent:@"网络错误"];
                 }];
             };
-            [self.view addSubview:view];
+            [[UIApplication sharedApplication].keyWindow addSubview:view];
         }];
         
         UIAlertAction *company = [UIAlertAction actionWithTitle:@"离职公司" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:self.view.frame];
+            WorkWorkingDimissionView *view = [[WorkWorkingDimissionView alloc] initWithFrame:[UIScreen mainScreen].bounds];
             __strong __typeof(&*view)strongView = view;
             view.workWorkingDimissionViewBlock = ^{
                 
         
-                [BaseRequest POST:MiddleAgentQuit_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remarks":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"1"} success:^(id resposeObject) {
+                [BaseRequest POST:MiddleAgentQuit_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"id"]],@"type":@"1"} success:^(id resposeObject) {
                     
                     if ([resposeObject[@"code"] integerValue] == 200) {
                         
@@ -213,7 +213,7 @@
                     [self showContent:@"网络错误"];
                 }];
             };
-            [self.view addSubview:view];
+            [[UIApplication sharedApplication].keyWindow addSubview:view];
         }];
         
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
