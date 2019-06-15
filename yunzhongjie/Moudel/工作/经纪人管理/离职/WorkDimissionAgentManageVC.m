@@ -57,10 +57,16 @@
             
             [self->_dataArr removeAllObjects];
             [self->_MainTableView reloadData];
-            if ([resposeObject[@"data"][@"data"] count]) {
+            if ([resposeObject[@"data"] count]) {
                 
-                [self SetData:resposeObject[@"data"][@"data"]];
-                self->_MainTableView.mj_footer.state = MJRefreshStateIdle;
+                if ([resposeObject[@"data"][@"data"] count]) {
+                    
+                    [self SetData:resposeObject[@"data"][@"data"]];
+                    self->_MainTableView.mj_footer.state = MJRefreshStateIdle;
+                }else{
+                    
+                    self->_MainTableView.mj_footer.state = MJRefreshStateNoMoreData;
+                }
             }else{
                 
                 self->_MainTableView.mj_footer.state = MJRefreshStateNoMoreData;

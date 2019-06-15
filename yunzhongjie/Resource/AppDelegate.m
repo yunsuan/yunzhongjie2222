@@ -30,7 +30,7 @@
 //#define QQAppkey @"Yik2oC5WcDQ5IOrpc"
 //#define WechatAppId @"wx3e34d92e8b8cb53e"
 //#define WechatSecret @"200ee15186843d67c0d9ba6a66f3a6ba"
-#define JpushAppKey @"e1aa395c0f2ec24152a53d77"
+#define JpushAppKey @"e3577af5de4be315fde355f7"
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
@@ -96,7 +96,14 @@
         
         NSLog(@"%@",resposeObject);
         NSArray *array = resposeObject[@"results"];
-        NSDictionary *dic = array[0];
+        NSDictionary *dic;
+        if ([array count]) {
+            
+            dic = array[0];
+        }else{
+            
+            dic = @{};
+        }
         NSString *appStoreVersion = dic[@"version"];
         if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
@@ -662,7 +669,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [BaseRequest VersionUpdateSuccess:^(id  _Nonnull resposeObject) {
         
         NSArray *array = resposeObject[@"results"];
-        NSDictionary *dic = array[0];
+        NSDictionary *dic;
+        if ([array count]) {
+            
+            dic = array[0];
+        }else{
+            
+            dic = @{};
+        }
         NSString *appStoreVersion = dic[@"version"];
         if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
@@ -675,7 +689,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                     
                     [alert addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                         
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1371987180?mt=8"]];
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1468640386?mt=8"]];
                         
                     }]];
                     if (![resposeObject[@"data"][@"must"] integerValue]) {
@@ -717,7 +731,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [BaseRequest VersionUpdateSuccess:^(id  _Nonnull resposeObject) {
         
         NSArray *array = resposeObject[@"results"];
-        NSDictionary *dic = array[0];
+        NSDictionary *dic;
+        if ([array count]) {
+            
+            dic = array[0];
+        }else{
+            
+            dic = @{};
+        }
         NSString *appStoreVersion = dic[@"version"];
         if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
@@ -730,7 +751,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                     
                     [alert addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                         
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1371987180?mt=8"]];
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1468640386?mt=8"]];
                         
                     }]];
                     if (![resposeObject[@"data"][@"must"] integerValue]) {
@@ -766,7 +787,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [BaseRequest VersionUpdateSuccess:^(id  _Nonnull resposeObject) {
         
         NSArray *array = resposeObject[@"results"];
-        NSDictionary *dic = array[0];
+        NSDictionary *dic;
+        if ([array count]) {
+            
+            dic = array[0];
+        }else{
+            
+            dic = @{};
+        }
         NSString *appStoreVersion = dic[@"version"];
         if ([[appStoreVersion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue] > [[YACversion stringByReplacingOccurrencesOfString:@"." withString:@""] floatValue]) {
             
@@ -779,7 +807,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                     
                     [alert addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                         
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1371987180?mt=8"]];
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1468640386?mt=8"]];
                         
                     }]];
                     if (![resposeObject[@"data"][@"must"] integerValue]) {

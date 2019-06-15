@@ -108,7 +108,7 @@ static NSString *const kACCESSROLE = @"middleApp";
 + (void)VersionUpdateSuccess:(void(^)(id resposeObject))success failure:(void(^)(NSError *error))failure{
     
     AFHTTPSessionManager *htttmanger  =   [BaseRequest sharedHttpSessionManager];
-    NSString *str = @"https://itunes.apple.com/cn/lookup?id=1371987180";
+    NSString *str = @"https://itunes.apple.com/cn/lookup?id=1468640386";
     [htttmanger POST:str parameters:@{} progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
