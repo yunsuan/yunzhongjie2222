@@ -7,7 +7,25 @@
 		<key>yunzhongjie.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>10FA5AF5229B856200A6CB32</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>10FA5B0D229B856400A6CB32</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>10FA5B18229B856400A6CB32</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

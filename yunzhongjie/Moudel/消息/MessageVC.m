@@ -60,6 +60,7 @@
         
         [self->_table.mj_header endRefreshing];
         
+        NSLog(@"%@",resposeObject);
         if ([resposeObject[@"code"] integerValue] == 200) {
             
             [self->_dataArr removeAllObjects];
