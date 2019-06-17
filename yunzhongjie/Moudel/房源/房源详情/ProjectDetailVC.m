@@ -304,7 +304,7 @@
         }
        
         header.titleL.text = _headerDic[@"project_name"];
-        header.stateL.text = [_start isEqualToString:@"1"]?@"分销中":@"以结束";
+        header.stateL.text = [_start isEqualToString:@"1"]?@"分销中":@"已结束";
         header.priceL.attributedText = _headerDic[@"average_price"];
         header.addressL.text = _headerDic[@"address"];
         header.lat = _headerDic[@"lat"];
