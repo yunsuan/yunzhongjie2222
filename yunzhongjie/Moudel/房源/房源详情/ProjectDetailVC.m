@@ -196,7 +196,7 @@
 //    NSTimeInterval month = 24 * 60 * 60 *30;
     if (tag/10 == 0) {
 //        type = @"0";
-        NSString *url = RecommendCustomerList_URL;
+        url = RecommendCustomerList_URL;
         if (tag==0) {
             
         }

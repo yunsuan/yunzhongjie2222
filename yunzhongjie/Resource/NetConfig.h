@@ -62,7 +62,7 @@ static NSString *const DealCount_URL = @"middle/project/brokerCount";
 #pragma mark ---  云中介门店  ---
 
 //门店推荐客户列表
-static NSString *const StoreRecommendCustomerList_URL = @"middle/store/getStoretRecommendList";
+static NSString *const StoreRecommendCustomerList_URL = @"middle/store/getStoreRecommendList";
 
 //门店到访客户列表
 static NSString *const StoreVisitCustomerList_URL = @"middle/store/getStoreVisitList";
