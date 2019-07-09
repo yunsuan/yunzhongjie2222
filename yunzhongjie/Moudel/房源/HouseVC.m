@@ -74,14 +74,6 @@
 
 
 
-
-
-
-
-
-
-
-
 - (void)initUI{
     
     self.delegate = self;
