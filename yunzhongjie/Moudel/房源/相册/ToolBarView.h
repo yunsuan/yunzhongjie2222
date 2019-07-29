@@ -29,7 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *allL;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) UICollectionView *XGColl;
+@property (nonatomic, strong)  NSString *projectId;
+@property (nonatomic, strong) NSMutableArray *imgArr;
 
+-(void)setImage:(NSArray *)Img;
 @end
 
 NS_ASSUME_NONNULL_END
