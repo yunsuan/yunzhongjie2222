@@ -70,6 +70,8 @@
                              [self->_dataDic setObject:@"" forKey:key];
                          }
                      }];
+                     
+                     self.recommend_check = self->_dataDic[@"recommend_check"];
 
                      NSString *sex = @"客户性别：";
                      if ([self->_dataDic[@"sex"] integerValue] == 1) {
@@ -397,7 +399,7 @@
     if (indexPath.section == 0) {
         
         if (indexPath.row == 0) {
-            if ([self.recommend_check integerValue] == 1) {
+            if ([self.recommend_check integerValue] == 0) {
                 
                 RecommendCheckCell *cell  = [tableView dequeueReusableCellWithIdentifier:@"RecommendCheckCell"];
                 if (!cell) {

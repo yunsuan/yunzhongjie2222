@@ -16,6 +16,8 @@ typedef void(^WorkPhoneConfrimWaitDetailVCBlock)(void);
 
 @property (nonatomic, copy) WorkPhoneConfrimWaitDetailVCBlock workPhoneConfrimWaitDetailVCBlock;
 
+@property (nonatomic, strong) NSString *recommend_check;
+
 - (instancetype)initWithClientId:(NSString *)clientId;
 
 @end

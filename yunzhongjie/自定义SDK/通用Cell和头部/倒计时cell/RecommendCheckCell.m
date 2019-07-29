@@ -25,7 +25,7 @@
     
     _titleL = [[UILabel alloc]initWithFrame:CGRectMake(27*SIZE, 0*SIZE, 300*SIZE, 14 *SIZE)];
     _titleL.font = [UIFont systemFontOfSize:14*SIZE];
-    _titleL.textColor = CLContentLabColor;
+    _titleL.textColor = CLOrangeColor;
     _titleL.textAlignment = NSTextAlignmentCenter;
     _titleL.text = @"推荐已成功，已到访为准";
     [self.contentView addSubview:_titleL];
