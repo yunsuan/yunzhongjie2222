@@ -15,6 +15,7 @@
 		0C6FA18A22B3AB0100B40A3C /* WorkWaitConfirmAgentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA18922B3AB0100B40A3C /* WorkWaitConfirmAgentCell.m */; };
 		0C6FA18E22B3ADC900B40A3C /* WorkWorkingConfirmAgentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA18D22B3ADC900B40A3C /* WorkWorkingConfirmAgentCell.m */; };
 		0C6FA19222B3F0C100B40A3C /* WorkWorkingDimissionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA19122B3F0C100B40A3C /* WorkWorkingDimissionView.m */; };
+		0CFDB30722EEA45000F21976 /* RecommendCheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFDB30622EEA45000F21976 /* RecommendCheckCell.m */; };
 		1038C15122A63F0A0062C7EF /* HouseDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15022A63F0A0062C7EF /* HouseDetail.m */; };
 		1038C15522A63FE50062C7EF /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15422A63FE50062C7EF /* MessageCell.m */; };
 		1038C15922A64F4A0062C7EF /* ProjectDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15822A64F4A0062C7EF /* ProjectDetailVC.m */; };
@@ -195,6 +196,8 @@
 		0C6FA18D22B3ADC900B40A3C /* WorkWorkingConfirmAgentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkWorkingConfirmAgentCell.m; sourceTree = "<group>"; };
 		0C6FA19022B3F0C100B40A3C /* WorkWorkingDimissionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkWorkingDimissionView.h; sourceTree = "<group>"; };
 		0C6FA19122B3F0C100B40A3C /* WorkWorkingDimissionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkWorkingDimissionView.m; sourceTree = "<group>"; };
+		0CFDB30522EEA45000F21976 /* RecommendCheckCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendCheckCell.h; sourceTree = "<group>"; };
+		0CFDB30622EEA45000F21976 /* RecommendCheckCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendCheckCell.m; sourceTree = "<group>"; };
 		1038C14F22A63F0A0062C7EF /* HouseDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseDetail.h; sourceTree = "<group>"; };
 		1038C15022A63F0A0062C7EF /* HouseDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseDetail.m; sourceTree = "<group>"; };
 		1038C15322A63FE50062C7EF /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
@@ -743,6 +746,8 @@
 			children = (
 				10956588229BE7BD001957DD /* CountDownCell.h */,
 				10956589229BE7BD001957DD /* CountDownCell.m */,
+				0CFDB30522EEA45000F21976 /* RecommendCheckCell.h */,
+				0CFDB30622EEA45000F21976 /* RecommendCheckCell.m */,
 			);
 			path = "倒计时cell";
 			sourceTree = "<group>";
@@ -1888,6 +1893,7 @@
 				10B8B82822B1F14400CDD004 /* WMMenuView.m in Sources */,
 				109565FE229BF217001957DD /* WorkPhoneConfrimWaitVC.m in Sources */,
 				109565FF229BF217001957DD /* WorkPhoneConfrimWaitCell.m in Sources */,
+				0CFDB30722EEA45000F21976 /* RecommendCheckCell.m in Sources */,
 				10956613229BF217001957DD /* WorkRecommendWaitVC.m in Sources */,
 				10956639229D0983001957DD /* StoreInfoHeader.m in Sources */,
 				10B8B82B22B1F14400CDD004 /* HNButton.m in Sources */,

@@ -14,6 +14,7 @@
 
 #import "CountDownCell.h"
 #import "InfoDetailCell.h"
+#import "RecommendCheckCell.h"
 
 #import "SignFailView.h"
 #import "SignSelectWorkerView.h"
@@ -396,20 +397,32 @@
     if (indexPath.section == 0) {
         
         if (indexPath.row == 0) {
-            static NSString *CellIdentifier = @"CountDownCell";
-            CountDownCell *cell  = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (!cell) {
-                cell = [[CountDownCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
-            
-            cell.frame = CGRectMake(0, 0, 360*SIZE, 75*SIZE);
-            cell.countDownCellBlock = ^{
+            if ([self.recommend_check integerValue] == 1) {
                 
-                [self refresh];
-            };
-            [cell setcountdownbyendtime:_endtime];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            return cell;
+                RecommendCheckCell *cell  = [tableView dequeueReusableCellWithIdentifier:@"RecommendCheckCell"];
+                if (!cell) {
+                    cell = [[RecommendCheckCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecommendCheckCell"];
+                }
+                
+                cell.frame = CGRectMake(0, 0, 360*SIZE, 75*SIZE);
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                return cell;
+            }else{
+                
+                static NSString *CellIdentifier = @"CountDownCell";
+                CountDownCell *cell  = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                if (!cell) {
+                    cell = [[CountDownCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                }
+                
+                cell.frame = CGRectMake(0, 0, 360*SIZE, 75*SIZE);
+                cell.countDownCellBlock = ^{
+                    [self refresh];
+                };
+                [cell setcountdownbyendtime:_endtime];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                return cell;
+            }
         }else{
             static NSString *CellIdentifier = @"InfoDetailCell";
             InfoDetailCell *cell  = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
