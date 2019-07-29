@@ -78,12 +78,12 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
-                  timestampString = "585834843.3143229"
+                  timestampString = "586063044.831094"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "206"
                   endingLineNumber = "206"
-                  offsetFromSymbolStart = "156">
+                  offsetFromSymbolStart = "118">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -93,12 +93,12 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
-                  timestampString = "585834843.317793"
+                  timestampString = "586063044.833746"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "206"
                   endingLineNumber = "206"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -180,22 +180,6 @@
             startingLineNumber = "115"
             endingLineNumber = "115"
             landmarkName = "-Register"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yunzhongjie/Moudel/&#x623f;&#x6e90;/HouseListVC.m"
-            timestampString = "582293937.000762"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-RequestWithPage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
