@@ -313,8 +313,7 @@
         header.propertyArr = [NSMutableArray arrayWithArray:_headerDic[@"property"]];
         [header.propertyColl reloadData];
         header.imgBtnBlock = ^(NSInteger num, NSArray *imgArr) {
-        
-            
+    
             NSMutableArray *browserDataArr = [NSMutableArray array];
             [imgArr enumerateObjectsUsingBlock:^(NSDictionary * dic, NSUInteger idx, BOOL * _Nonnull stop) {
                 
@@ -326,8 +325,11 @@
             
             YBImageBrowser *browser = [YBImageBrowser new];
             browser.dataSourceArray = browserDataArr;
-//            ToolBarView *view = [ToolBarView new];
-//            browser.toolBars = @[view];
+            ToolBarView *view = [ToolBarView new];
+            view.projectId = self->_project_id;
+//            view.imgArr = imgArr;
+            [view setImage:imgArr];
+            browser.toolBars = @[view];
             browser.currentIndex = num;
             [browser show];
             

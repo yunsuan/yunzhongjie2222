@@ -129,7 +129,15 @@
         NSMutableDictionary *dic  = [NSMutableDictionary dictionary];
         [dic setValue:datadic[@"name"] forKey:@"name"];
         [dic setValue:[NSString stringWithFormat:@"联系电话:%@", datadic[@"tel"]] forKey:@"tel"];
-        [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@", datadic[@"agent_name"],datadic[@"store_name"]] forKey:@"agent"];
+        
+        if([_type isEqualToString:@"rule_id"])
+        {
+            [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@/%@", datadic[@"agent_name"],datadic[@"agent_tel"] ,datadic[@"store_name"]] forKey:@"agent"];
+        }
+        else{
+            [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@", datadic[@"agent_name"],datadic[@"agent_tel"]] forKey:@"agent"];
+        }
+
         if ([_urlStr isEqualToString:StoreRecommendCustomerList_URL] ||[_urlStr isEqualToString:RecommendCustomerList_URL]) {
             [dic setValue:[NSString stringWithFormat:@"推荐时间:%@", datadic[@"create_time"]] forKey:@"time"];
         }

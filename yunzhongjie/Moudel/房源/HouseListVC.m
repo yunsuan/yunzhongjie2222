@@ -90,8 +90,11 @@
         NSArray *agent = datadic[@"agnet"];
         if (agent.count>0) {
             NSString *agent_name = [NSString stringWithFormat:@"驻场人员:%@", agent[0][@"name"]];
+            if(agent.count>1)
+            {
             for (int j= 1 ; j<agent.count; j++) {
-                agent_name = [NSString stringWithFormat:@"%@,%@",agent_name,agent[i][@"name"]];
+                agent_name = [NSString stringWithFormat:@"%@,%@",agent_name,agent[j][@"name"]];
+            }
             }
             [dic setValue:agent_name forKey:@"agent"];
         }

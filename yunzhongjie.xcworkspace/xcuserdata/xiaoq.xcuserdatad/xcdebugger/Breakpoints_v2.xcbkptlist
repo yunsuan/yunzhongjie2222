@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             scope = "0"
@@ -78,7 +78,7 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
-                  timestampString = "582293937.836653"
+                  timestampString = "586063044.831094"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "206"
@@ -93,7 +93,7 @@
                   moduleName = "yunzhongjie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wjq/Downloads/yunzhongjie2222/yunzhongjie/Moudel/%E6%88%91%E7%9A%84/MineVC.m"
-                  timestampString = "582293937.8446701"
+                  timestampString = "586063044.833746"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "206"
@@ -189,24 +189,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "yunzhongjie/Moudel/&#x623f;&#x6e90;/HouseListVC.m"
-            timestampString = "582293937.000762"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-RequestWithPage:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x623f;&#x6e90;/&#x623f;&#x6e90;&#x8be6;&#x60c5;/ProjectDetailVC.m"
-            timestampString = "582293937.000867"
+            timestampString = "585834842.371542"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -238,12 +222,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yunzhongjie/Moudel/&#x5ba2;&#x6237;&#x5217;&#x8868;/CustomerListVC.m"
-            timestampString = "582293937.000989"
+            timestampString = "584259164.7668509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
             endingLineNumber = "117"
             landmarkName = "-RequestWithPage:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/Moudel/&#x5ba2;&#x6237;&#x5217;&#x8868;/CustomerListVC.m"
+            timestampString = "584259164.7670031"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "-SetData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/Moudel/&#x5ba2;&#x6237;&#x5217;&#x8868;/CustomerListVC.m"
+            timestampString = "584259164.767069"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-SetData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

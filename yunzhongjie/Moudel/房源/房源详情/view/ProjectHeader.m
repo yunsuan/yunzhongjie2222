@@ -51,18 +51,26 @@
         
         [view removeFromSuperview];
     }
+    NSMutableArray *img =[imgArr mutableCopy];
+    //imgArr排序
+    [img sortWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        NSString *name1 = obj1[@"type_name"];
+        NSString *name2 = obj2[@"type_name"];
+     return [name1 compare:name2 options:NSCaseInsensitiveSearch];
+    }];
+    _imgArr = [img copy];
     
-    if (imgArr.count) {
+    if (_imgArr.count) {
         
-        for (int i = 0; i < imgArr.count; i++) {
+        for (int i = 0; i < _imgArr.count; i++) {
             
             UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width * i, 0, SCREEN_Width, 202.5 *SIZE)];
             img.contentMode = UIViewContentModeScaleAspectFill;
             img.clipsToBounds = YES;
     
-            NSString *imgname = imgArr[i][@"img_url"];
+            NSString *imgname = _imgArr[i][@"img_url"];
             if (imgname.length>0) {
-                [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",TestBase_Net,imgArr[i][@"img_url"]]] placeholderImage:[UIImage imageNamed:@"banner_default_2"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",TestBase_Net,_imgArr[i][@"img_url"]]] placeholderImage:[UIImage imageNamed:@"banner_default_2"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                     
                     if (error) {
                         
