@@ -38,12 +38,22 @@
 }
 
 - (void)initDataSource{
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ActionReload) name:@"reloadDeal" object:nil];
+    
     _tag_search = @"0";
     _search = @"";
     _page = @"1";
     [self RequestHeader];
     [self RequestWithPage:_page];
     
+}
+
+- (void)ActionReload{
+    
+    [self RequestHeader];
+    [self RequestWithPage:@"1"];
 }
 
 -(void)RequestHeader

@@ -7,6 +7,9 @@
 //
 
 #import "CustomerListVC.h"
+
+#import "NewDealVC.h"
+
 #import "CustomerListCell.h"
 #import "DropBtn.h"
 #import "DateChooseView.h"
@@ -14,6 +17,7 @@
 @interface CustomerListVC ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
     NSMutableArray *_datasource;
+    NSMutableArray *_dataArr;
 //    NSString *_urlStr;
     NSString *_searchStr;
     NSString *_page;
@@ -84,7 +88,7 @@
                  if ([resposeObject[@"code"] integerValue]==200) {
                      if ([page isEqualToString:@"1"]) {
                          
-                         
+                         _dataArr = [[NSMutableArray alloc] initWithArray:resposeObject[@"data"][@"data"]];
                          _datasource = [self SetData:resposeObject[@"data"][@"data"]];
                          [_table reloadData];
                          [self.table.mj_footer endRefreshing];
@@ -132,7 +136,13 @@
         
         if([_type isEqualToString:@"rule_id"])
         {
-            [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@/%@", datadic[@"agent_name"],datadic[@"agent_tel"] ,datadic[@"store_name"]] forKey:@"agent"];
+            if (datadic[@"store_name"] && ![datadic[@"store_name"] isKindOfClass:[NSNull class]]) {
+                
+                [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@/%@", datadic[@"agent_name"],datadic[@"agent_tel"] ,datadic[@"store_name"]] forKey:@"agent"];
+            }else{
+            
+                [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@", datadic[@"agent_name"],datadic[@"agent_tel"]] forKey:@"agent"];
+            }
         }
         else{
             [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@", datadic[@"agent_name"],datadic[@"agent_tel"]] forKey:@"agent"];
@@ -146,7 +156,14 @@
             [dic setValue:[NSString stringWithFormat:@"到访时间:%@", datadic[@"visit_time"]] forKey:@"time"];
         }
         else{
-            [dic setValue:[NSString stringWithFormat:@"成交时间:%@", datadic[@"subscribe_time"]] forKey:@"time"];
+            
+            if (datadic[@"subscribe_time"] && ![datadic[@"subscribe_time"] isKindOfClass:[NSNull class]]) {
+                
+                [dic setValue:[NSString stringWithFormat:@"成交时间:%@", datadic[@"subscribe_time"]] forKey:@"time"];
+            }else{
+            
+                [dic setValue:[NSString stringWithFormat:@"成交时间:"] forKey:@"time"];
+            }
         }
         
 
@@ -178,10 +195,47 @@
         
         cell = [[CustomerListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CustomerListCell"];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     cell.timeL.text = _datasource[indexPath.row][@"time"];
     cell.titelL.text = _datasource[indexPath.row][@"name"];
     cell.nameL.text = _datasource[indexPath.row][@"tel"];
     cell.phoneL.text = _datasource[indexPath.row][@"agent"];
+    
+    cell.customerListCellAddBlock = ^{
+        
+        NewDealVC *nextVC = [[NewDealVC alloc] initWithDic:_dataArr[indexPath.row]];
+        nextVC.project_id = self.project_id;
+        nextVC.newDealVCBlock = ^{
+          
+            [self RequestWithPage:@"1"];
+            if (self.customerListVCBlock) {
+                
+                self.customerListVCBlock();
+            }
+        };
+        [self.navigationController pushViewController:nextVC animated:YES];
+    };
+    if ([_urlStr isEqualToString:VisitCustomerList_URL]) {
+        
+        if ([[UserModel defaultModel].butter_project count] && [[UserModel defaultModel].butter_project[0] integerValue] > 0) {
+//
+            if ([_dataArr[indexPath.row][@"current_state"] integerValue] > 2) {
+
+                cell.addBtn.hidden = YES;
+            }else{
+        
+                cell.addBtn.hidden = NO;
+            }
+        }else{
+
+            cell.addBtn.hidden = YES;
+        }
+        
+    }else{
+        
+        cell.addBtn.hidden = YES;
+    }
 //    if (![_datasource[indexPath.row][@"img_url"] isEqualToString:@""]) {
 //        [cell.headerImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",TestBase_Net,_datasource[indexPath.row][@"img_url"]]] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
 //            if (error) {

@@ -69,6 +69,10 @@
             img.clipsToBounds = YES;
     
             NSString *imgname = _imgArr[i][@"img_url"];
+            if ([imgname isKindOfClass:[NSNull class]]) {
+                
+                imgname = @"";
+            }
             if (imgname.length>0) {
                 [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",TestBase_Net,_imgArr[i][@"img_url"]]] placeholderImage:[UIImage imageNamed:@"banner_default_2"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                     

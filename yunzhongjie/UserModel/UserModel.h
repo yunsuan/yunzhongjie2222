@@ -30,6 +30,7 @@
 @property (nonatomic , strong) NSString *city;
 @property (nonatomic , strong) NSString *district;
 @property (nonatomic , strong) NSString *birth;
+//@property (nonatomic , strong) NSString *butter_project;
 
 
 @property (nonatomic , strong) NSDictionary *Configdic;

@@ -83,7 +83,16 @@
             [UserModel defaultModel].Account = self->_AccountTF.text;
             [UserModel defaultModel].Password = self->_PassWordTF.text;
             [UserModel defaultModel].agent_id = [NSString stringWithFormat:@"%@",resposeObject[@"data"][@"agent_id"]];
-            NSString *str = resposeObject[@"data"][@"butter_project"];
+            
+            NSString *str;
+            if (resposeObject[@"data"][@"butter_project"] && ![resposeObject[@"data"][@"butter_project"] isKindOfClass:[NSNull class]]) {
+                
+                str = resposeObject[@"data"][@"butter_project"];
+            }else{
+                
+                str = @"";
+            }
+//            NSString *str = resposeObject[@"data"][@"butter_project"];
             [UserModel defaultModel].butter_project = [str componentsSeparatedByString:@","];
              [UserModel defaultModel].company_id = [NSString stringWithFormat:@"%@",resposeObject[@"data"][@"company_id"]];
              [UserModel defaultModel].company_name = [NSString stringWithFormat:@"%@",resposeObject[@"data"][@"company_name"]];
@@ -98,6 +107,13 @@
             [UserModel defaultModel].district = [NSString stringWithFormat:@"%@",resposeObject[@"data"][@"district"]];
             [UserModel defaultModel].city = [NSString stringWithFormat:@"%@",resposeObject[@"data"][@"city"]];
             [UserModel defaultModel].birth = [NSString stringWithFormat:@"%@",resposeObject[@"data"][@"birth"]];
+//            if (resposeObject[@"data"][@"butter_project"] && [resposeObject[@"data"][@"butter_project"] isKindOfClass:[NSNull class]]) {
+//
+//                [UserModel defaultModel].butter_project = [NSString stringWithFormat:@"%@",resposeObject[@"data"][@"butter_project"]];
+//            }else{
+//
+//                [UserModel defaultModel].butter_project = @"";
+//            }
  
             [UserModelArchiver archive];
             [[NSUserDefaults standardUserDefaults]setValue:LOGINSUCCESS forKey:LOGINENTIFIER];

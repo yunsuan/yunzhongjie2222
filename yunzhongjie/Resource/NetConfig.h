@@ -14,9 +14,9 @@
 #pragma mark ---  基础接口  ---
 
 //新服务器
-static NSString *const TestBase_Net = @"http://47.107.246.94/";
+//static NSString *const TestBase_Net = @"http://47.107.246.94/";
 //测试
-//static NSString *const TestBase_Net = @"http://120.27.21.136:2798/";
+static NSString *const TestBase_Net = @"http://120.27.21.136:2798/";
 
 #pragma mark ---  云中介消息  ---
 //删除消息
@@ -57,7 +57,11 @@ static NSString *const DealList_URL = @"middle/project/brokerList";
 //成交统计
 static NSString *const DealCount_URL = @"middle/project/brokerCount";
 
+//成交规则列表
+static NSString *const DealRuleList_URL = @"middle/work/deal/ruleList";
 
+//转成交
+static NSString *const WorkDeal_URL = @"middle/work/deal";
 
 #pragma mark ---  云中介门店  ---
 

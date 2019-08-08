@@ -265,6 +265,11 @@
     next_vc.need_id = self.rule_id;
     next_vc.end_time = end_time;
     next_vc.start_time = start_time;
+    next_vc.project_id = _project_id;;
+    next_vc.customerListVCBlock = ^{
+      
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDeal" object:nil];
+    };
     [self.navigationController pushViewController:next_vc animated:YES];
     
 
