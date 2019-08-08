@@ -10,7 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^NewDealRuleVCBlock)(NSDictionary *dic);
+
 @interface NewDealRuleVC : BaseViewController
+
+@property (nonatomic, strong) NSString *project_id;
+
+@property (nonatomic, copy) NewDealRuleVCBlock newDealRuleVCBlock;
 
 @end
 

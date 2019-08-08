@@ -7,6 +7,7 @@
 //
 
 #import "NewDealVC.h"
+#import "NewDealRuleVC.h"
 
 #import "BaseHeader.h"
 
@@ -145,25 +146,25 @@
 
 - (void)RequestMethod{
     
-    [BaseRequest GET:DealRuleList_URL parameters:@{@"project_id":self.project_id,@"company_id":[UserModel defaultModel].company_id} success:^(id resposeObject) {
-        
-        if ([resposeObject[@"code"] integerValue] == 200) {
-            
-            self->_ruleArr = resposeObject[@"data"];
-            for (int i = 0; i < self->_ruleArr.count; i++) {
-                
-                [self->_ruleMArr addObject:@{@"param":self->_ruleArr[i][@"rule_type"],
-                                             @"id":self->_ruleArr[i][@"rule_id"]
-                                             }];
-            }
-        }else{
-            
-//            [self showContent:resposeObject[@"msg"]];
-        }
-    } failure:^(NSError *error) {
-        
-//        self showContent:@""
-    }];
+//    [BaseRequest GET:DealRuleList_URL parameters:@{@"project_id":self.project_id,@"company_id":[UserModel defaultModel].company_id} success:^(id resposeObject) {
+//        
+//        if ([resposeObject[@"code"] integerValue] == 200) {
+//            
+//            self->_ruleArr = resposeObject[@"data"];
+//            for (int i = 0; i < self->_ruleArr.count; i++) {
+//                
+//                [self->_ruleMArr addObject:@{@"param":self->_ruleArr[i][@"rule_type"],
+//                                             @"id":self->_ruleArr[i][@"rule_id"]
+//                                             }];
+//            }
+//        }else{
+//            
+////            [self showContent:resposeObject[@"msg"]];
+//        }
+//    } failure:^(NSError *error) {
+//        
+////        self showContent:@""
+//    }];
 }
 
 - (void)ActionTagBtn:(UIButton *)btn{
@@ -201,46 +202,55 @@
         case 4:
         {
             
-            if (self->_ruleMArr.count) {
+            NewDealRuleVC *nextVC = [[NewDealRuleVC alloc] init];
+            nextVC.project_id = self.project_id;
+            nextVC.newDealRuleVCBlock = ^(NSDictionary * _Nonnull dic) {
                 
-                SinglePickView *view = [[SinglePickView alloc] initWithFrame:self.view.bounds WithData:_ruleMArr];
-                view.selectedBlock = ^(NSString *MC, NSString *ID) {
-                    
-                    self->_ruleBtn.placeL.text = @"";
-                    self->_ruleBtn.content.text = MC;
-                    self->_ruleBtn->str = [NSString stringWithFormat:@"%@",ID];
-                };
-                [self.view addSubview:view];
-            }else{
-                
-                [BaseRequest GET:DealRuleList_URL parameters:@{@"project_id":self.project_id,@"company_id":[UserModel defaultModel].company_id} success:^(id resposeObject) {
-                    
-                    if ([resposeObject[@"code"] integerValue] == 200) {
-                        
-                        self->_ruleArr = resposeObject[@"data"];
-                        for (int i = 0; i < self->_ruleArr.count; i++) {
-                            
-                            [self->_ruleMArr addObject:@{@"param":self->_ruleArr[i][@"rule_type"],
-                                                         @"id":self->_ruleArr[i][@"rule_id"]
-                                                         }];
-                        }
-                        SinglePickView *view = [[SinglePickView alloc] initWithFrame:self.view.bounds WithData:self->_ruleMArr];
-                        view.selectedBlock = ^(NSString *MC, NSString *ID) {
-                            
-                            self->_ruleBtn.placeL.text = @"";
-                            self->_ruleBtn.content.text = MC;
-                            self->_ruleBtn->str = [NSString stringWithFormat:@"%@",ID];
-                        };
-                        [self.view addSubview:view];
-                    }else{
-                        
-                        [self showContent:resposeObject[@"msg"]];
-                    }
-                } failure:^(NSError *error) {
-                    
-                    [self showContent:@"获取规则失败"];
-                }];
-            }
+                self->_ruleBtn.placeL.text = @"";
+                self->_ruleBtn.content.text = dic[@"rule_type"];
+                self->_ruleBtn->str = [NSString stringWithFormat:@"%@",dic[@"rule_id"]];
+            };
+            [self.navigationController pushViewController:nextVC animated:YES];
+//            if (self->_ruleMArr.count) {
+//
+//                SinglePickView *view = [[SinglePickView alloc] initWithFrame:self.view.bounds WithData:_ruleMArr];
+//                view.selectedBlock = ^(NSString *MC, NSString *ID) {
+//
+//                    self->_ruleBtn.placeL.text = @"";
+//                    self->_ruleBtn.content.text = MC;
+//                    self->_ruleBtn->str = [NSString stringWithFormat:@"%@",ID];
+//                };
+//                [self.view addSubview:view];
+//            }else{
+//
+//                [BaseRequest GET:DealRuleList_URL parameters:@{@"project_id":self.project_id,@"company_id":[UserModel defaultModel].company_id} success:^(id resposeObject) {
+//
+//                    if ([resposeObject[@"code"] integerValue] == 200) {
+//
+//                        self->_ruleArr = resposeObject[@"data"];
+//                        for (int i = 0; i < self->_ruleArr.count; i++) {
+//
+//                            [self->_ruleMArr addObject:@{@"param":self->_ruleArr[i][@"rule_type"],
+//                                                         @"id":self->_ruleArr[i][@"rule_id"]
+//                                                         }];
+//                        }
+//                        SinglePickView *view = [[SinglePickView alloc] initWithFrame:self.view.bounds WithData:self->_ruleMArr];
+//                        view.selectedBlock = ^(NSString *MC, NSString *ID) {
+//
+//                            self->_ruleBtn.placeL.text = @"";
+//                            self->_ruleBtn.content.text = MC;
+//                            self->_ruleBtn->str = [NSString stringWithFormat:@"%@",ID];
+//                        };
+//                        [self.view addSubview:view];
+//                    }else{
+//
+//                        [self showContent:resposeObject[@"msg"]];
+//                    }
+//                } failure:^(NSError *error) {
+//
+//                    [self showContent:@"获取规则失败"];
+//                }];
+//            }
             break;
         }
         case 5:

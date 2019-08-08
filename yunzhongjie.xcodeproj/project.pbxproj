@@ -17,6 +17,7 @@
 		0C6FA19222B3F0C100B40A3C /* WorkWorkingDimissionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA19122B3F0C100B40A3C /* WorkWorkingDimissionView.m */; };
 		0CC7E8F822FBB49500AB0E1F /* NewDealVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC7E8F722FBB49500AB0E1F /* NewDealVC.m */; };
 		0CC7E8FB22FC050900AB0E1F /* NewDealRuleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC7E8FA22FC050900AB0E1F /* NewDealRuleVC.m */; };
+		0CC7E8FE22FC090B00AB0E1F /* NewDealRuleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC7E8FD22FC090B00AB0E1F /* NewDealRuleCell.m */; };
 		0CFDB30722EEA45000F21976 /* RecommendCheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFDB30622EEA45000F21976 /* RecommendCheckCell.m */; };
 		1038C15122A63F0A0062C7EF /* HouseDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15022A63F0A0062C7EF /* HouseDetail.m */; };
 		1038C15522A63FE50062C7EF /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1038C15422A63FE50062C7EF /* MessageCell.m */; };
@@ -202,6 +203,8 @@
 		0CC7E8F722FBB49500AB0E1F /* NewDealVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewDealVC.m; sourceTree = "<group>"; };
 		0CC7E8F922FC050900AB0E1F /* NewDealRuleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewDealRuleVC.h; sourceTree = "<group>"; };
 		0CC7E8FA22FC050900AB0E1F /* NewDealRuleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewDealRuleVC.m; sourceTree = "<group>"; };
+		0CC7E8FC22FC090B00AB0E1F /* NewDealRuleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewDealRuleCell.h; sourceTree = "<group>"; };
+		0CC7E8FD22FC090B00AB0E1F /* NewDealRuleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewDealRuleCell.m; sourceTree = "<group>"; };
 		0CFDB30522EEA45000F21976 /* RecommendCheckCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendCheckCell.h; sourceTree = "<group>"; };
 		0CFDB30622EEA45000F21976 /* RecommendCheckCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendCheckCell.m; sourceTree = "<group>"; };
 		1038C14F22A63F0A0062C7EF /* HouseDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseDetail.h; sourceTree = "<group>"; };
@@ -644,6 +647,8 @@
 				0CC7E8F722FBB49500AB0E1F /* NewDealVC.m */,
 				0CC7E8F922FC050900AB0E1F /* NewDealRuleVC.h */,
 				0CC7E8FA22FC050900AB0E1F /* NewDealRuleVC.m */,
+				0CC7E8FC22FC090B00AB0E1F /* NewDealRuleCell.h */,
+				0CC7E8FD22FC090B00AB0E1F /* NewDealRuleCell.m */,
 			);
 			path = "客户列表";
 			sourceTree = "<group>";
@@ -1932,6 +1937,7 @@
 				10FA5B68229B8B2800A6CB32 /* MBProgressHUD+GZQ.m in Sources */,
 				1095660A229BF217001957DD /* SignListVC.m in Sources */,
 				1095659F229BE7BD001957DD /* TitleRightBtnHeader.m in Sources */,
+				0CC7E8FE22FC090B00AB0E1F /* NewDealRuleCell.m in Sources */,
 				10FA5B7A229B8B2800A6CB32 /* NSArray+GZQArr.m in Sources */,
 				10956642229D09FF001957DD /* StoreMannerCell.m in Sources */,
 				10FA5C03229BC04A00A6CB32 /* FeedbackVC.m in Sources */,
