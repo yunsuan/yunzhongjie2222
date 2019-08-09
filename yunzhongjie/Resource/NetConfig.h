@@ -14,9 +14,9 @@
 #pragma mark ---  基础接口  ---
 
 //新服务器
-//static NSString *const TestBase_Net = @"http://47.107.246.94/";
+static NSString *const TestBase_Net = @"http://47.107.246.94/";
 //测试
-static NSString *const TestBase_Net = @"http://120.27.21.136:2798/";
+//static NSString *const TestBase_Net = @"http://120.27.21.136:2798/";
 
 #pragma mark ---  云中介消息  ---
 //删除消息
