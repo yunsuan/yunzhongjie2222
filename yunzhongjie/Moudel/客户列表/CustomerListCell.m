@@ -57,7 +57,7 @@
     [self addSubview:_timeL];
     
     _addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _addBtn.frame = CGRectMake(270 *SIZE, 60 *SIZE, 70 *SIZE, 28 *SIZE);
+    _addBtn.frame = CGRectMake(270 *SIZE, 65 *SIZE, 70 *SIZE, 23 *SIZE);
     _addBtn.titleLabel.font = [UIFont systemFontOfSize:14 *SIZE];
     [_addBtn addTarget:self action:@selector(ActionAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     [_addBtn setTitle:@"转成交" forState:UIControlStateNormal];

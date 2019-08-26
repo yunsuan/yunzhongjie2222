@@ -58,6 +58,7 @@
 //    }
     _page = @"1";
     _searchStr = @"";
+    _dataArr = [@[] mutableCopy];
     [self RequestWithPage:_page];
     
 }
@@ -88,7 +89,7 @@
                  if ([resposeObject[@"code"] integerValue]==200) {
                      if ([page isEqualToString:@"1"]) {
                          
-                         _dataArr = [[NSMutableArray alloc] initWithArray:resposeObject[@"data"][@"data"]];
+                         [_dataArr removeAllObjects];
                          _datasource = [self SetData:resposeObject[@"data"][@"data"]];
                          [_table reloadData];
                          [self.table.mj_footer endRefreshing];
@@ -127,6 +128,9 @@
 
 -(NSMutableArray *)SetData:(NSMutableArray *)data
 {
+    
+    [_dataArr addObjectsFromArray:data];
+    
     NSMutableArray * arr =  [NSMutableArray array];
     for (int i= 0; i<data.count; i++) {
         NSDictionary *datadic  =  data[i];

@@ -68,7 +68,7 @@
                      
                      [_allBtn SettitleL:@"全部笔数" contentL:[NSString stringWithFormat:@"%@",resposeObject[@"data"][@"all_price"]]];
                      [_payBtn SettitleL:@"已结笔数" contentL:[NSString stringWithFormat:@"%@",resposeObject[@"data"][@"y_price"]]];
-                     [_unpayBtn SettitleL:@"未接笔数" contentL:[NSString stringWithFormat:@"%@",resposeObject[@"data"][@"n_price"]]];
+                     [_unpayBtn SettitleL:@"未结笔数" contentL:[NSString stringWithFormat:@"%@",resposeObject[@"data"][@"n_price"]]];
                  }
                  else{
                      [self showContent:resposeObject[@"msg"]];
@@ -137,7 +137,7 @@
         NSMutableDictionary *dic  = [NSMutableDictionary dictionary];
         [dic setValue:datadic[@"name"] forKey:@"name"];
         [dic setValue:[NSString stringWithFormat:@"联系方式:%@",datadic[@"tel"]] forKey:@"tel"];
-        [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@/%@",datadic[@"name"],datadic[@"store_name"],datadic[@"tel"]] forKey:@"agent"];
+        [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@/%@",datadic[@"agent_name"],datadic[@"store_name"],datadic[@"agent_tel"]] forKey:@"agent"];
 //        NSString *type = @"类型:成交佣金";
 //        if ([datadic[@"broker_type"] integerValue]==2) {
 //            type = @"类型:到访佣金";
@@ -220,6 +220,7 @@
         if (!cell) {
             cell = [[DealCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DealCell"];
         }
+    cell.typeL.frame = CGRectMake(10*SIZE, 60*SIZE, 350*SIZE, 14*SIZE);
     cell.customerL.text = _datasource[indexPath.row][@"name"];
      cell.agentL.text = _datasource[indexPath.row][@"tel"];
     cell.typeL.text = _datasource[indexPath.row][@"agent"];
