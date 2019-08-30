@@ -138,6 +138,7 @@
         [dic setValue:datadic[@"name"] forKey:@"name"];
         [dic setValue:[NSString stringWithFormat:@"联系方式:%@",datadic[@"tel"]] forKey:@"tel"];
         [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@/%@",datadic[@"agent_name"],datadic[@"store_name"],datadic[@"agent_tel"]] forKey:@"agent"];
+        [dic setObject:datadic[@"broker_type"] forKey:@"broker_type"];
 //        NSString *type = @"类型:成交佣金";
 //        if ([datadic[@"broker_type"] integerValue]==2) {
 //            type = @"类型:到访佣金";
@@ -210,25 +211,36 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-        return 100*SIZE;
+    
+        return 120*SIZE;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
 
-        DealCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DealCell"];
-        if (!cell) {
-            cell = [[DealCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DealCell"];
-        }
+    DealCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DealCell"];
+    if (!cell) {
+        cell = [[DealCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DealCell"];
+    }
     cell.typeL.frame = CGRectMake(10*SIZE, 60*SIZE, 350*SIZE, 14*SIZE);
     cell.customerL.text = _datasource[indexPath.row][@"name"];
-     cell.agentL.text = _datasource[indexPath.row][@"tel"];
+    cell.agentL.text = _datasource[indexPath.row][@"tel"];
     cell.typeL.text = _datasource[indexPath.row][@"agent"];
-     cell.houseL.text = _datasource[indexPath.row][@"time"];
+    if ([_datasource[indexPath.row][@"broker_type"] integerValue] == 1) {
+        
+        cell.houseL.text = @"佣金类型：成交佣金";
+    }else if ([_datasource[indexPath.row][@"broker_type"] integerValue] == 2) {
+        
+        cell.houseL.text = @"佣金类型：到访佣金";
+    }else{
+        
+        cell.houseL.text = @"佣金类型：推荐佣金";
+    }
+    cell.timeL.text = _datasource[indexPath.row][@"time"];
 //     cell.timeL.text = _datasource[indexPath.row][@"time"];
 
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
 }
 
 

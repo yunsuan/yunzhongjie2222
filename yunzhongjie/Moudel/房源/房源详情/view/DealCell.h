@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) UILabel *houseL;
 @property (nonatomic , strong) UILabel *timeL;
 
+
 @end
 
 NS_ASSUME_NONNULL_END
