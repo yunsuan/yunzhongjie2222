@@ -116,7 +116,7 @@
                     
                     [alert addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                         
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1371987180?mt=8"]];
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1468640386?mt=8"]];
                         
                     }]];
                     if (![resposeObject[@"data"][@"must"] integerValue]) {
