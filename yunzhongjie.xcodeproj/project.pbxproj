@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C04D7432329F338003188BE /* CustomTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C04D7292329F338003188BE /* CustomTools.m */; };
+		0C04D7442329F338003188BE /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C04D72C2329F338003188BE /* UIView+Extension.m */; };
+		0C04D7452329F338003188BE /* CodeScanTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C04D7302329F338003188BE /* CodeScanTools.m */; };
+		0C04D7462329F338003188BE /* CodeScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C04D7322329F338003188BE /* CodeScanVC.m */; };
+		0C04D7482329F338003188BE /* 相册@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D7362329F338003188BE /* 相册@2x.png */; };
+		0C04D7492329F338003188BE /* 手电@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D7372329F338003188BE /* 手电@3x.png */; };
+		0C04D74A2329F338003188BE /* 手电@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D7382329F338003188BE /* 手电@2x.png */; };
+		0C04D74B2329F338003188BE /* 相册@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D7392329F338003188BE /* 相册@3x.png */; };
+		0C04D74C2329F338003188BE /* scanLine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D73A2329F338003188BE /* scanLine@3x.png */; };
+		0C04D74D2329F338003188BE /* 切换@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D73B2329F338003188BE /* 切换@3x.png */; };
+		0C04D74E2329F338003188BE /* 切换@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D73C2329F338003188BE /* 切换@2x.png */; };
+		0C04D74F2329F338003188BE /* scanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D73D2329F338003188BE /* scanLine@2x.png */; };
+		0C04D7502329F338003188BE /* ring.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D73E2329F338003188BE /* ring.wav */; };
+		0C04D7512329F338003188BE /* 扫描框@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D73F2329F338003188BE /* 扫描框@2x.png */; };
+		0C04D7522329F338003188BE /* 扫描框@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D7402329F338003188BE /* 扫描框@3x.png */; };
+		0C04D7532329F338003188BE /* CodeGenerateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C04D7412329F338003188BE /* CodeGenerateTools.m */; };
 		0C6FA18022B396A000B40A3C /* WorkWorkingAgentManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA17722B396A000B40A3C /* WorkWorkingAgentManageVC.m */; };
 		0C6FA18122B396A000B40A3C /* WorkWaitAgentManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA17A22B396A000B40A3C /* WorkWaitAgentManageVC.m */; };
 		0C6FA18222B396A000B40A3C /* WorkDimissionAgentManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FA17E22B396A000B40A3C /* WorkDimissionAgentManageVC.m */; };
@@ -183,6 +199,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C04D7292329F338003188BE /* CustomTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTools.m; sourceTree = "<group>"; };
+		0C04D72A2329F338003188BE /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		0C04D72B2329F338003188BE /* CustomTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTools.h; sourceTree = "<group>"; };
+		0C04D72C2329F338003188BE /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		0C04D72E2329F338003188BE /* CodeScanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeScanVC.h; sourceTree = "<group>"; };
+		0C04D7302329F338003188BE /* CodeScanTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeScanTools.m; sourceTree = "<group>"; };
+		0C04D7312329F338003188BE /* CodeGenerateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeGenerateTools.h; sourceTree = "<group>"; };
+		0C04D7322329F338003188BE /* CodeScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeScanVC.m; sourceTree = "<group>"; };
+		0C04D7332329F338003188BE /* CodeScanHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeScanHeader.h; sourceTree = "<group>"; };
+		0C04D7362329F338003188BE /* 相册@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相册@2x.png"; sourceTree = "<group>"; };
+		0C04D7372329F338003188BE /* 手电@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手电@3x.png"; sourceTree = "<group>"; };
+		0C04D7382329F338003188BE /* 手电@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手电@2x.png"; sourceTree = "<group>"; };
+		0C04D7392329F338003188BE /* 相册@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相册@3x.png"; sourceTree = "<group>"; };
+		0C04D73A2329F338003188BE /* scanLine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanLine@3x.png"; sourceTree = "<group>"; };
+		0C04D73B2329F338003188BE /* 切换@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "切换@3x.png"; sourceTree = "<group>"; };
+		0C04D73C2329F338003188BE /* 切换@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "切换@2x.png"; sourceTree = "<group>"; };
+		0C04D73D2329F338003188BE /* scanLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanLine@2x.png"; sourceTree = "<group>"; };
+		0C04D73E2329F338003188BE /* ring.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ring.wav; sourceTree = "<group>"; };
+		0C04D73F2329F338003188BE /* 扫描框@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "扫描框@2x.png"; sourceTree = "<group>"; };
+		0C04D7402329F338003188BE /* 扫描框@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "扫描框@3x.png"; sourceTree = "<group>"; };
+		0C04D7412329F338003188BE /* CodeGenerateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeGenerateTools.m; sourceTree = "<group>"; };
+		0C04D7422329F338003188BE /* CodeScanTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeScanTools.h; sourceTree = "<group>"; };
 		0C6FA17622B396A000B40A3C /* WorkWorkingAgentManageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkWorkingAgentManageVC.h; sourceTree = "<group>"; };
 		0C6FA17722B396A000B40A3C /* WorkWorkingAgentManageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkWorkingAgentManageVC.m; sourceTree = "<group>"; };
 		0C6FA17822B396A000B40A3C /* WorkAgentManageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkAgentManageVC.h; sourceTree = "<group>"; };
@@ -523,6 +561,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C04D7272329F338003188BE /* 扫描二维码 */ = {
+			isa = PBXGroup;
+			children = (
+				0C04D7282329F338003188BE /* Tools */,
+				0C04D72D2329F338003188BE /* CodeScan */,
+			);
+			path = "扫描二维码";
+			sourceTree = "<group>";
+		};
+		0C04D7282329F338003188BE /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0C04D7292329F338003188BE /* CustomTools.m */,
+				0C04D72A2329F338003188BE /* UIView+Extension.h */,
+				0C04D72B2329F338003188BE /* CustomTools.h */,
+				0C04D72C2329F338003188BE /* UIView+Extension.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		0C04D72D2329F338003188BE /* CodeScan */ = {
+			isa = PBXGroup;
+			children = (
+				0C04D72E2329F338003188BE /* CodeScanVC.h */,
+				0C04D7302329F338003188BE /* CodeScanTools.m */,
+				0C04D7312329F338003188BE /* CodeGenerateTools.h */,
+				0C04D7322329F338003188BE /* CodeScanVC.m */,
+				0C04D7332329F338003188BE /* CodeScanHeader.h */,
+				0C04D7352329F338003188BE /* resource */,
+				0C04D7412329F338003188BE /* CodeGenerateTools.m */,
+				0C04D7422329F338003188BE /* CodeScanTools.h */,
+			);
+			path = CodeScan;
+			sourceTree = "<group>";
+		};
+		0C04D7352329F338003188BE /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				0C04D7362329F338003188BE /* 相册@2x.png */,
+				0C04D7372329F338003188BE /* 手电@3x.png */,
+				0C04D7382329F338003188BE /* 手电@2x.png */,
+				0C04D7392329F338003188BE /* 相册@3x.png */,
+				0C04D73A2329F338003188BE /* scanLine@3x.png */,
+				0C04D73B2329F338003188BE /* 切换@3x.png */,
+				0C04D73C2329F338003188BE /* 切换@2x.png */,
+				0C04D73D2329F338003188BE /* scanLine@2x.png */,
+				0C04D73E2329F338003188BE /* ring.wav */,
+				0C04D73F2329F338003188BE /* 扫描框@2x.png */,
+				0C04D7402329F338003188BE /* 扫描框@3x.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
 		0C6FA17422B396A000B40A3C /* 经纪人管理 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1465,6 +1556,7 @@
 		10FA5B96229B8B6300A6CB32 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				0C04D7272329F338003188BE /* 扫描二维码 */,
 				10FA5BD5229BC04A00A6CB32 /* 个人资料 */,
 				10FA5BC8229BC04A00A6CB32 /* 推送设置 */,
 				10FA5BBC229BC04A00A6CB32 /* 修改密码 */,
@@ -1754,10 +1846,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C04D74D2329F338003188BE /* 切换@3x.png in Resources */,
 				10FA5B06229B856300A6CB32 /* LaunchScreen.storyboard in Resources */,
 				10FA5B6F229B8B2800A6CB32 /* BDDynamicTreeCell.xib in Resources */,
+				0C04D74E2329F338003188BE /* 切换@2x.png in Resources */,
+				0C04D7512329F338003188BE /* 扫描框@2x.png in Resources */,
+				0C04D7502329F338003188BE /* ring.wav in Resources */,
+				0C04D7522329F338003188BE /* 扫描框@3x.png in Resources */,
+				0C04D74C2329F338003188BE /* scanLine@3x.png in Resources */,
+				0C04D74A2329F338003188BE /* 手电@2x.png in Resources */,
+				0C04D7482329F338003188BE /* 相册@2x.png in Resources */,
 				10FA5B03229B856300A6CB32 /* Assets.xcassets in Resources */,
+				0C04D74F2329F338003188BE /* scanLine@2x.png in Resources */,
+				0C04D7492329F338003188BE /* 手电@3x.png in Resources */,
 				10B8B83422B36A3800CDD004 /* region.json in Resources */,
+				0C04D74B2329F338003188BE /* 相册@3x.png in Resources */,
 				10FA5B01229B856200A6CB32 /* Main.storyboard in Resources */,
 				1038C17F22B107080062C7EF /* icon_date.png in Resources */,
 				10B8B82E22B1F14400CDD004 /* HNTitleView.xib in Resources */,
@@ -1848,6 +1951,7 @@
 				10FA5BAF229B956100A6CB32 /* WorkVC.m in Sources */,
 				0C6FA18A22B3AB0100B40A3C /* WorkWaitConfirmAgentCell.m in Sources */,
 				109565FA229BF217001957DD /* WorkPhoneConfrimFailCell.m in Sources */,
+				0C04D7532329F338003188BE /* CodeGenerateTools.m in Sources */,
 				10FA5BB8229B95BF00A6CB32 /* MessageVC.m in Sources */,
 				10FA5BA7229B8B7A00A6CB32 /* UserModelArchiver.m in Sources */,
 				1038C15F22A650740062C7EF /* DealVC.m in Sources */,
@@ -1877,6 +1981,7 @@
 				10956645229D0A20001957DD /* StoreCountCell.m in Sources */,
 				10FA5B6D229B8B2800A6CB32 /* BDDynamicTreeCell.m in Sources */,
 				0C6FA18222B396A000B40A3C /* WorkDimissionAgentManageVC.m in Sources */,
+				0C04D7432329F338003188BE /* CustomTools.m in Sources */,
 				1038C16822A67E7E0062C7EF /* DealCell.m in Sources */,
 				1095660D229BF217001957DD /* SignListCell.m in Sources */,
 				109565FD229BF217001957DD /* WorkPhoneConfrimWaitDetailVC.m in Sources */,
@@ -1908,6 +2013,7 @@
 				1095661C229CCF6E001957DD /* StoreCell.m in Sources */,
 				10B8B82822B1F14400CDD004 /* WMMenuView.m in Sources */,
 				109565FE229BF217001957DD /* WorkPhoneConfrimWaitVC.m in Sources */,
+				0C04D7442329F338003188BE /* UIView+Extension.m in Sources */,
 				109565FF229BF217001957DD /* WorkPhoneConfrimWaitCell.m in Sources */,
 				0CFDB30722EEA45000F21976 /* RecommendCheckCell.m in Sources */,
 				10956613229BF217001957DD /* WorkRecommendWaitVC.m in Sources */,
@@ -1939,6 +2045,7 @@
 				1095659F229BE7BD001957DD /* TitleRightBtnHeader.m in Sources */,
 				0CC7E8FE22FC090B00AB0E1F /* NewDealRuleCell.m in Sources */,
 				10FA5B7A229B8B2800A6CB32 /* NSArray+GZQArr.m in Sources */,
+				0C04D7462329F338003188BE /* CodeScanVC.m in Sources */,
 				10956642229D09FF001957DD /* StoreMannerCell.m in Sources */,
 				10FA5C03229BC04A00A6CB32 /* FeedbackVC.m in Sources */,
 				10FA5B78229B8B2800A6CB32 /* DateChooseView.m in Sources */,
@@ -1956,6 +2063,7 @@
 				1038C17222A7D3110062C7EF /* CustomerListCell.m in Sources */,
 				0C6FA18022B396A000B40A3C /* WorkWorkingAgentManageVC.m in Sources */,
 				10FA5B77229B8B2800A6CB32 /* DropBtn.m in Sources */,
+				0C04D7452329F338003188BE /* CodeScanTools.m in Sources */,
 				10B8B83722B3E26A00CDD004 /* LevelView.m in Sources */,
 				10B8B82522B1F14400CDD004 /* WMPageController.m in Sources */,
 				10956648229FC742001957DD /* AgentCell.m in Sources */,

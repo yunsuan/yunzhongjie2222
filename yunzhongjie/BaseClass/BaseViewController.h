@@ -136,5 +136,10 @@ typedef NS_OPTIONS(NSUInteger, ConfigState){
 - (UIImage *)thumbnailWithImage:(UIImage *)originalImage size:(CGSize)size;
 
 - (BOOL)validateNumber:(NSString*)number;
+
+- (NSString *)base64EncodeString:(NSString *)string;
+
+- (NSString *)base64DecodeString:(NSString *)string;
+
 @end
 

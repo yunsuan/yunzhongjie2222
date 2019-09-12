@@ -7,10 +7,14 @@
 //
 
 #import "MineVC.h"
+
 #import "PersonalVC.h"
 #import "FeedbackVC.h"
 #import "ChangePassWordVC.h"
 #import "PushSettingVC.h"
+#import "CodeScanVC.h"
+#import "WorkRecommendWaitDetailVC.h"
+
 #import "MineHeader.h"
 #import "MineCell.h"
 
@@ -98,8 +102,8 @@
 
 - (void)initDataSource{
     
-    _imgArr = @[@[@"ic_personaldata",@"ic_opinion",@"ic_focus",@"ic_certification",@"ic_about"]];
-    _titleArr = @[@[@"个人资料",@"修改密码",@"意见反馈",@"推送设置",@"版本信息"]];
+    _imgArr = @[@[@"ic_personaldata",@"scan",@"ic_opinion",@"ic_focus",@"ic_certification",@"ic_about"]];
+    _titleArr = @[@[@"个人资料",@"扫一扫",@"修改密码",@"意见反馈",@"推送设置",@"版本信息"]];
 }
 
 -(void)action_quit
@@ -324,7 +328,8 @@
         cell = [[MineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MineCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (indexPath.section ==0&&indexPath.row ==4) {
+    if (indexPath.section == 0 && indexPath.row == 5) {
+        
         cell.contentL.text = YGJversion;
     }
     cell.titleL.text = _titleArr[indexPath.section][indexPath.row];
@@ -342,26 +347,40 @@
         }
        
         
-        else if (indexPath.row == 1) {
+        else if (indexPath.row == 2) {
             
             ChangePassWordVC *nextVC = [[ChangePassWordVC alloc] init];
             [self.navigationController pushViewController:nextVC animated:YES];
            
-        }else if (indexPath.row == 2){
+        }else if (indexPath.row == 3){
             FeedbackVC *nextVC = [[FeedbackVC alloc] init];
             [self.navigationController pushViewController:nextVC animated:YES];
 
             
-        }else if (indexPath.row == 3) {
+        }else if (indexPath.row == 1){
+            
+            
+            CodeScanVC *nextVC = [[CodeScanVC alloc] init];
+            nextVC.codeScanVCBlock = ^(NSString * _Nonnull str) {
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    WorkRecommendWaitDetailVC *nextVC = [[WorkRecommendWaitDetailVC alloc] initWithString:str];
+                    //                    nextVC.needConfirm = @"1";
+                    [self.navigationController pushViewController:nextVC animated:YES];
+                });
+            };
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }else if (indexPath.row == 4) {
             
             PushSettingVC *nextVC = [[PushSettingVC alloc] init];
             [self.navigationController pushViewController:nextVC animated:YES];
-        }
-        else if (indexPath.row == 3){
             
-
+        }else if (indexPath.row == 5) {
             
-        }else if (indexPath.row == 5){
+            PushSettingVC *nextVC = [[PushSettingVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }else if (indexPath.row == 6){
             
             [self alertControllerWithNsstring:@"退出" And:@"你确认要退出登录吗？" WithCancelBlack:^{
                 
