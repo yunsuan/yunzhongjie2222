@@ -30,7 +30,7 @@
 #import "GZQGifFooter.h"
 #import "UIImageView+WebCache.h"
 
-#define YGJversion @"1.1.0"
+#define YGJversion @"1.1.1"
 #define LOGINENTIFIER @"logIndentifier"
 #define LOGINSUCCESS @"logInSuccessdentifier"
 

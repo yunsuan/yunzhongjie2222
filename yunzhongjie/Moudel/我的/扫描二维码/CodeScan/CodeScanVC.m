@@ -234,11 +234,25 @@
     NSString *str = [self base64DecodeString:scanCode];
     NSLog(@"扫描结果为:%@",scanCode);
     NSLog(@"转码结果为:%@",str);
-    if (self.codeScanVCBlock) {
+    [BaseRequest GET:ClientNeedInfo_URL parameters:@{@"client_id":str} success:^(id  _Nonnull resposeObject) {
         
-        self.codeScanVCBlock(str);
-    }
-    [self.navigationController popViewControllerAnimated:NO];
+        if ([resposeObject[@"code"] integerValue] == 200) {
+            
+            if (self.codeScanVCBlock) {
+                
+                self.codeScanVCBlock(str);
+            }
+            [self.navigationController popViewControllerAnimated:NO];
+        }else{
+            
+            [self showContent:@"你不能处理该信息"];
+            [self.session startRunning];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+        [self showContent:@"你不能处理该信息"];
+        [self.session startRunning];
+    }];
 }
 
 #pragma mark - 开灯或关灯
