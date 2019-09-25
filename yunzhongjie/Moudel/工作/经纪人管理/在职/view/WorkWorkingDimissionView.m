@@ -45,6 +45,13 @@
 - (void)initUI{
     
     
+    if (@available(iOS 13.0, *)) {
+        
+        [self setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
+    } else {
+        // Fallback on earlier versions
+    }
+    
     UIView *alphaView = [[UIView alloc] initWithFrame:self.bounds];
     alphaView.backgroundColor = [UIColor blackColor];
     alphaView.alpha = 0.4;
