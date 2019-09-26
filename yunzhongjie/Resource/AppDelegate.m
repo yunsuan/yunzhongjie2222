@@ -10,6 +10,7 @@
 #import "CYLTabBarControllerConfig.h"
 #import "LoginVC.h"
 #import "GuideVC.h"
+#import "CodeScanVC.h"
 //#import "SystemMessageVC.h"
 //#import "WorkMessageVC.h"
 #import <WebKit/WebKit.h>
@@ -249,6 +250,31 @@
     [self configBugTags];
     [self conifgJpushWithOptions:launchOptions];
     [self configJAnalisties];
+    
+    // 首先判断是否支持3DTouch
+    if(self.window.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
+    {
+        // 创建3DTouch模型
+        UIApplicationShortcutIcon *icon1 = [UIApplicationShortcutIcon iconWithTemplateImageName:@"scan"];
+        // 创建带着有自定义图标item
+        UIMutableApplicationShortcutItem *item1 = [[UIMutableApplicationShortcutItem alloc] initWithType:@"share" localizedTitle:@"扫一扫" localizedSubtitle:@"" icon:icon1 userInfo:nil];
+        [[UIApplication sharedApplication] setShortcutItems:@[item1]];
+    }
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler{
+    
+    NSLog(@"name:%@\ntype:%@", shortcutItem.localizedTitle, shortcutItem.type);
+    // 1.获得shortcutItem的type type就是初始化shortcutItem的时候传入的唯一标识符
+//    NSString *type = shortcutItem.type;
+//
+//    //2.可以通过type来判断点击的是哪一个快捷按钮 并进行每个按钮相应的点击事件
+//    [application.keyWindow.rootViewController.navigationController pushViewController:[[CodeScanVC alloc] init] animated:YES];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"scan" object:nil];
+    
+    
+    CodeScanVC *vc = [[CodeScanVC alloc] init];
+    [((CYLTabBarController *)(self.window.rootViewController)).selectedViewController pushViewController:vc animated:YES];
 }
 
 //配置极光统计
