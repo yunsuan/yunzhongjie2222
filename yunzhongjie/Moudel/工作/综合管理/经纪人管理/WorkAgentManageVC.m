@@ -106,9 +106,10 @@
     if (!cell) {
         
         cell = [[TypeTagCollCell alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width / 3, 40 *SIZE)];
-        cell.titleL.frame = CGRectMake(0, 14 *SIZE, SCREEN_Width / 3, 11 *SIZE);
-        cell.line.frame = CGRectMake(42 *SIZE, 38 *SIZE, 28 *SIZE, 2 *SIZE);
+        
     }
+    cell.titleL.frame = CGRectMake(0, 14 *SIZE, SCREEN_Width / 3, 11 *SIZE);
+    cell.line.frame = CGRectMake(46 *SIZE, 38 *SIZE, 28 *SIZE, 2 *SIZE);
     
     cell.titleL.text = _titleArr[indexPath.item];
     
