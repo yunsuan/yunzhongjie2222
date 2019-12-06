@@ -8,20 +8,26 @@
 
 #import "NewRoomStatisticsVC.h"
 
+#import "BaseHeader.h"
+#import "TitleRightBtnHeader.h"
+
 #import "TypeTagCollCell.h"
 
-@interface NewRoomStatisticsVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
+#import "NewRoomCustomAnalysisCell.h"
+#import "NewRoomSingleChartCell.h"
+#import "NewRoomMutiLineCell.h"
+
+@interface NewRoomStatisticsVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource>
 {
     
     NSArray *_titleArr;
 }
-@property (nonatomic, strong) UITextField *searchBar;
 
 @property (nonatomic, strong) UICollectionView *segmentColl;
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UITableView *table;
 
 @end
 
@@ -81,14 +87,247 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    [_scrollView setContentOffset:CGPointMake(SCREEN_Width * indexPath.item, 0) animated:NO];
+
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    NSInteger index = scrollView.contentOffset.x / SCREEN_Width;
-    [_segmentColl selectItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionLeft];
+    return 4;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    if (section == 2 || section == 1) {
+        
+//        if ([_status isEqualToString:@"1"]) {
+//
+//            return [_dataDic[@"company"] count] > 3? 3:[_dataDic[@"company"] count];
+//        }else if([_status isEqualToString:@"2"]){
+//
+//            return [_monthDic[@"company"] count] > 3? 3:[_monthDic[@"company"] count];
+//        }else{
+//
+//            return [_yearDic[@"company"] count] > 3? 3:[_yearDic[@"company"] count];
+//        }
+        return 3;
+    }
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return UITableViewAutomaticDimension;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    if (section != 0) {
+        
+        TitleRightBtnHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TitleRightBtnHeader"];
+        if (!header) {
+            
+            header = [[TitleRightBtnHeader alloc] initWithReuseIdentifier:@"TitleRightBtnHeader"];
+        }
+        if (section == 2) {
+            
+            header.titleL.text = @"分销公司排行榜";
+            header.addBtn.hidden = YES;
+            
+            header.titleRightBtnHeaderMoreBlock = ^{
+                
+                
+            };
+        }else{
+            
+            header.titleL.text = @"年度趋势图";
+            header.addBtn.hidden = YES;
+            
+//            [header.moreBtn setTitle:[NSString stringWithFormat:@"%@年 >",_year] forState:UIControlStateNormal];
+            header.moreBtn.titleLabel.font = FONT(13 *SIZE);
+            
+            header.titleRightBtnHeaderMoreBlock = ^{
+                
+//                SinglePickView *view = [[SinglePickView alloc] initWithFrame:self.view.frame WithData:self->_yearArr];
+//                view.selectedBlock = ^(NSString *MC, NSString *ID) {
+//
+//                    self->_year = MC;
+//                    [tableView reloadData];
+//                    [self RequestMethod];
+//                };
+//                [self.view addSubview:view];
+//                DateChooseView *view = [[DateChooseView alloc] initWithFrame:self.view.frame];
+//
+//                view.dateblock = ^(NSDate *date) {
+//
+//                    self->_year = [_yearMatter stringFromDate:date];
+//                    [tableView reloadData];
+//                    [self RequestMethod];
+//                };
+//                [self.view addSubview:view];
+            };
+        }
+        
+        return header;
+    }else{
+        
+        BaseHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"BaseHeader"];
+        if (!header) {
+            
+            header = [[BaseHeader alloc] initWithReuseIdentifier:@"BaseHeader"];
+        }
+        
+        if (section == 0) {
+            
+            header.titleL.text = @"客户分析表";
+        }
+       
+        return header;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return SIZE;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    return [[UIView alloc] init];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 2 || indexPath.section == 1) {
+        
+        return UITableViewAutomaticDimension;
+    }
+    return 240 *SIZE;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 2 || indexPath.section == 1) {
+        
+        NewRoomCustomAnalysisCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewRoomCustomAnalysisCell"];
+        if (!cell) {
+            
+            cell = [[NewRoomCustomAnalysisCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewRoomCustomAnalysisCell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+//        if ([_status isEqualToString:@"1"]) {
+//
+//            cell.titleL.text = _dataDic[@"company"][indexPath.row][@"name"];
+//        }else if ([_status isEqualToString:@"2"]) {
+//
+//            cell.titleL.text = _monthDic[@"company"][indexPath.row][@"name"];
+//        }else{
+//
+//            cell.titleL.text = _yearDic[@"company"][indexPath.row][@"name"];
+//        }
+
+        return cell;
+    }else{
+        
+        if (indexPath.section == 0) {
+            
+            NewRoomSingleChartCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewRoomSingleChartCell"];
+            if (!cell) {
+                
+                cell = [[NewRoomSingleChartCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewRoomSingleChartCell"];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+//            cell.singleBarChartView.delegate = self;
+//            cell.channelSingleChartCellBlock = ^(NSInteger index) {
+                
+//                ChannelCustomVC *nextVC = [[ChannelCustomVC alloc] init];
+//                nextVC.index = index;
+//                nextVC.project_id = self->_project_id;
+//                if ([self->_status isEqualToString:@"1"]) {
+//
+//                    nextVC.date = [self->_formatter stringFromDate:[NSDate date]];
+//                }else if ([self->_status isEqualToString:@"2"]){
+//
+//                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//                    [formatter setDateFormat:@"YYYY-MM-01"];
+//                    nextVC.date = [formatter stringFromDate:[NSDate date]];
+//                }
+//                [self.navigationController pushViewController:nextVC animated:YES];
+//            };
+            
+//            if ([_status isEqualToString:@"1"]) {
+//
+//                if (_dataDic.count) {
+//
+//                    cell.dataDic =  _dataDic[@"currentDayCount"];
+//                }else{
+//
+//                    cell.dataDic = @{};
+//                }
+//
+//            }else if ([_status isEqualToString:@"2"]) {
+//
+//                if (_monthDic.count) {
+//
+//                    cell.dataDic =  _monthDic[@"currentMonthCount"];
+//                }else{
+//
+//                    cell.dataDic = @{};
+//                }
+//
+//            }else{
+//
+//                if (_yearDic.count) {
+//
+//                    cell.dataDic = _yearDic[@"totalCount"];
+//                }else{
+//
+//                    cell.dataDic = @{};
+//                }
+//            }
+            
+            return cell;
+        }else{
+            
+            NewRoomMutiLineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewRoomMutiLineCell"];
+            if (!cell) {
+                
+                cell = [[NewRoomMutiLineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewRoomMutiLineCell"];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+//            if ([_status isEqualToString:@"1"]) {
+//
+//                cell.dataDic = _dataDic;
+//            }else if ([_status isEqualToString:@"2"]) {
+//
+//                cell.dataDic = _monthDic;
+//            }else{
+//
+//                cell.dataDic = _yearDic;
+//            }
+            
+            return cell;
+        }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0) {
+        
+//        ChannelCustomVC *nextVC = [[ChannelCustomVC alloc] init];
+//        nextVC.index = 0;
+//        nextVC.project_id = self->_project_id;
+//        if ([self->_status isEqualToString:@"1"]) {
+//
+//            nextVC.date = [self->_formatter stringFromDate:[NSDate date]];
+//        }
+//        [self.navigationController pushViewController:nextVC animated:YES];
+    }
+}
+
 - (void)initUI{
     
     self.navBackgroundView.hidden = NO;
@@ -117,7 +356,15 @@
     [_segmentColl registerClass:[TypeTagCollCell class] forCellWithReuseIdentifier:@"TypeTagCollCell"];
     [self.view addSubview:_segmentColl];
     
-    
+    _table = [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIGATION_BAR_HEIGHT + 41 *SIZE, SCREEN_Width, SCREEN_Height - NAVIGATION_BAR_HEIGHT - 41 *SIZE) style:UITableViewStyleGrouped];
+    //    _table.rowHeight = UITableViewAutomaticDimension;
+    _table.estimatedRowHeight = 100 *SIZE;
+    _table.estimatedSectionHeaderHeight = 100 *SIZE;
+    _table.backgroundColor = self.view.backgroundColor;
+    _table.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _table.delegate = self;
+    _table.dataSource = self;
+    [self.view addSubview:_table];
 }
 
 @end

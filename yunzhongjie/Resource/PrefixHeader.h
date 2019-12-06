@@ -34,6 +34,8 @@
 #define LOGINENTIFIER @"logIndentifier"
 #define LOGINSUCCESS @"logInSuccessdentifier"
 
+#define CLArr @[COLOR(73, 92, 105, 1),COLOR(86, 152, 195, 1),COLOR(142, 178, 201, 1),COLOR(116, 120, 122, 1),COLOR(196, 203, 207, 1),COLOR(134, 157, 157, 1),COLOR(87, 195, 194, 1),COLOR(115, 87, 92, 1),COLOR(249, 236, 195, 1),COLOR(175, 46, 43, 1)]
+
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 #define SS(strongSelf)  __strong __typeof(&*self)strongSelf = self;
