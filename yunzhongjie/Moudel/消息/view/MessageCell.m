@@ -35,6 +35,7 @@
     _nameL.text = [NSString stringWithFormat:@"申请人：%@",dataDic[@"agent_name"]];
     _phoneL.text = [NSString stringWithFormat:@"联系电话：%@",dataDic[@"agent_tel"]];
     
+//    _companyL.text = [NSString stringWithFormat:@"所属门店：%@",dataDic[@""]];
     _infoL.text = [NSString stringWithFormat:@"申请权限：%@",dataDic[@"role"]];
     if ([dataDic[@"is_store_staff"] integerValue] == 1) {
         

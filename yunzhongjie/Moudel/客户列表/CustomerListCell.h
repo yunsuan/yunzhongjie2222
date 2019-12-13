@@ -19,7 +19,7 @@ typedef void(^CustomerListCellAddBlock)(void);
 @property (nonatomic , strong) UILabel *titelL;
 @property (nonatomic , strong) UILabel *nameL;
 @property (nonatomic , strong) UILabel *phoneL;
-//@property (nonatomic , strong) UILabel *infoL;
+@property (nonatomic , strong) UILabel *infoL;
 @property (nonatomic , strong) UILabel *timeL;
 
 @property (nonatomic, strong) UIButton *addBtn;

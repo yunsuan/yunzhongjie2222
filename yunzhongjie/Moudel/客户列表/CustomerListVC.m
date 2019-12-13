@@ -131,6 +131,7 @@
         [dic setValue:datadic[@"name"] forKey:@"name"];
         [dic setValue:datadic[@"is_deal"] forKey:@"is_deal"];
         [dic setValue:[NSString stringWithFormat:@"联系电话:%@", datadic[@"tel"]] forKey:@"tel"];
+        [dic setValue:[NSString stringWithFormat:@"项目名称:%@", datadic[@"project_name"]] forKey:@"project_name"];
         
         if([_type isEqualToString:@"rule_id"]){
             
@@ -183,7 +184,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 95 *SIZE;
+    return 115 *SIZE;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -199,6 +200,7 @@
     cell.titelL.text = _datasource[indexPath.row][@"name"];
     cell.nameL.text = _datasource[indexPath.row][@"tel"];
     cell.phoneL.text = _datasource[indexPath.row][@"agent"];
+    cell.infoL.text = _datasource[indexPath.row][@"project_name"];
     
     cell.customerListCellAddBlock = ^{
         

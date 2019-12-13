@@ -56,8 +56,14 @@
     _timeL.textColor = CLContentLabColor;
     [self addSubview:_timeL];
     
+    _infoL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 90*SIZE, 350*SIZE, 13*SIZE)];
+    //    _timeL.text = @"失效时间：2019.01.01 17:40";
+    _infoL.font = FONT(12);
+    _infoL.textColor = CLContentLabColor;
+    [self addSubview:_infoL];
+    
     _addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _addBtn.frame = CGRectMake(270 *SIZE, 65 *SIZE, 70 *SIZE, 23 *SIZE);
+    _addBtn.frame = CGRectMake(270 *SIZE, 85 *SIZE, 70 *SIZE, 23 *SIZE);
     _addBtn.titleLabel.font = [UIFont systemFontOfSize:14 *SIZE];
     [_addBtn addTarget:self action:@selector(ActionAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     [_addBtn setTitle:@"转成交" forState:UIControlStateNormal];
@@ -67,7 +73,7 @@
     [_addBtn setBackgroundColor:CLBlueBtnColor];
     [self.contentView addSubview:_addBtn];
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 94*SIZE, 360*SIZE, 1*SIZE)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 114*SIZE, 360*SIZE, 1*SIZE)];
     line.backgroundColor = CLBackColor;
     [self.contentView addSubview:line];
     
