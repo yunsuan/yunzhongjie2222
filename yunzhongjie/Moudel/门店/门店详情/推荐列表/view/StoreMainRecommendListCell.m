@@ -1,14 +1,14 @@
 //
-//  CustomerListCell.m
+//  StoreMainRecommendListCell.m
 //  yunzhongjie
 //
-//  Created by xiaoq on 2019/6/5.
+//  Created by 谷治墙 on 2019/12/17.
 //  Copyright © 2019 xiaoq. All rights reserved.
 //
 
-#import "CustomerListCell.h"
+#import "StoreMainRecommendListCell.h"
 
-@implementation CustomerListCell
+@implementation StoreMainRecommendListCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,9 +22,9 @@
 
 - (void)ActionAddBtn:(UIButton *)btn{
     
-    if (self.customerListCellAddBlock) {
+    if (self.storeMainRecommendListCellAddBlock) {
         
-        self.customerListCellAddBlock();
+        self.storeMainRecommendListCellAddBlock();
     }
 }
 
@@ -72,14 +72,14 @@
     _infoL.textColor = CLContentLabColor;
     [self addSubview:_infoL];
     
-    _companyL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 110*SIZE, 350*SIZE, 13*SIZE)];
-    //    _timeL.text = @"失效时间：2019.01.01 17:40";
-    _companyL.font = FONT(12);
-    _companyL.textColor = CLContentLabColor;
-    [self addSubview:_companyL];
+//    _companyL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 90*SIZE, 350*SIZE, 13*SIZE)];
+//    //    _timeL.text = @"失效时间：2019.01.01 17:40";
+//    _companyL.font = FONT(12);
+//    _companyL.textColor = CLContentLabColor;
+//    [self addSubview:_companyL];
     
     _addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _addBtn.frame = CGRectMake(270 *SIZE, 105 *SIZE, 70 *SIZE, 23 *SIZE);
+    _addBtn.frame = CGRectMake(270 *SIZE, 85 *SIZE, 70 *SIZE, 23 *SIZE);
     _addBtn.titleLabel.font = [UIFont systemFontOfSize:14 *SIZE];
     [_addBtn addTarget:self action:@selector(ActionAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     [_addBtn setTitle:@"转成交" forState:UIControlStateNormal];
@@ -89,7 +89,7 @@
     [_addBtn setBackgroundColor:CLBlueBtnColor];
     [self.contentView addSubview:_addBtn];
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 134*SIZE, 360*SIZE, 1*SIZE)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 114*SIZE, 360*SIZE, 1*SIZE)];
     line.backgroundColor = CLBackColor;
     [self.contentView addSubview:line];
     

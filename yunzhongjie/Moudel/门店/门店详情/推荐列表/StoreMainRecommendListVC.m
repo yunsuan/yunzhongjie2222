@@ -1,20 +1,20 @@
 //
-//  CustomerListVC.m
+//  StoreMainRecommendListVC.m
 //  yunzhongjie
 //
-//  Created by xiaoq on 2019/6/5.
+//  Created by 谷治墙 on 2019/12/17.
 //  Copyright © 2019 xiaoq. All rights reserved.
 //
 
-#import "CustomerListVC.h"
+#import "StoreMainRecommendListVC.h"
 
 #import "NewDealVC.h"
 
-#import "CustomerListCell.h"
+#import "StoreMainRecommendListCell.h"
 #import "DropBtn.h"
 #import "DateChooseView.h"
 
-@interface CustomerListVC ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
+@interface StoreMainRecommendListVC ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
     NSMutableArray *_datasource;
     NSMutableArray *_dataArr;
@@ -32,12 +32,9 @@
 @property ( nonatomic , strong ) UIView *maskView;
 @property ( nonatomic , strong ) UIView *tanchuanView;
 
-
-
 @end
 
-@implementation CustomerListVC
-
+@implementation StoreMainRecommendListVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -185,15 +182,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 135 *SIZE;
+    return 115 *SIZE;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    CustomerListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomerListCell"];
+    StoreMainRecommendListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StoreMainRecommendListCell"];
     if (!cell) {
         
-        cell = [[CustomerListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CustomerListCell"];
+        cell = [[StoreMainRecommendListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"StoreMainRecommendListCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -202,16 +199,16 @@
     cell.nameL.text = _datasource[indexPath.row][@"tel"];
     cell.phoneL.text = _datasource[indexPath.row][@"agent"];
     cell.infoL.text = _datasource[indexPath.row][@"project_name"];
-    if (![_dataArr[indexPath.row][@"three_company_name"] isKindOfClass:[NSNull class]]) {
-        
-        cell.companyL.text = [NSString stringWithFormat:@"推荐公司：%@",_dataArr[indexPath.row][@"three_company_name"]];
-    }else if (![_dataArr[indexPath.row][@"two_company_name"] isKindOfClass:[NSNull class]]) {
-        
-        cell.companyL.text = [NSString stringWithFormat:@"推荐公司：%@",_dataArr[indexPath.row][@"two_company_name"]];
-    }else{
-        
-        cell.companyL.text = [NSString stringWithFormat:@"推荐公司：%@",_dataArr[indexPath.row][@"one_company_name"]];
-    }
+//    if (![_dataArr[indexPath.row][@"three_company_name"] isKindOfClass:[NSNull class]]) {
+//
+//        cell.companyL.text = [NSString stringWithFormat:@"推荐公司：%@",_dataArr[indexPath.row][@"three_company_name"]];
+//    }else if (![_dataArr[indexPath.row][@"two_company_name"] isKindOfClass:[NSNull class]]) {
+//
+//        cell.companyL.text = [NSString stringWithFormat:@"推荐公司：%@",_dataArr[indexPath.row][@"two_company_name"]];
+//    }else{
+//
+//        cell.companyL.text = [NSString stringWithFormat:@"推荐公司：%@",_dataArr[indexPath.row][@"one_company_name"]];
+//    }
     switch ([self->_dataArr[indexPath.row][@"current_state"] integerValue]) {
         case 1:
         case 2:
@@ -233,16 +230,16 @@
             break;
     }
     
-    cell.customerListCellAddBlock = ^{
+    cell.storeMainRecommendListCellAddBlock = ^{
         
         NewDealVC *nextVC = [[NewDealVC alloc] initWithDic:self->_dataArr[indexPath.row]];
         nextVC.project_id = self.project_id;
         nextVC.newDealVCBlock = ^{
           
             [self RequestWithPage:@"1"];
-            if (self.customerListVCBlock) {
+            if (self.storeMainRecommendListVCBlock) {
                 
-                self.customerListVCBlock();
+                self.storeMainRecommendListVCBlock();
             }
         };
         [self.navigationController pushViewController:nextVC animated:YES];

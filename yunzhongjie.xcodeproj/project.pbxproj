@@ -100,6 +100,8 @@
 		0C3D4F57236144E0001CB6A9 /* MutiBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D4F52236144E0001CB6A9 /* MutiBarChartView.m */; };
 		0C3D4F58236144E0001CB6A9 /* MutiLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D4F53236144E0001CB6A9 /* MutiLineChartView.m */; };
 		0C3D4F59236144E0001CB6A9 /* SingleBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D4F54236144E0001CB6A9 /* SingleBarChartView.m */; };
+		0C8E693E23A86D1200FF41AA /* StoreMainRecommendListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E693D23A86D1200FF41AA /* StoreMainRecommendListVC.m */; };
+		0C8E694223A86DB000FF41AA /* StoreMainRecommendListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E694123A86DB000FF41AA /* StoreMainRecommendListCell.m */; };
 		0CC7E8F822FBB49500AB0E1F /* NewDealVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC7E8F722FBB49500AB0E1F /* NewDealVC.m */; };
 		0CC7E8FB22FC050900AB0E1F /* NewDealRuleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC7E8FA22FC050900AB0E1F /* NewDealRuleVC.m */; };
 		0CC7E8FE22FC090B00AB0E1F /* NewDealRuleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC7E8FD22FC090B00AB0E1F /* NewDealRuleCell.m */; };
@@ -414,6 +416,10 @@
 		0C3D4F54236144E0001CB6A9 /* SingleBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleBarChartView.m; sourceTree = "<group>"; };
 		0C3D4F55236144E0001CB6A9 /* MutiBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutiBarChartView.h; sourceTree = "<group>"; };
 		0C3D4F56236144E0001CB6A9 /* MutiLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutiLineChartView.h; sourceTree = "<group>"; };
+		0C8E693C23A86D1200FF41AA /* StoreMainRecommendListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreMainRecommendListVC.h; sourceTree = "<group>"; };
+		0C8E693D23A86D1200FF41AA /* StoreMainRecommendListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreMainRecommendListVC.m; sourceTree = "<group>"; };
+		0C8E694023A86DB000FF41AA /* StoreMainRecommendListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreMainRecommendListCell.h; sourceTree = "<group>"; };
+		0C8E694123A86DB000FF41AA /* StoreMainRecommendListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreMainRecommendListCell.m; sourceTree = "<group>"; };
 		0CC7E8F622FBB49500AB0E1F /* NewDealVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewDealVC.h; sourceTree = "<group>"; };
 		0CC7E8F722FBB49500AB0E1F /* NewDealVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewDealVC.m; sourceTree = "<group>"; };
 		0CC7E8F922FC050900AB0E1F /* NewDealRuleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewDealRuleVC.h; sourceTree = "<group>"; };
@@ -801,12 +807,12 @@
 		0C3D4E6E23614488001CB6A9 /* 工作 */ = {
 			isa = PBXGroup;
 			children = (
+				0C3D4F0423614488001CB6A9 /* WorkVC.h */,
 				0C3D4E6F23614488001CB6A9 /* WorkVC.m */,
 				0C3D4E7023614488001CB6A9 /* 租房 */,
 				0C3D4E7D23614488001CB6A9 /* 综合管理 */,
 				0C3D4EA423614488001CB6A9 /* cell */,
 				0C3D4EA723614488001CB6A9 /* 新房 */,
-				0C3D4F0423614488001CB6A9 /* WorkVC.h */,
 				0C3D4F0523614488001CB6A9 /* 二手房 */,
 			);
 			path = "工作";
@@ -1342,6 +1348,25 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		0C8E693B23A86CFE00FF41AA /* 推荐列表 */ = {
+			isa = PBXGroup;
+			children = (
+				0C8E693F23A86D8E00FF41AA /* view */,
+				0C8E693C23A86D1200FF41AA /* StoreMainRecommendListVC.h */,
+				0C8E693D23A86D1200FF41AA /* StoreMainRecommendListVC.m */,
+			);
+			path = "推荐列表";
+			sourceTree = "<group>";
+		};
+		0C8E693F23A86D8E00FF41AA /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C8E694023A86DB000FF41AA /* StoreMainRecommendListCell.h */,
+				0C8E694123A86DB000FF41AA /* StoreMainRecommendListCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		1038C14E22A5159A0062C7EF /* 房源详情 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1569,6 +1594,7 @@
 		10956620229CD802001957DD /* 门店详情 */ = {
 			isa = PBXGroup;
 			children = (
+				0C8E693B23A86CFE00FF41AA /* 推荐列表 */,
 				10B8B83822B3EE0A00CDD004 /* 经纪人详情 */,
 				1095662D229CDBD9001957DD /* view */,
 				10956621229CD826001957DD /* StoreDetailVC.h */,
@@ -2344,6 +2370,7 @@
 				10FA5C09229BC04A00A6CB32 /* PushSettingCell.m in Sources */,
 				10FA5B87229B8B4D00A6CB32 /* CYLTabBarControllerConfig.m in Sources */,
 				1095662C229CD947001957DD /* ChartVC.m in Sources */,
+				0C8E694223A86DB000FF41AA /* StoreMainRecommendListCell.m in Sources */,
 				10956599229BE7BD001957DD /* TitleBaseHeader.m in Sources */,
 				0C3D4F3123614488001CB6A9 /* WorkPhoneConfrimFailVC.m in Sources */,
 				0C3D4F4B23614488001CB6A9 /* SecondRoomHouseCell.m in Sources */,
@@ -2376,6 +2403,7 @@
 				0C3D4E4F23602429001CB6A9 /* ZQDataGridRowViewCollectionView.m in Sources */,
 				0C3D4F4D23614488001CB6A9 /* SecondRoomAuditVC.m in Sources */,
 				10FA5C0B229BC04A00A6CB32 /* MineHeader.m in Sources */,
+				0C8E693E23A86D1200FF41AA /* StoreMainRecommendListVC.m in Sources */,
 				1038C17822AF51970062C7EF /* C_brokerageCell.m in Sources */,
 				10FA5B75229B8B2800A6CB32 /* UITextField+ExtentRange.m in Sources */,
 				10B8B82622B1F14400CDD004 /* WMMenuItem.m in Sources */,

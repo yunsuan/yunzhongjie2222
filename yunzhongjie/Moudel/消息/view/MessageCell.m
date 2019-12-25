@@ -35,14 +35,16 @@
     _nameL.text = [NSString stringWithFormat:@"申请人：%@",dataDic[@"agent_name"]];
     _phoneL.text = [NSString stringWithFormat:@"联系电话：%@",dataDic[@"agent_tel"]];
     
-//    _companyL.text = [NSString stringWithFormat:@"所属门店：%@",dataDic[@""]];
-    _infoL.text = [NSString stringWithFormat:@"申请权限：%@",dataDic[@"role"]];
+    _companyL.text = [NSString stringWithFormat:@"所属门店：%@",dataDic[@"store_name"]];
+    
     if ([dataDic[@"is_store_staff"] integerValue] == 1) {
         
         _isEmL.text = @"是否为本店员工：是";
+        _infoL.text = [NSString stringWithFormat:@"角色：%@",dataDic[@"role_name"]];
     }else{
         
         _isEmL.text = @"是否为本店员工：否";
+        _infoL.text = [NSString stringWithFormat:@"申请权限：%@",dataDic[@"role_type_name"]];
     }
     
     
@@ -72,27 +74,33 @@
     _nameL.font = FONT(12);
     [self addSubview:_nameL];
     
-    _infoL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 70*SIZE, 350*SIZE, 13*SIZE)];
+    _companyL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 70*SIZE, 350*SIZE, 14*SIZE)];
+//    _companyL.text = @"姓名：李想";
+    _companyL.textColor = CLContentLabColor;
+    _companyL.font = FONT(12);
+    [self addSubview:_companyL];
+    
+    _infoL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 90*SIZE, 350*SIZE, 13*SIZE)];
     _infoL.text = @"角色：勘察，带看，签约，过户";
     _infoL.font = FONT(12);
     _infoL.textColor = CLContentLabColor;
     [self addSubview:_infoL];
     
-    _timeL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 110*SIZE, 350*SIZE, 13*SIZE)];
+    _timeL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 130*SIZE, 350*SIZE, 13*SIZE)];
     _timeL.text = @"失效时间：2019.01.01 17:40";
     _timeL.font = FONT(12);
     _timeL.textColor = CLContentLabColor;
     _timeL.numberOfLines = 0;
     [self addSubview:_timeL];
     
-    _isEmL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 90*SIZE, 350*SIZE, 13*SIZE)];
+    _isEmL = [[UILabel alloc]initWithFrame:CGRectMake(10*SIZE, 110*SIZE, 350*SIZE, 13*SIZE)];
     _isEmL.text = @"失效时间：2019.01.01 17:40";
     _isEmL.font = FONT(12);
     _isEmL.textColor = CLContentLabColor;
     _isEmL.numberOfLines = 0;
     [self addSubview:_isEmL];
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 134*SIZE, 360*SIZE, 1*SIZE)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 154*SIZE, 360*SIZE, 1*SIZE)];
     line.backgroundColor = CLBackColor;
     [self.contentView addSubview:line];
     
@@ -105,7 +113,7 @@
 //    [self addSubview:_assistBtn];
     
     _sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _sureBtn.frame = CGRectMake(300*SIZE, 95*SIZE, 50*SIZE, 25*SIZE);
+    _sureBtn.frame = CGRectMake(300*SIZE, 115*SIZE, 50*SIZE, 25*SIZE);
     _sureBtn.backgroundColor = CLLoginBtnColor;
     [_sureBtn setTitle:@"确认" forState:UIControlStateNormal];
     _sureBtn.titleLabel.font = [UIFont systemFontOfSize:12*SIZE];

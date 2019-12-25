@@ -1,8 +1,8 @@
 //
-//  MessageCell.h
+//  StoreMainRecommendListCell.h
 //  yunzhongjie
 //
-//  Created by xiaoq on 2019/6/4.
+//  Created by 谷治墙 on 2019/12/17.
 //  Copyright © 2019 xiaoq. All rights reserved.
 //
 
@@ -10,23 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^MessageCellSureBtnBlock)(NSInteger index);
+typedef void(^StoreMainRecommendListCellAddBlock)(void);
 
-@interface MessageCell : UITableViewCell
+@interface StoreMainRecommendListCell : UITableViewCell
 
-@property (nonatomic, copy) MessageCellSureBtnBlock messageCellSureBtnBlock;
+@property (nonatomic, copy) StoreMainRecommendListCellAddBlock storeMainRecommendListCellAddBlock;
 
 @property (nonatomic , strong) UILabel *titelL;
 @property (nonatomic , strong) UILabel *nameL;
 @property (nonatomic , strong) UILabel *phoneL;
 @property (nonatomic , strong) UILabel *infoL;
 @property (nonatomic , strong) UILabel *timeL;
-@property (nonatomic , strong) UILabel *isEmL;
+@property (nonatomic , strong) UILabel *statusL;
 @property (nonatomic , strong) UILabel *companyL;
-@property (nonatomic , strong) UIButton *assistBtn;
-@property (nonatomic , strong) UIButton *sureBtn;
-
-@property (nonatomic, strong) NSDictionary *dataDic;
+@property (nonatomic, strong) UIButton *addBtn;
 
 @end
 

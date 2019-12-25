@@ -21,7 +21,8 @@ typedef void(^CustomerListCellAddBlock)(void);
 @property (nonatomic , strong) UILabel *phoneL;
 @property (nonatomic , strong) UILabel *infoL;
 @property (nonatomic , strong) UILabel *timeL;
-
+@property (nonatomic , strong) UILabel *statusL;
+@property (nonatomic , strong) UILabel *companyL;
 @property (nonatomic, strong) UIButton *addBtn;
 
 @end
