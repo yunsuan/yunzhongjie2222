@@ -28,11 +28,34 @@
 //    [JANALYTICSService stopLogPageView:NSStringFromClass([self class])];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (@available(iOS 13.0, *)) {
+        
+        [self setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
+    } else {
+        // Fallback on earlier versions
+    }
     self.view.backgroundColor = CLBackColor;//[UIColor whiteColor];
     [self initialBaseViewInterface];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    
+    if (@available(iOS 13.0, *)) {
+        
+        return UIStatusBarStyleDarkContent;
+    } else {
+        // Fallback on earlier versions
+        return UIStatusBarStyleDefault;
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -666,6 +689,21 @@
         i++;
     }
     return res;
+}
+
+#pragma mark -对一个字符串进行base64编码，并返回
+-(NSString *)base64EncodeString:(NSString *)string{
+    //1、先转换成二进制数据
+    NSData *data =[string dataUsingEncoding:NSUTF8StringEncoding];
+    //2、对二进制数据进行base64编码，完成后返回字符串
+    return [data base64EncodedStringWithOptions:0];
+}
+-(NSString *)base64DecodeString:(NSString *)string{
+    //注意：该字符串是base64编码后的字符串
+    //1、转换为二进制数据（完成了解码的过程）
+    NSData *data=[[NSData alloc]initWithBase64EncodedString:string options:0];
+    //2、把二进制数据转换成字符串
+    return [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 @end

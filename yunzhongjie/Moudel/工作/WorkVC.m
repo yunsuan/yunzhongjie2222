@@ -8,9 +8,25 @@
 
 #import "WorkVC.h"
 //#import "PowerMannerger.h"
+//综合管理
 #import "WorkAgentManageVC.h"
+#import "StatisticsReportVC.h"
+//新房
 #import "WorkPhoneConfirmVC.h"
 #import "WorkRecommendVC.h"
+#import "NewRoomStatisticsVC.h"
+//二手房
+#import "SecondRoomHouseVC.h"
+#import "SecondRoomCustomVC.h"
+#import "SecondRoomContractVC.h"
+#import "SecondRoomAuditVC.h"
+//租房
+#import "RentRoomHouseVC.h"
+#import "RentRoomCustomVC.h"
+#import "RentRoomContractVC.h"
+#import "RentRoomAuditVC.h"
+
+#import "BaseHeader.h"
 #import "WorkCell.h"
 
 @interface WorkVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -46,8 +62,8 @@
 //    if ([UserModel defaultModel].agent_company_info_id) {
     
         _imgArr = @[@"laifang",@"ys_find",@"recommended",@"laifang",@"paihao",@"signing_2",@"shoukuan_2",@"audit",@"rotational"];
-        _titleArr = @[@"经纪人管理",@"号码判重",@"新房推荐"];
-    _contentArr = @[@"",@"",@""];
+    _titleArr = @[@[@"经纪人管理",@"统计报表"],@[@"号码判重",@"新房推荐",@"新房统计"],@[@"二手房源",@"二手客源",@"二手合同",@"二手房审核"],@[@"租房房源",@"租房客源",@"租房合同",@"租房审核"]];
+    _contentArr = @[@[@"",@""],@[@"",@"",@""],@[@"",@"",@"",@""],@[@"",@"",@"",@""]];
 //    }
 //    _projectArr = [UserModel defaultModel].project_list;
 //    _showArr = [PowerModel defaultModel].WorkListPower;
@@ -64,7 +80,7 @@
             if ([resposeObject[@"code"] integerValue] == 200) {
 
                 //            [UserModel defaultModel].projectPowerDic = resposeObject[@"data"];
-                self->_contentArr = @[[NSString stringWithFormat:@"待审核%@，在职%@，离职%@",resposeObject[@"data"][@"agent"][@"ex"],resposeObject[@"data"][@"agent"][@"payroll"],resposeObject[@"data"][@"agent"][@"quit"]],[NSString stringWithFormat:@"今日新增%@，累计%@，无效%@",resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"value"]],[NSString stringWithFormat:@"累计%@，到访%@，无效%@",resposeObject[@"data"][@"recommend_count"],resposeObject[@"data"][@"value"],resposeObject[@"data"][@"valueDisabled"]]];
+                self->_contentArr = @[@[[NSString stringWithFormat:@"待审核%@，在职%@，离职%@",resposeObject[@"data"][@"agent"][@"ex"],resposeObject[@"data"][@"agent"][@"payroll"],resposeObject[@"data"][@"agent"][@"quit"]],@""],@[[NSString stringWithFormat:@"今日新增%@，累计%@，无效%@",resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"total"],resposeObject[@"data"][@"tel_check"][@"disabled"]],[NSString stringWithFormat:@"累计%@，到访%@，无效%@",resposeObject[@"data"][@"recommend_count"],resposeObject[@"data"][@"value"],resposeObject[@"data"][@"valueDisabled"]],@""],@[@"",@"",@"",@""],@[@"",@"",@"",@""]];
                 [self->_table reloadData];
 //                [self SetData:resposeObject[@"data"]];
 
@@ -122,11 +138,26 @@
 }
 
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 4;
+}
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+
+    BaseHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"BaseHeader"];
+    if (!header) {
+
+        header = [[BaseHeader alloc] initWithReuseIdentifier:@"BaseHeader"];
+    }
+
+    header.titleL.text = @"权限";
+    return header;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return _titleArr.count;
+    return [_titleArr[section] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -149,7 +180,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell SetImg:_imgArr[indexPath.row] title:_titleArr[indexPath.row] content:_contentArr[indexPath.row]];
+    [cell SetImg:_imgArr[indexPath.row] title:_titleArr[indexPath.section][indexPath.row] content:_contentArr[indexPath.section][indexPath.row]];
 //    if ([_showArr[indexPath.row] integerValue] == 1) {
 //
 //        cell.hidden = NO;
@@ -162,32 +193,85 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 0) {
-//
-//        CallTelegramVC * nextVC = [[CallTelegramVC alloc] initWithProjectId:[UserModel defaultModel].projectinfo[@"project_id"] info_id:[UserModel defaultModel].projectinfo[@"info_id"]];
-//        nextVC.powerDic = [PowerModel defaultModel].telCallPower;
-//        [self.navigationController pushViewController:nextVC animated:YES];
-        WorkAgentManageVC *nextVC = [[WorkAgentManageVC alloc] init];
-        [self.navigationController pushViewController:nextVC animated:YES];
-    }else if (indexPath.row == 1){
+    if (indexPath.section == 0) {
+
+        if (indexPath.row == 0) {
+        //
+        //        CallTelegramVC * nextVC = [[CallTelegramVC alloc] initWithProjectId:[UserModel defaultModel].projectinfo[@"project_id"] info_id:[UserModel defaultModel].projectinfo[@"info_id"]];
+        //        nextVC.powerDic = [PowerModel defaultModel].telCallPower;
+        //        [self.navigationController pushViewController:nextVC animated:YES];
+                WorkAgentManageVC *nextVC = [[WorkAgentManageVC alloc] init];
+                [self.navigationController pushViewController:nextVC animated:YES];
+        }else{
+            
+            StatisticsReportVC *nextVC = [[StatisticsReportVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }
+    }else if (indexPath.section == 1){
         
-        WorkPhoneConfirmVC *nextVC = [[WorkPhoneConfirmVC alloc] init];
-        [self.navigationController pushViewController:nextVC animated:YES];
-    }else if (indexPath.row == 2){
+        if (indexPath.row == 0){
+            
+            WorkPhoneConfirmVC *nextVC = [[WorkPhoneConfirmVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }else if (indexPath.row == 1){
+            
+            WorkRecommendVC *nextVC = [[WorkRecommendVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }else{
+            
+            NewRoomStatisticsVC *nextVC = [[NewRoomStatisticsVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }
+    }else if (indexPath.section == 2){
         
-        WorkRecommendVC *nextVC = [[WorkRecommendVC alloc] init];
-        [self.navigationController pushViewController:nextVC animated:YES];
-    }else if(indexPath.row == 3){
+        if (indexPath.row == 0) {
+            
+            SecondRoomHouseVC *nextVC = [[SecondRoomHouseVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }else if (indexPath.row == 1){
+            
+            SecondRoomCustomVC *nextVC = [[SecondRoomCustomVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }else if (indexPath.row == 2){
+            
+            SecondRoomContractVC *nextVC = [[SecondRoomContractVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }else{
+            
+            SecondRoomAuditVC *nextVC = [[SecondRoomAuditVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }
+    }else{
         
-//        VisitCustomVC *nextVC = [[VisitCustomVC alloc] initWithProjectId:[UserModel defaultModel].projectinfo[@"project_id"] info_id:[UserModel defaultModel].projectinfo[@"info_id"]];
-//        nextVC.powerDic = [PowerModel defaultModel].visitPower;//_powerArr[3];
-//        [self.navigationController pushViewController:nextVC animated:YES];
+        if (indexPath.row == 0) {
+            
+            RentRoomHouseVC *nextVC = [[RentRoomHouseVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }else if (indexPath.row == 1){
+            
+            RentRoomCustomVC *nextVC = [[RentRoomCustomVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }else if (indexPath.row == 2){
+            
+            RentRoomContractVC *nextVC = [[RentRoomContractVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }else{
+            
+            RentRoomAuditVC *nextVC = [[RentRoomAuditVC alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }
     }
-    else{
+//    else if(indexPath.row == 3){
 //
-//        AuditTaskVC *nextVC = [[AuditTaskVC alloc] init];
-//        [self.navigationController pushViewController:nextVC animated:YES];
-    }
+////        VisitCustomVC *nextVC = [[VisitCustomVC alloc] initWithProjectId:[UserModel defaultModel].projectinfo[@"project_id"] info_id:[UserModel defaultModel].projectinfo[@"info_id"]];
+////        nextVC.powerDic = [PowerModel defaultModel].visitPower;//_powerArr[3];
+////        [self.navigationController pushViewController:nextVC animated:YES];
+//    }
+//    else{
+////
+////        AuditTaskVC *nextVC = [[AuditTaskVC alloc] init];
+////        [self.navigationController pushViewController:nextVC animated:YES];
+//    }
 }
 
 - (void)initUI{

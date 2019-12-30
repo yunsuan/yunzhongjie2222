@@ -147,7 +147,7 @@
     
     if ([self->_dataArr[indexPath.row][@"message_type"] integerValue] == 19){
     
-        return 135*SIZE;
+        return 155*SIZE;
     }else{
         
         return 115*SIZE;
@@ -409,7 +409,7 @@
                 
                 UIAlertAction *agree = [UIAlertAction actionWithTitle:@"通过" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     
-                    [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"remark":@"",@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"auth_id"]],@"type":@"1",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
+                    [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"remark":@"",@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"auth_id"]],@"type":@"1",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"role"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
                         
                         if ([resposeObject[@"code"] integerValue] == 200) {
                             
@@ -430,7 +430,7 @@
                     __strong __typeof(&*view)strongView = view;
                     view.workWorkingDimissionViewBlock = ^{
                         
-                        [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"auth_id"]],@"type":@"0",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_type"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
+                        [BaseRequest POST:MiddleAgentEX_URL parameters:@{@"agent_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"agent_id"]],@"store_id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"store_id"]],@"remark":strongView.markTV.text,@"id":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"auth_id"]],@"type":@"0",@"store_type":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"role"]],@"is_store_staff":[NSString stringWithFormat:@"%@",self->_dataArr[indexPath.row][@"is_store_staff"]]} success:^(id resposeObject) {
                             
                             if ([resposeObject[@"code"] integerValue] == 200) {
                                 

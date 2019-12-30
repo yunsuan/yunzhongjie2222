@@ -12,6 +12,7 @@
 #import "StoreCountHeader.h"
 #import "StoreCountCell.h"
 #import "CustomerListVC.h"
+#import "StoreMainRecommendListVC.h"
 
 
 @interface StoreMainVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -224,7 +225,8 @@
         
     }
     
-    CustomerListVC *next_vc = [[CustomerListVC alloc]init];
+    StoreMainRecommendListVC *next_vc = [[StoreMainRecommendListVC alloc]init];
+//    CustomerListVC *next_vc = [[CustomerListVC alloc]init];
     next_vc.urlStr = url;
     next_vc.type = type;
     next_vc.need_id = self.store_id;

@@ -43,19 +43,11 @@
     [super viewDidLoad];
     [self initDataSource];
     [self initUI];
-    
-    // Do any additional setup after loading the view.
+
 }
 
 - (void)initDataSource{
-//    _urlStr =  RecommendCustomerList_URL;
-//    if ([_type isEqualToString:@"1"]) {
-//        _urlStr = VisitCustomerList_URL;
-//    }
-//    if([_type isEqualToString:@"2"])
-//    {
-//        _urlStr = DealCustomerList_URL;
-//    }
+
     _page = @"1";
     _searchStr = @"";
     _dataArr = [@[] mutableCopy];
@@ -89,18 +81,19 @@
                  if ([resposeObject[@"code"] integerValue]==200) {
                      if ([page isEqualToString:@"1"]) {
                          
-                         [_dataArr removeAllObjects];
-                         _datasource = [self SetData:resposeObject[@"data"][@"data"]];
-                         [_table reloadData];
+                         [self->_dataArr removeAllObjects];
+//                         self->_dataArr = [NSMutableArray arrayWithArray:resposeObject[@"data"][@"data"]];
+                         self->_datasource = [self SetData:resposeObject[@"data"][@"data"]];
+                         [self->_table reloadData];
                          [self.table.mj_footer endRefreshing];
                          
                      }
                      else{
                          NSMutableArray *dataarr =resposeObject[@"data"][@"data"];
                          if (dataarr.count>0) {
-                             [_datasource addObjectsFromArray:[self SetData:dataarr]];
+                             [self->_datasource addObjectsFromArray:[self SetData:dataarr]];
                              [self.table.mj_footer endRefreshing];
-                             [_table reloadData];
+                             [self->_table reloadData];
                          }
                          else{
                              [self.table.mj_footer endRefreshingWithNoMoreData];
@@ -133,13 +126,16 @@
     
     NSMutableArray * arr =  [NSMutableArray array];
     for (int i= 0; i<data.count; i++) {
+        
         NSDictionary *datadic  =  data[i];
         NSMutableDictionary *dic  = [NSMutableDictionary dictionary];
         [dic setValue:datadic[@"name"] forKey:@"name"];
+        [dic setValue:datadic[@"is_deal"] forKey:@"is_deal"];
         [dic setValue:[NSString stringWithFormat:@"联系电话:%@", datadic[@"tel"]] forKey:@"tel"];
+        [dic setValue:[NSString stringWithFormat:@"项目名称:%@", datadic[@"project_name"]] forKey:@"project_name"];
         
-        if([_type isEqualToString:@"rule_id"])
-        {
+        if([_type isEqualToString:@"rule_id"]){
+            
             if (datadic[@"store_name"] && ![datadic[@"store_name"] isKindOfClass:[NSNull class]]) {
                 
                 [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@/%@", datadic[@"agent_name"],datadic[@"agent_tel"] ,datadic[@"store_name"]] forKey:@"agent"];
@@ -147,19 +143,18 @@
             
                 [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@", datadic[@"agent_name"],datadic[@"agent_tel"]] forKey:@"agent"];
             }
-        }
-        else{
+        }else{
+            
             [dic setValue:[NSString stringWithFormat:@"推荐人:%@/%@", datadic[@"agent_name"],datadic[@"agent_tel"]] forKey:@"agent"];
         }
 
         if ([_urlStr isEqualToString:StoreRecommendCustomerList_URL] ||[_urlStr isEqualToString:RecommendCustomerList_URL]) {
+            
             [dic setValue:[NSString stringWithFormat:@"推荐时间:%@", datadic[@"create_time"]] forKey:@"time"];
-        }
-        else if ([_urlStr isEqualToString:StoreVisitCustomerList_URL]||[_urlStr isEqualToString:VisitCustomerList_URL])
-        {
+        }else if ([_urlStr isEqualToString:StoreVisitCustomerList_URL]||[_urlStr isEqualToString:VisitCustomerList_URL]){
+            
             [dic setValue:[NSString stringWithFormat:@"到访时间:%@", datadic[@"visit_time"]] forKey:@"time"];
-        }
-        else{
+        }else{
             
             if (datadic[@"subscribe_time"] && ![datadic[@"subscribe_time"] isKindOfClass:[NSNull class]]) {
                 
@@ -169,7 +164,6 @@
                 [dic setValue:[NSString stringWithFormat:@"成交时间:"] forKey:@"time"];
             }
         }
-        
 
         [arr addObject:dic];
     }
@@ -178,6 +172,7 @@
 }
 
 - (void)ActionRightBtn:(UIButton *)btn{
+    
     [self.view addSubview:self.maskView];
     [self.view addSubview:self.tanchuanView];
 }
@@ -189,7 +184,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 95*SIZE;
+    
+    return 135 *SIZE;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -205,10 +201,41 @@
     cell.titelL.text = _datasource[indexPath.row][@"name"];
     cell.nameL.text = _datasource[indexPath.row][@"tel"];
     cell.phoneL.text = _datasource[indexPath.row][@"agent"];
+    cell.infoL.text = _datasource[indexPath.row][@"project_name"];
+    if (![_dataArr[indexPath.row][@"three_company_name"] isKindOfClass:[NSNull class]]) {
+        
+        cell.companyL.text = [NSString stringWithFormat:@"推荐公司：%@",_dataArr[indexPath.row][@"three_company_name"]];
+    }else if (![_dataArr[indexPath.row][@"two_company_name"] isKindOfClass:[NSNull class]]) {
+        
+        cell.companyL.text = [NSString stringWithFormat:@"推荐公司：%@",_dataArr[indexPath.row][@"two_company_name"]];
+    }else{
+        
+        cell.companyL.text = [NSString stringWithFormat:@"推荐公司：%@",_dataArr[indexPath.row][@"one_company_name"]];
+    }
+    switch ([self->_dataArr[indexPath.row][@"current_state"] integerValue]) {
+        case 1:
+        case 2:
+            cell.statusL.text = @"推荐";
+            break;
+        case 3:
+            cell.statusL.text = @"到访";
+            break;
+        case 4:
+            cell.statusL.text = @"排号";
+            break;
+        case 5:
+            cell.statusL.text = @"认购";
+            break;
+        case 6:
+            cell.statusL.text = @"签约";
+            break;
+        default:
+            break;
+    }
     
     cell.customerListCellAddBlock = ^{
         
-        NewDealVC *nextVC = [[NewDealVC alloc] initWithDic:_dataArr[indexPath.row]];
+        NewDealVC *nextVC = [[NewDealVC alloc] initWithDic:self->_dataArr[indexPath.row]];
         nextVC.project_id = self.project_id;
         nextVC.newDealVCBlock = ^{
           
@@ -222,17 +249,11 @@
     };
     if ([_urlStr isEqualToString:VisitCustomerList_URL]) {
         
-        if ([[UserModel defaultModel].butter_project count] && [[UserModel defaultModel].butter_project[0] integerValue] > 0) {
-//
-            if ([_dataArr[indexPath.row][@"current_state"] integerValue] > 2) {
-
-                cell.addBtn.hidden = YES;
-            }else{
-        
-                cell.addBtn.hidden = NO;
-            }
+        if ([_datasource[indexPath.row][@"is_deal"] integerValue] == 1) {
+            
+            cell.addBtn.hidden = NO;
         }else{
-
+            
             cell.addBtn.hidden = YES;
         }
         
@@ -240,21 +261,6 @@
         
         cell.addBtn.hidden = YES;
     }
-//    if (![_datasource[indexPath.row][@"img_url"] isEqualToString:@""]) {
-//        [cell.headerImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",TestBase_Net,_datasource[indexPath.row][@"img_url"]]] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-//            if (error) {
-//                cell.headerImg.image = [UIImage imageNamed:@"project_def"];
-//            }
-//        }];
-//    }
-//    else{
-//        cell.headerImg.image = [UIImage imageNamed:@"project_def"];
-//    }
-//    cell.companyL.text = _datasource[indexPath.row][@"project_name"];
-//    cell.adressL.text = _datasource[indexPath.row][@"adress"];
-//    cell.nameL.text = _datasource[indexPath.row][@"agent"];
-//    cell.timeL.text = _datasource[indexPath.row][@"time"];
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -281,15 +287,17 @@
     _table.dataSource = self;
     [self.view addSubview:_table];
     _table.mj_header = [GZQGifHeader headerWithRefreshingBlock:^{
+        
         self->_page =@"1";
         [self.table.mj_header beginRefreshing];
         [self RequestWithPage:@"1"];
         
     }];
     _table.mj_footer = [GZQGifFooter footerWithRefreshingBlock:^{
+        
         NSInteger page = [self->_page integerValue];
         page++;
-        self->_page = [NSString stringWithFormat:@"%ld",page];
+        self->_page = [NSString stringWithFormat:@"%ld",(long)page];
         [self.table.mj_footer beginRefreshing];
         [self RequestWithPage:self->_page];
     }];
@@ -405,7 +413,8 @@
     DateChooseView *view = [[DateChooseView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
 //    __weak __typeof(&*self)weakSelf = self;
     view.dateblock = ^(NSDate *date) {
-        _startBtn.content.text =[self gettime:date];
+        
+        self->_startBtn.content.text = [self gettime:date];
     };
     [self.view addSubview:view];
 }
@@ -415,7 +424,8 @@
     DateChooseView *view = [[DateChooseView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     //    __weak __typeof(&*self)weakSelf = self;
     view.dateblock = ^(NSDate *date) {
-        _endBtn.content.text =[self gettime:date];
+        
+        self->_endBtn.content.text = [self gettime:date];
     };
     [self.view addSubview:view];
 }

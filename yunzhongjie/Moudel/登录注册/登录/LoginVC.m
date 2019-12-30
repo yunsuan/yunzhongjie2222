@@ -207,8 +207,8 @@
 //    self.line.hidden = YES;
     self.navBackgroundView.hidden = YES;
     
-    _Headerimg = [[UIImageView alloc]initWithFrame:CGRectMake(130*SIZE, 39 *SIZE + NAVIGATION_BAR_HEIGHT, 100*SIZE, 68*SIZE)];
-    _Headerimg.image = [UIImage imageNamed:@"logo_3"];
+    _Headerimg = [[UIImageView alloc]initWithFrame:CGRectMake(130*SIZE, 39 *SIZE + NAVIGATION_BAR_HEIGHT, 100*SIZE, 100*SIZE)];
+    _Headerimg.image = [UIImage imageNamed:@"applogo"];
     [self.view addSubview:_Headerimg];
     
     _AccountTF = [[UITextField alloc]initWithFrame:CGRectMake(22*SIZE, 219*SIZE, 314*SIZE, 15*SIZE)];
