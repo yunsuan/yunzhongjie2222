@@ -133,7 +133,7 @@
     
     _fixdic = [NSMutableDictionary dictionary];
     _formatter = [[NSDateFormatter alloc] init];
-    [_formatter setDateFormat:@"YYYY-MM-dd"];
+    [_formatter setDateFormat:@"yyyy-MM-dd"];
     
     _titleArr = @[@"姓名",@"性别",@"手机号",@"出生日期",@"所在地"];
 //    _contentArr = [NSMutableArray arrayWithArray:@[[UserInfoModel defaultModel].account,[UserInfoModel defaultModel].tel,[UserInfoModel defaultModel].name,[[UserInfoModel defaultModel].sex integerValue] == 1?@"男":[[UserInfoModel defaultModel].sex integerValue] == 2?@"女":@"",[UserInfoModel defaultModel].birth,[UserInfoModel defaultModel].absolute_address,[UserInfoModel defaultModel].slef_desc]];
