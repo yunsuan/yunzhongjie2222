@@ -30,6 +30,8 @@
 @property (nonatomic , strong) NSString *city;
 @property (nonatomic , strong) NSString *district;
 @property (nonatomic , strong) NSString *birth;
+@property (nonatomic , strong) NSMutableArray *tagAllArr;
+@property (nonatomic , strong) NSMutableArray *tagSelectArr;
 //@property (nonatomic , strong) NSString *butter_project;
 
 

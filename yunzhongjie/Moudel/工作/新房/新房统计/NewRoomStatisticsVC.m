@@ -331,7 +331,7 @@
 - (void)initUI{
     
     self.navBackgroundView.hidden = NO;
-    self.titleLabel.text = @"统计报表";
+    self.titleLabel.text = @"新房统计";
 //    self.line.hidden = YES;
     
     //    self.rightBtn.hidden = NO;

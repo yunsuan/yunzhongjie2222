@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SecondRoomContractVC : BaseViewController
-
+//@property (nonatomic, strong) NSString *search;
 @end
 
 NS_ASSUME_NONNULL_END

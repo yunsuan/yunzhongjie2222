@@ -159,7 +159,7 @@ static NSString * leftTableReuserId = @"leftTableReuserId";
                 cell.rightLine.hidden = NO;
             }
             cell.cellModel = self.dataModel.leftTableDataArray[indexPath.row];
-            cell.contentView.backgroundColor = COLOR(18, 184, 246, 1);
+//            cell.contentView.backgroundColor = COLOR(18, 184, 246, 1);
             return cell;
         }
         

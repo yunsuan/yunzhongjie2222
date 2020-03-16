@@ -81,23 +81,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "33424C08-305B-42DF-878B-38548BD8B385"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yunzhongjie/Moudel/&#x95e8;&#x5e97;/&#x95e8;&#x5e97;&#x8be6;&#x60c5;/StoreMainVC.m"
-            timestampString = "582293937.000417"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "-btntouch:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "C16968B0-710F-4F35-BE92-3691564585B4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -194,6 +177,118 @@
             startingLineNumber = "117"
             endingLineNumber = "117"
             landmarkName = "-RequestWithPage:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A66EDDD9-D5B3-4F6A-AAFA-CBBA6712E746"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/&#x81ea;&#x5b9a;&#x4e49;SDK/&#x7b5b;&#x9009;&#x9875;/ChooseVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3CBD353-E769-4A66-8AB3-1013C2C0F1C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/&#x81ea;&#x5b9a;&#x4e49;SDK/&#x7b5b;&#x9009;&#x9875;/ChooseVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-action_right"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A41A53A-9947-45FE-9AA3-8CFFEEF195B3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/&#x81ea;&#x5b9a;&#x4e49;SDK/&#x7b5b;&#x9009;&#x9875;/ChooseVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-initDataSouce"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E8BC310-1C7E-4697-A031-81F27B73CC7B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/Moudel/&#x5de5;&#x4f5c;/&#x4e8c;&#x624b;&#x623f;/&#x4e8c;&#x624b;&#x623f;&#x6e90;/SecondRoomHouseVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "SecondRoomHouseVC"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "222C900F-4788-4DC3-8F57-4DF268AE4ACF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/Moudel/&#x5de5;&#x4f5c;/&#x4e8c;&#x624b;&#x623f;/&#x4e8c;&#x624b;&#x623f;&#x6e90;/&#x52d8;&#x5bdf;&#x7ef4;&#x62a4;&#x8be6;&#x60c5;/MaintainDetailVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1079"
+            endingLineNumber = "1079"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9CBD1B44-C455-4E11-98D1-04776C6AB307"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/Moudel/&#x5de5;&#x4f5c;/&#x4e8c;&#x624b;&#x623f;/&#x4e8c;&#x624b;&#x623f;&#x6e90;/&#x52d8;&#x5bdf;&#x7ef4;&#x62a4;&#x8be6;&#x60c5;/MaintainDetailVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1081"
+            endingLineNumber = "1081"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "75A7F98C-0546-4779-9F5D-BFBF407E51B6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yunzhongjie/Moudel/&#x95e8;&#x5e97;/StoreVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-SetData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

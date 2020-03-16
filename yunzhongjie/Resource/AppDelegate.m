@@ -213,14 +213,18 @@
 //                [allarr addObject:arr[i][@"tag"]];
 //            }
 //            [UserModel defaultModel].tagDic = dic;
-//            [UserModel defaultModel].tagAllArr = allarr;
+    if (![UserModel defaultModel].tagSelectArr) {
+        [UserModel defaultModel].tagAllArr = [@[@"新房",@"二手房",@"租房"] mutableCopy];
+        [UserModel defaultModel].tagSelectArr = [@[@"新房",@"二手房",@"租房"] mutableCopy];
+    }
+      
 //            if (![UserModel defaultModel].tagSelectArr) {
 //                for (NSUInteger i= 0; i<5; i++) {
 //                    [selctarr addObject:arr[i][@"tag"]];
 //                }
-//                [UserModel defaultModel].tagSelectArr = selctarr;
+                
 //            }
-//            [UserModelArchiver archive];
+            [UserModelArchiver archive];
 //        }
 //    } failure:^(NSError *error) {
 //

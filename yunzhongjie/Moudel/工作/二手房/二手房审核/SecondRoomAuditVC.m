@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navBackgroundView.hidden = NO;
+    self.titleLabel.text = @"二手房审核";
     // Do any additional setup after loading the view.
 }
 

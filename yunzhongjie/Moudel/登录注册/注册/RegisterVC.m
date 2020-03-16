@@ -296,7 +296,7 @@
 //        _ProtocolBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //        _ProtocolBtn.frame =  CGRectMake(0, SCREEN_Height-TAB_BAR_MORE-13*SIZE-19*SIZE, 360*SIZE, 13*SIZE);
 //        [_ProtocolBtn setTitle:@"注册/登录即代表同意《易家用户使用协议》" forState: UIControlStateNormal];
-//        [_ProtocolBtn setTitleColor:YJContentLabColor forState:UIControlStateNormal];
+//        [_ProtocolBtn setTitleColor:CLContentLabColor forState:UIControlStateNormal];
 //        _ProtocolBtn.titleLabel.font = [UIFont systemFontOfSize:12*SIZE];
 //        [_ProtocolBtn addTarget:self action:@selector(Protocol) forControlEvents:UIControlEventTouchUpInside];
 //    }

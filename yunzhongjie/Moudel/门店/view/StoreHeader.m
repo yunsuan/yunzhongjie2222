@@ -33,6 +33,7 @@
 //    _storeL.text = @"门店总数：32";
     _storeL.textColor = CLTitleLabColor;
     _storeL.font = FONT(13);
+
     [self addSubview:_storeL];
     
     _agentL = [[UILabel alloc]initWithFrame:CGRectMake(180*SIZE, 5*SIZE, 170*SIZE, 14*SIZE)];

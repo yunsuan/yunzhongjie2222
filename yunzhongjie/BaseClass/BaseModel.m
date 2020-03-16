@@ -50,4 +50,43 @@
     
 }
 
+- (NSString *)description {
+    return [self modelDescription];
+}
+
+- (NSArray<NSString *> *)propertyNames {
+    
+    unsigned int propertyCount = 0;
+    objc_property_t *properties = class_copyPropertyList([self class], &propertyCount);
+    
+    NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:propertyCount];
+    for (int i = 0; i < propertyCount; i++) {
+        objc_property_t property = properties[i];
+        const char *cName = property_getName(property);
+        [results addObject:[NSString stringWithCString:cName encoding:NSUTF8StringEncoding]];
+    }
+    free(properties);
+    
+    return [NSArray arrayWithArray:results];
+}
+
+- (NSString *)modelDescription {
+    
+    NSDictionary *keyAndValues = [self dictionaryWithValuesForKeys:self.propertyNames];
+    NSMutableDictionary *jsonObject = [[NSMutableDictionary alloc] initWithDictionary:keyAndValues];
+    for (NSString *key in keyAndValues) {
+        id value = keyAndValues[key];
+        if (![value isKindOfClass:[NSString class]] &&
+            ![value isKindOfClass:[NSNumber class]] &&
+            ![value isKindOfClass:[NSNull class]]) {
+            NSString *valueDescription = [value description];
+            [jsonObject setValue:valueDescription forKey:key];
+        }
+    }
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonObject options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return [NSString stringWithFormat:@"<%@: %p, %@>", NSStringFromClass([self class]), self, jsonString];
+}
+
 @end

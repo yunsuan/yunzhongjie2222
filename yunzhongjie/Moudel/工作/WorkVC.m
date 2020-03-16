@@ -36,6 +36,7 @@
     NSArray *_imgArr;
     NSArray *_projectArr;
     NSArray *_contentArr;
+    NSArray *_headerArr;
     
     NSArray *_showArr;
     NSMutableArray *_powerArr;
@@ -61,9 +62,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RequestMethod) name:@"dimission" object:nil];
 //    if ([UserModel defaultModel].agent_company_info_id) {
     
-        _imgArr = @[@"laifang",@"ys_find",@"recommended",@"laifang",@"paihao",@"signing_2",@"shoukuan_2",@"audit",@"rotational"];
-    _titleArr = @[@[@"经纪人管理",@"统计报表"],@[@"号码判重",@"新房推荐",@"新房统计"],@[@"二手房源",@"二手客源",@"二手合同",@"二手房审核"],@[@"租房房源",@"租房客源",@"租房合同",@"租房审核"]];
+        _imgArr = @[@[@"laifang",@"ys_find"],@[@"recommended",@"client",@"Clinchadeal"],@[@"maintenance",@"paihao",@"contract"],@[@"rotational"]];
+      _titleArr = @[@[@"经纪人管理",@"统计报表"],@[@"号码判重",@"新房推荐"],@[@"二手房源",@"二手客源",@"二手合同",]];
+//    _titleArr = @[@[@"经纪人管理",@"统计报表"],@[@"号码判重",@"新房推荐",@"新房统计"],@[@"二手房源",@"二手客源",@"二手合同",],@[@"租房房源",@"租房客源",@"租房合同"]];
     _contentArr = @[@[@"",@""],@[@"",@"",@""],@[@"",@"",@"",@""],@[@"",@"",@"",@""]];
+//    _headerArr =@[@"综合管理",@"新房",@"二手房",@"租房"];
+    _headerArr =@[@"综合管理",@"新房",@"二手房"];
+
 //    }
 //    _projectArr = [UserModel defaultModel].project_list;
 //    _showArr = [PowerModel defaultModel].WorkListPower;
@@ -80,7 +85,7 @@
             if ([resposeObject[@"code"] integerValue] == 200) {
 
                 //            [UserModel defaultModel].projectPowerDic = resposeObject[@"data"];
-                self->_contentArr = @[@[[NSString stringWithFormat:@"待审核%@，在职%@，离职%@",resposeObject[@"data"][@"agent"][@"ex"],resposeObject[@"data"][@"agent"][@"payroll"],resposeObject[@"data"][@"agent"][@"quit"]],@""],@[[NSString stringWithFormat:@"今日新增%@，累计%@，无效%@",resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"total"],resposeObject[@"data"][@"tel_check"][@"disabled"]],[NSString stringWithFormat:@"累计%@，到访%@，无效%@",resposeObject[@"data"][@"recommend_count"],resposeObject[@"data"][@"value"],resposeObject[@"data"][@"valueDisabled"]],@""],@[@"",@"",@"",@""],@[@"",@"",@"",@""]];
+                self->_contentArr = @[@[[NSString stringWithFormat:@"待审核%@，在职%@，离职%@",resposeObject[@"data"][@"agent"][@"ex"],resposeObject[@"data"][@"agent"][@"payroll"],resposeObject[@"data"][@"agent"][@"quit"]],@""],@[[NSString stringWithFormat:@"今日新增%@，累计%@，无效%@",resposeObject[@"data"][@"tel_check"][@"value"],resposeObject[@"data"][@"tel_check"][@"total"],resposeObject[@"data"][@"tel_check"][@"disabled"]],[NSString stringWithFormat:@"累计%@，到访%@，无效%@",resposeObject[@"data"][@"recommend_count"],resposeObject[@"data"][@"value"],resposeObject[@"data"][@"valueDisabled"]],@""],@[[NSString stringWithFormat:@"今日勘察%@，累计勘察%@",resposeObject[@"data"][@"house_check"][@"today"],resposeObject[@"data"][@"house_check"][@"total"]],[NSString stringWithFormat:@"今日带看%@，累计带看%@",resposeObject[@"data"][@"house_take"][@"today"],resposeObject[@"data"][@"house_take"][@"total"]],[NSString stringWithFormat:@"今日合同%@，累计合同%@",resposeObject[@"data"][@"house_deal"][@"today"],resposeObject[@"data"][@"house_deal"][@"total"]],@""],@[@"",@"",@"",@""]];
                 [self->_table reloadData];
 //                [self SetData:resposeObject[@"data"]];
 
@@ -99,40 +104,40 @@
 
 - (void)SetData:(NSDictionary *)data{
     
-    //    for (int i = 0; i < _titleArr.count; i++) {
-    //
-    //        [_showArr replaceObjectAtIndex:i withObject:@0];
-    //        [_powerArr replaceObjectAtIndex:i withObject:@{}];
-    //    }
-    //    NSLog(@"%@",data);
-    //    NSArray *arr = data[@"app_operate"];
-    //    for (int i = 0 ; i < arr.count; i++) {
-    //
-    //        for (int j = 0; j < _titleArr.count; j++) {
-    //
-    //            if ([arr[i][@"type"] containsString:_titleArr[j]]) {
-    //
-    //                [_showArr replaceObjectAtIndex:j withObject:@1];
-    //                [_powerArr replaceObjectAtIndex:j withObject:arr[i]];
-    //            }
-    //        }
-    //    }
-    //
-    //    if ([data[@"duty_operate"] integerValue] == 1) {
-    //
-    //        [_showArr replaceObjectAtIndex:9 withObject:@1];
-    //    }
-    //
-    //    if ([data[@"is_butter"] integerValue] == 1) {
-    //
-    //        [_showArr replaceObjectAtIndex:1 withObject:@1];
-    //        [_showArr replaceObjectAtIndex:2 withObject:@1];
-    //    }
-    //
-    //    if ([data[@"person_check"] integerValue] == 1) {
-    //
-    //        [_showArr replaceObjectAtIndex:8 withObject:@1];
-    //    }
+//        for (int i = 0; i < _titleArr.count; i++) {
+//
+//            [_showArr replaceObjectAtIndex:i withObject:@0];
+//            [_powerArr replaceObjectAtIndex:i withObject:@{}];
+//        }
+        NSLog(@"%@",data);
+        NSArray *arr = data[@"app_operate"];
+        for (int i = 0 ; i < arr.count; i++) {
+    
+            for (int j = 0; j < _titleArr.count; j++) {
+    
+                if ([arr[i][@"type"] containsString:_titleArr[j]]) {
+    
+//                    [_showArr replaceObjectAtIndex:j withObject:@1];
+//                    [_powerArr replaceObjectAtIndex:j withObject:arr[i]];
+                }
+            }
+        }
+//
+//        if ([data[@"duty_operate"] integerValue] == 1) {
+//
+//            [_showArr replaceObjectAtIndex:9 withObject:@1];
+//        }
+//
+//        if ([data[@"is_butter"] integerValue] == 1) {
+//
+//            [_showArr replaceObjectAtIndex:1 withObject:@1];
+//            [_showArr replaceObjectAtIndex:2 withObject:@1];
+//        }
+//
+//        if ([data[@"person_check"] integerValue] == 1) {
+//
+//            [_showArr replaceObjectAtIndex:8 withObject:@1];
+//        }
     
     [_table reloadData];
 }
@@ -140,7 +145,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 4;
+    return 3;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -151,7 +156,7 @@
         header = [[BaseHeader alloc] initWithReuseIdentifier:@"BaseHeader"];
     }
 
-    header.titleL.text = @"权限";
+    header.titleL.text =_headerArr[section];
     return header;
 }
 
@@ -180,7 +185,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell SetImg:_imgArr[indexPath.row] title:_titleArr[indexPath.section][indexPath.row] content:_contentArr[indexPath.section][indexPath.row]];
+    [cell SetImg:_imgArr[indexPath.section][indexPath.row] title:_titleArr[indexPath.section][indexPath.row] content:_contentArr[indexPath.section][indexPath.row]];
 //    if ([_showArr[indexPath.row] integerValue] == 1) {
 //
 //        cell.hidden = NO;
@@ -196,10 +201,7 @@
     if (indexPath.section == 0) {
 
         if (indexPath.row == 0) {
-        //
-        //        CallTelegramVC * nextVC = [[CallTelegramVC alloc] initWithProjectId:[UserModel defaultModel].projectinfo[@"project_id"] info_id:[UserModel defaultModel].projectinfo[@"info_id"]];
-        //        nextVC.powerDic = [PowerModel defaultModel].telCallPower;
-        //        [self.navigationController pushViewController:nextVC animated:YES];
+
                 WorkAgentManageVC *nextVC = [[WorkAgentManageVC alloc] init];
                 [self.navigationController pushViewController:nextVC animated:YES];
         }else{
@@ -262,15 +264,18 @@
         }
     }
 //    else if(indexPath.row == 3){
-//
-////        VisitCustomVC *nextVC = [[VisitCustomVC alloc] initWithProjectId:[UserModel defaultModel].projectinfo[@"project_id"] info_id:[UserModel defaultModel].projectinfo[@"info_id"]];
-////        nextVC.powerDic = [PowerModel defaultModel].visitPower;//_powerArr[3];
-////        [self.navigationController pushViewController:nextVC animated:YES];
+//        NSLog(@"1");
+
+//        VisitCustomVC *nextVC = [[VisitCustomVC alloc] initWithProjectId:[UserModel defaultModel].projectinfo[@"project_id"] info_id:[UserModel defaultModel].projectinfo[@"info_id"]];
+//        nextVC.powerDic = [PowerModel defaultModel].visitPower;//_powerArr[3];
+//        [self.navigationController pushViewController:nextVC animated:YES];
 //    }
 //    else{
+//        NSLog(@"1");
+//
 ////
-////        AuditTaskVC *nextVC = [[AuditTaskVC alloc] init];
-////        [self.navigationController pushViewController:nextVC animated:YES];
+//        AuditTaskVC *nextVC = [[AuditTaskVC alloc] init];
+//        [self.navigationController pushViewController:nextVC animated:YES];
 //    }
 }
 

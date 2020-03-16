@@ -12,6 +12,7 @@
 #import "StoreCountHeader.h"
 #import "StoreCountCell.h"
 #import "CustomerListVC.h"
+#import "SecondHandCell.h"
 #import "StoreMainRecommendListVC.h"
 
 
@@ -19,6 +20,8 @@
 {
 //    NSArray *_datasource;
     NSMutableArray *_countArr;
+    NSMutableArray *_secondArr;
+    NSMutableArray *_rentArr;
 }
 
 
@@ -38,6 +41,9 @@
 
 - (void)initDataSource{
         _countArr = [@[@{@"title":@"推荐客户",@"content":@"0"},@{@"title":@"推荐客户",@"content":@"0"},@{@"title":@"推荐客户",@"content":@"0"},@{@"title":@"到访客户",@"content":@"0"},@{@"title":@"到访客户",@"content":@"0"},@{@"title":@"到访客户",@"content":@"0"},@{@"title":@"成交客户",@"content":@"0"},@{@"title":@"成交客户",@"content":@"0"},@{@"title":@"成交客户",@"content":@"0"}] mutableCopy];
+//    _rentArr = [@[@{@"title":@"新增客户",@"content":@"7"},@{@"title":@"新增客户",@"content":@"3"},@{@"title":@"新增客户",@"content":@"2"},@{@"title":@"回访客户",@"content":@"2"},@{@"title":@"回访客户",@"content":@"1"},@{@"title":@"回访客户",@"content":@"1"},@{@"title":@"新增房源",@"content":@"6"},@{@"title":@"新增房源",@"content":@"4"},@{@"title":@"新增房源",@"content":@"0"},@{@"title":@"房源维护",@"content":@"5"},@{@"title":@"房源维护",@"content":@"2"},@{@"title":@"房源维护",@"content":@"1"},@{@"title":@"成交套数",@"content":@"2"},@{@"title":@"成交套数",@"content":@"1"},@{@"title":@"成交套数",@"content":@"1"}] mutableCopy];
+    _secondArr =
+    [@[@{@"title":@"新增客户",@"content":@"0"},@{@"title":@"新增客户",@"content":@"0"},@{@"title":@"新增客户",@"content":@"0"},@{@"title":@"回访客户",@"content":@"0"},@{@"title":@"回访客户",@"content":@"0"},@{@"title":@"回访客户",@"content":@"0"},@{@"title":@"新增房源",@"content":@"0"},@{@"title":@"新增房源",@"content":@"0"},@{@"title":@"新增房源",@"content":@"0"},@{@"title":@"房源维护",@"content":@"0"},@{@"title":@"房源维护",@"content":@"0"},@{@"title":@"房源维护",@"content":@"0"},@{@"title":@"成交套数",@"content":@"0"},@{@"title":@"成交套数",@"content":@"0"},@{@"title":@"成交套数",@"content":@"0"}] mutableCopy];
 }
 
 -(void)Post{
@@ -64,6 +70,10 @@
 -(void)SetDataBydata:(NSDictionary *)datadic
 {
      _countArr = [@[@{@"title":@"推荐客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"recommend"][@"all"]]},@{@"title":@"推荐客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"recommend"][@"month"]]},@{@"title":@"推荐客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"recommend"][@"day"]]},@{@"title":@"到访客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"visit"][@"all"]]},@{@"title":@"到访客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"visit"][@"month"]]},@{@"title":@"到访客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"visit"][@"day"]]},@{@"title":@"成交客户",@"content": [NSString stringWithFormat:@"%@",datadic[@"deal"][@"all"]]},@{@"title":@"成交客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"deal"][@"month"]]},@{@"title":@"成交客户",@"content": [NSString stringWithFormat:@"%@",datadic[@"deal"][@"day"]]}] mutableCopy];
+    
+    _secondArr =
+    [@[@{@"title":@"新增客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_take"][@"all"]]},@{@"title":@"新增客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_take"][@"month"]]},@{@"title":@"新增客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_take"][@"day"]]},@{@"title":@"回访客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_take_follow"][@"all"]]},@{@"title":@"回访客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_take_follow"][@"month"]]},@{@"title":@"回访客户",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_take_follow"][@"day"]]},@{@"title":@"新增房源",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_house"][@"all"]]},@{@"title":@"新增房源",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_house"][@"month"]]},@{@"title":@"新增房源",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_house"][@"day"]]},@{@"title":@"房源维护",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_survey"][@"all"]]},@{@"title":@"房源维护",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_survey"][@"month"]]},@{@"title":@"房源维护",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_survey"][@"day"]]},@{@"title":@"成交套数",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_deal"][@"all"]]},@{@"title":@"成交套数",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_deal"][@"month"]]},@{@"title":@"成交套数",@"content":[NSString stringWithFormat:@"%@",datadic[@"house_deal"][@"day"]]}] mutableCopy];
+    
     [self.table reloadData];
 }
 
@@ -74,7 +84,7 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -82,8 +92,11 @@
     if (indexPath.section == 0) {
         return 64*SIZE;
     }
-    else{
+    else if(indexPath.section == 1){
         return 210*SIZE;
+    }
+    else{
+        return 350*SIZE;
     }
 }
 
@@ -109,12 +122,14 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    else{
+    else if(indexPath.section ==1) {
+      
         StoreCountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StoreCountCell"];
         if (!cell) {
             cell = [[StoreCountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"StoreCountCell"];
         }
         [cell.btn1 SettitleL:_countArr[0][@"title"] contentL:_countArr[0][@"content"]];
+        
         [cell.btn2 SettitleL:_countArr[1][@"title"] contentL:_countArr[1][@"content"]];
         [cell.btn3 SettitleL:_countArr[2][@"title"] contentL:_countArr[2][@"content"]];
         [cell.btn4 SettitleL:_countArr[3][@"title"] contentL:_countArr[3][@"content"]];
@@ -130,6 +145,58 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
+    }
+    else if(indexPath.section == 2){
+        SecondHandCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SecondHandCell"];
+        if (!cell) {
+            cell = [[SecondHandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SecondHandCell"];
+        }
+        [cell.btn1 SettitleL:_secondArr[0][@"title"] contentL:_secondArr[0][@"content"]];
+        [cell.btn2 SettitleL:_secondArr[1][@"title"] contentL:_secondArr[1][@"content"]];
+        [cell.btn3 SettitleL:_secondArr[2][@"title"] contentL:_secondArr[2][@"content"]];
+        [cell.btn4 SettitleL:_secondArr[3][@"title"] contentL:_secondArr[3][@"content"]];
+        [cell.btn5 SettitleL:_secondArr[4][@"title"] contentL:_secondArr[4][@"content"]];
+        [cell.btn6 SettitleL:_secondArr[5][@"title"] contentL:_secondArr[5][@"content"]];
+        [cell.btn7 SettitleL:_secondArr[6][@"title"] contentL:_secondArr[6][@"content"]];
+        [cell.btn8 SettitleL:_secondArr[7][@"title"] contentL:_secondArr[7][@"content"]];
+        [cell.btn9 SettitleL:_secondArr[8][@"title"] contentL:_secondArr[8][@"content"]];
+         [cell.btn10 SettitleL:_secondArr[9][@"title"] contentL:_secondArr[9][@"content"]];
+         [cell.btn11 SettitleL:_secondArr[10][@"title"] contentL:_secondArr[10][@"content"]];
+         [cell.btn12 SettitleL:_secondArr[11][@"title"] contentL:_secondArr[11][@"content"]];
+        [cell.btn13 SettitleL:_secondArr[12][@"title"] contentL:_secondArr[12][@"content"]];
+        [cell.btn14 SettitleL:_secondArr[13][@"title"] contentL:_secondArr[13][@"content"]];
+        [cell.btn15 SettitleL:_secondArr[14][@"title"] contentL:_secondArr[14][@"content"]];
+        
+        cell.btnblock = ^(NSInteger tag) {
+            NSLog(@"tag = %ld",tag);
+//            [self btntouch:tag];
+        };
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+    else{
+        SecondHandCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SecondHandCell"];
+               if (!cell) {
+                   cell = [[SecondHandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SecondHandCell"];
+               }
+                [cell.btn1 SettitleL:_secondArr[0][@"title"] contentL:_secondArr[0][@"content"]];
+               [cell.btn2 SettitleL:_secondArr[1][@"title"] contentL:_secondArr[1][@"content"]];
+               [cell.btn3 SettitleL:_secondArr[2][@"title"] contentL:_secondArr[2][@"content"]];
+               [cell.btn4 SettitleL:_secondArr[3][@"title"] contentL:_secondArr[3][@"content"]];
+               [cell.btn5 SettitleL:_secondArr[4][@"title"] contentL:_secondArr[4][@"content"]];
+               [cell.btn6 SettitleL:_secondArr[5][@"title"] contentL:_secondArr[5][@"content"]];
+               [cell.btn7 SettitleL:_secondArr[6][@"title"] contentL:_secondArr[6][@"content"]];
+               [cell.btn8 SettitleL:_secondArr[7][@"title"] contentL:_secondArr[7][@"content"]];
+               [cell.btn9 SettitleL:_secondArr[8][@"title"] contentL:_secondArr[8][@"content"]];
+                [cell.btn10 SettitleL:_secondArr[9][@"title"] contentL:_secondArr[9][@"content"]];
+                [cell.btn11 SettitleL:_secondArr[10][@"title"] contentL:_secondArr[10][@"content"]];
+                [cell.btn12 SettitleL:_secondArr[11][@"title"] contentL:_secondArr[11][@"content"]];
+               [cell.btn13 SettitleL:_secondArr[12][@"title"] contentL:_secondArr[12][@"content"]];
+               [cell.btn14 SettitleL:_secondArr[13][@"title"] contentL:_secondArr[13][@"content"]];
+               [cell.btn15 SettitleL:_secondArr[14][@"title"] contentL:_secondArr[14][@"content"]];
+               cell.selectionStyle = UITableViewCellSelectionStyleNone;
+               return cell;
     }
 
 }
@@ -268,8 +335,18 @@
         StoreCountHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"StoreCountHeader"];
         if (!header) {
             header = [[StoreCountHeader alloc]initWithReuseIdentifier: @"StoreCountHeader"];
-        
+
         }
+            if (section == 1) {
+                header.titelL.text = @"新房";
+            }
+            if (section == 2) {
+                header.titelL.text = @"二手房";
+            }
+            if (section == 3) {
+                header.titelL.text = @"租房";
+            }
+        
         
         return header;
     }

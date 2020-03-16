@@ -18,8 +18,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame dataSource:(ZQDataGridComponentModel *)dataSource{
     if (self = [super initWithFrame:frame dataSource:dataSource]) {
-        
-        
         [self.leftHeadView addSubview:self.leftTitleView];
         _line = [[UIView alloc] initWithFrame:CGRectMake(self.dataModel.firstColumnWidth - LYLineViewHeight, 0, LYLineViewHeight, self.dataModel.firstRowHeight -LYLineViewHeight)];
         _line.backgroundColor = [UIColor lightGrayColor];

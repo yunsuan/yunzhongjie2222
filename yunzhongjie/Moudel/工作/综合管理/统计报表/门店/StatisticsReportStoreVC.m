@@ -18,9 +18,10 @@
 {
     
     NSArray *_titleArr;
-    
-    NSMutableArray *_dataArr;
+    NSMutableArray *_datarr;
     NSMutableArray *_rowArr;
+    NSMutableArray *_leftArr;
+    
 }
 @property (nonatomic, strong) myDataGridView *dataGridView;
 
@@ -30,27 +31,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self initDataSource];
     [self initUI];
-//    [self RequestMethod];
+    [self Post];
+}
+
+-(void)Post{
+    [BaseRequest GET:SecondRoomStoreCount_URL parameters:@{@"type":_type} success:^(id resposeObject) {
+        if ([resposeObject[@"code"] integerValue] == 200) {
+            NSLog(@"%@",resposeObject);
+
+            _datarr = resposeObject[@"data"];
+            [_dataGridView reloadData:[self getDataModel]];
+        }
+        else{
+            [self showContent:resposeObject[@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        [self showContent:@"网络错误！"];
+    }];
+    
+    
 }
 
 - (void)initDataSource{
     
     
-    _titleArr = @[@"推荐",@"到访",@"成交",@"二手进客",@"二手带看",@"二手勘察",@"二手签单",@"租房进客",@"租房带看",@"租房勘察",@"租房签单"];
-    _dataArr = [@[] mutableCopy];
+    _titleArr = @[@"推荐",@"到访",@"成交",@"二手带看",@"二手勘察",@"二手签单",@"租房带看",@"租房勘察",@"租房签单"];
+//    _leftArr = [@[@"乐美有家1号门店",@"乐美有家2号门店",@"乐美有家3号门店",@"乐美有家4号门店"] mutableCopy];
+    _datarr = [@[] mutableCopy];
     _rowArr = [@[] mutableCopy];
-    for (int i = 0; i < _titleArr.count; i++) {
-        
-        NSMutableArray *tempArr = [@[] mutableCopy];
+//    _dataArr =
+//    for (int i = 0; i < _titleArr.count; i++) {
+//
+//        NSMutableArray *tempArr = [@[] mutableCopy];
 //        for (int j = 0; j < 8; j++) {
 //
-//            [tempArr addObject:@"0"];
+//            [tempArr addObject:[NSString stringWithFormat:@"%i",i*10+j]];
 //        }
-        [_dataArr addObject:tempArr];
-    }
+//        [_datarr addObject:tempArr];
+//    }
+//    NSLog(@"%@",_datarr);
 }
 
 #pragma -mark h获取右侧头部的数据 其类型与右侧的 大cell 类型一致亦可自定义item
@@ -83,13 +104,13 @@
     NSMutableArray * array = [NSMutableArray new];
     for (int i = 0; i < _titleArr.count; i++) {
         
-        if (i > 4) {
-            
-            [array addObject:@(140 *SIZE)];
-        }else{
-            
+//        if (i > 4) {
+//
+//            [array addObject:@(140 *SIZE)];
+//        }else{
+//
             [array addObject:@(70 *SIZE)];
-        }
+//        }
     }
     return array;
 }
@@ -97,17 +118,70 @@
 #pragma -mark 获取每一行中collocationView item 的小数据源
 - (NSArray *)getItemModelArrayWithRowNum:(NSInteger)rowNum{
     NSMutableArray * itemArray = [[NSMutableArray alloc]init];
+//    itemArray = _datarr[rowNum][@"info"];
+    
     for ( int i = 0; i < _titleArr.count; i++) {
-        
-        if ([_dataArr[i] count]) {
-            
             ZQDataGridLeftTableViewCellModel * itemModel = [[ZQDataGridLeftTableViewCellModel alloc]init];
             itemModel.numOfColumnNumIndex = i;
             itemModel.numOfRowIndex = rowNum;
-            itemModel.titleString = _dataArr[i][rowNum];
-            [itemArray addObject:itemModel];
+        switch (i) {
+            case 0:
+            {
+                itemModel.titleString = [NSString stringWithFormat:@"%@",_datarr[rowNum][@"info"][@"recommend"]] ;
+            }
+                break;
+            case 1:
+            {
+                itemModel.titleString =[NSString stringWithFormat:@"%@",_datarr[rowNum][@"info"][@"visit"]] ;
+                
+            }
+                    break;
+            case 2:
+            {
+                itemModel.titleString = [NSString stringWithFormat:@"%@",_datarr[rowNum][@"info"][@"deal"]] ;
+                
+            }
+                    break;
+            case 3:
+            {
+                itemModel.titleString =[NSString stringWithFormat:@"%@",_datarr[rowNum][@"info"][@"house_take"]] ;
+            }
+                    break;
+            case 4:
+            {
+                itemModel.titleString =[NSString stringWithFormat:@"%@",_datarr[rowNum][@"info"][@"house_survey"]] ;
+            }
+                    break;
+            case 5:
+            {
+                itemModel.titleString =[NSString stringWithFormat:@"%@",_datarr[rowNum][@"info"][@"house_deal"]] ;
+            }
+                    break;
+            case 6:
+            {
+                itemModel.titleString =[NSString stringWithFormat:@"%@",_datarr[rowNum][@"info"][@"rent_survey"]] ;
+            }
+                    break;
+                case 7:
+                {
+                    itemModel.titleString =[NSString stringWithFormat:@"%@",_datarr[rowNum][@"info"][@"rent_take"]] ;
+                }
+                    break;
+                case 8:
+                {
+                    itemModel.titleString =[NSString stringWithFormat:@"%@",_datarr[rowNum][@"info"][@"rent_deal"]] ;
+                }
+                break;
+                
+            default:
+            {
+                itemModel.titleString =@"0";
+            }
+                break;
         }
+        [itemArray addObject:itemModel];
     }
+    
     return itemArray;
 }
 
@@ -116,8 +190,9 @@
     
     ZQDataGridComponentModel * dataModel = [[ZQDataGridComponentModel alloc]init];
     dataModel.firstRowHeight = 40.0f;
-    dataModel.firstColumnWidth = 80.0f;
-    dataModel.rowHeight = 70.0f;
+    //首行宽度
+    dataModel.firstColumnWidth = 120.0f;
+    dataModel.rowHeight = 40.0f;
     // 获取表格右侧表头数据
     ZQDataGridRightTableViewCellModel * headModel = [self getrightHeadModel];
     
@@ -129,16 +204,14 @@
     NSMutableArray * rowDataArray = [[NSMutableArray alloc]init];
     
     // 根据房间数构造需要的行数据
-    for (int i = 0 ; i < _rowArr.count; i++) {
+    for (int i = 0 ; i <_datarr.count; i++) {
         // 左侧列表数据
         ZQDataGridLeftTableViewCellModel * model = [[ZQDataGridLeftTableViewCellModel alloc]init];
-        if (i == 7) {
+       
             
-            model.titleString = @"汇总";
-        }else{
-            
-            model.titleString = [NSString stringWithFormat:@"%d",i + 1];
-        }
+        model.titleString =_datarr[i][@"store_name"] ;
+        model.backgroundColor = COLOR(250, 250, 250, 1);
+      
         [leftTableDataArray addObject:model];
       
         

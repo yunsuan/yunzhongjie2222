@@ -27,7 +27,7 @@ static CGFloat labelHeight = 40;
 
 @property (nonatomic , strong)NSMutableArray *myChannelArr;
 @property (nonatomic , strong)NSMutableArray *recommendChannelArr;
-// iOS6 之后不用自己手动回收 
+// iOS6 之后不用自己手动回收
 @property (nonatomic , strong)dispatch_queue_t queue;
 @property (nonatomic , strong)NSMutableArray *datas;
 @property (nonatomic , assign)CGFloat labelWidth;
@@ -49,11 +49,11 @@ static CGFloat labelHeight = 40;
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        _myChannelArr =
-//        _recommendChannelArr =
-//        for (int i=0; i<_myChannelArr.count; i++) {
-//            [_recommendChannelArr removeObject:_myChannelArr[i]];
-//        }
+        _myChannelArr =  [UserModel defaultModel].tagSelectArr;
+        _recommendChannelArr = [NSMutableArray arrayWithArray:[UserModel defaultModel].tagAllArr];
+        for (int i=0; i<_myChannelArr.count; i++) {
+            [_recommendChannelArr removeObject:_myChannelArr[i]];
+        }
         [self setUI];
         _labelWidth = (self.frame.size.width - itemSpace *(column + 1))/column;
         _datas = [NSMutableArray array];
@@ -155,7 +155,7 @@ static CGFloat labelHeight = 40;
                             [arr addObject:model.name];
                         }
                     }
-//                    [UserModel defaultModel].tagSelectArr = arr;
+                    [UserModel defaultModel].tagSelectArr = arr;
                     [UserModelArchiver archive];
                     self.clickblook(btn.model.tag);
                     [self hide];
@@ -199,7 +199,7 @@ static CGFloat labelHeight = 40;
             [arr addObject:model.name];
         }
     }
-//    [UserModel defaultModel].tagSelectArr = arr;
+    [UserModel defaultModel].tagSelectArr = arr;
     [UserModelArchiver archive];
     self.hideblook();
     [UIView animateWithDuration:0.25 animations:^{

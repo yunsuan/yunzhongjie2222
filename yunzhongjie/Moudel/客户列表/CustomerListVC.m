@@ -18,7 +18,6 @@
 {
     NSMutableArray *_datasource;
     NSMutableArray *_dataArr;
-//    NSString *_urlStr;
     NSString *_searchStr;
     NSString *_page;
 }

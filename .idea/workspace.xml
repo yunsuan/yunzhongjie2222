@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4fb14cf6-67d5-418f-a850-c1de08ba170d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/门店详情/view/ChartMulBarCell.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/门店详情/view/ChartMulBarCell.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/门店详情/view/SecondHandCell.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/门店详情/view/SecondHandCell.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/add_6.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/add_6.imageset/add_3@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/close_sdk_login_14x14_.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/close_sdk_login_14x14_.imageset/close_sdk_login_14x14_@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/close_sdk_login_14x14_.imageset/close_sdk_login_14x14_@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/closeicon_repost_18x18_.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/closeicon_repost_18x18_.imageset/closeicon_repost_18x18_@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/closeicon_repost_18x18_.imageset/closeicon_repost_18x18_@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/default.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/default.imageset/default@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yunzhongjie/Resource/Assets.xcassets/房源/default.imageset/default@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pods/YBImageBrowser/YBImageBrowser/AuxiliaryView/YBImageBrowserProgressView.m" beforeDir="false" afterPath="$PROJECT_DIR$/Pods/YBImageBrowser/YBImageBrowser/AuxiliaryView/YBImageBrowserProgressView.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie.xcworkspace/xcuserdata/xiaoq.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie.xcworkspace/xcuserdata/xiaoq.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie.xcworkspace/xcuserdata/xiaoq.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie.xcworkspace/xcuserdata/xiaoq.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/WorkVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/WorkVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手合同/SecondRoomContractVC.h" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手合同/SecondRoomContractVC.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手合同/SecondRoomContractVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手合同/SecondRoomContractVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手客源/SecondRoomCustomVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手客源/SecondRoomCustomVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手房审核/SecondRoomAuditVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手房审核/SecondRoomAuditVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手房源/SecondRoomHouseVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手房源/SecondRoomHouseVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手房源/view/SecondRoomHouseCell.h" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手房源/view/SecondRoomHouseCell.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手房源/view/SecondRoomHouseCell.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/二手房/二手房源/view/SecondRoomHouseCell.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/新房/号码判重/不可带看/view/WorkPhoneConfrimFailCell.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/新房/号码判重/不可带看/view/WorkPhoneConfrimFailCell.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/新房/推荐客户/待确认/确认到访/view/AuthenCollCell.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/新房/推荐客户/待确认/确认到访/view/AuthenCollCell.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/新房/新房统计/NewRoomStatisticsVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/新房/新房统计/NewRoomStatisticsVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/租房/租房合同/RentRoomContractVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/租房/租房合同/RentRoomContractVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/租房/租房审核/RentRoomAuditVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/租房/租房审核/RentRoomAuditVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/租房/租房客源/RentRoomCustomVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/租房/租房客源/RentRoomCustomVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/租房/租房房源/RentRoomHouseVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/租房/租房房源/RentRoomHouseVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/综合管理/统计报表/门店/StatisticsReportStoreVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/工作/综合管理/统计报表/门店/StatisticsReportStoreVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/房源/HouseListVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/房源/HouseListVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/房源/HouseVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/房源/HouseVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/登录注册/注册/RegisterVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/登录注册/注册/RegisterVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/view/StoreHeader.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/view/StoreHeader.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/门店详情/ChartVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/门店详情/ChartVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/门店详情/StoreMainVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/门店详情/StoreMainVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/门店详情/经纪人详情/AgentDetailVC.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Moudel/门店/门店详情/经纪人详情/AgentDetailVC.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/Resource/AppDelegate.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/Resource/AppDelegate.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/UserModel/UserModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/UserModel/UserModel.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yunzhongjie/第三方SDK/HNChannelView/HNChannelView.m" beforeDir="false" afterPath="$PROJECT_DIR$/yunzhongjie/第三方SDK/HNChannelView/HNChannelView.m" afterDir="false" />
+    </list>
+    <ignored path="$USER_HOME$/Library/Developer/Xcode/DerivedData/yunzhongjie-ffxjedjqeyrpnzgspsptlijsjfmn/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1129028303">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.3" value="2" />
+          <entry key="project.opened" value="5" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yunzhongjie/Moudel/客户列表/CustomerListCell.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yunzhongjie/yunzhongjie.entitlements">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/yunzhongjie/Moudel/客户列表/CustomerListCell.h">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="20" />
+    <option name="width" value="1260" />
+    <option name="height" value="726" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="Pods" type="1d218c8b:XcodeProjectNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="Pods" type="1d218c8b:XcodeProjectNode" />
+              <item name="Pods" type="fcab9f18:XcodeViewNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Cidr.FilesView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4fb14cf6-67d5-418f-a850-c1de08ba170d" name="Default Changelist" comment="" />
+      <created>1577849808420</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1577849808420</updated>
+      <workItem from="1577849814964" duration="48000" />
+      <workItem from="1577849911342" duration="116000" />
+      <workItem from="1577850037827" duration="138000" />
+      <workItem from="1577850199711" duration="35000" />
+      <workItem from="1577850315980" duration="24000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="361000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="20" y="0" width="1260" height="726" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26600984" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.3280757" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32334384" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.32922825" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/yunzhongjie/Moudel/客户列表/CustomerListCell.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yunzhongjie/yunzhongjie.entitlements">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Podfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yunzhongjie/Moudel/客户列表/NewDealRuleCell.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yunzhongjie/Moudel/客户列表/CustomerListCell.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+  </component>
+</project>

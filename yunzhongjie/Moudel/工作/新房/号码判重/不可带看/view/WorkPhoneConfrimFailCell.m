@@ -67,7 +67,7 @@
     [self.contentView addSubview:_projectL];
     
     //    _confirmL = [[UILabel alloc] initWithFrame:CGRectMake(10 *SIZE, 81 *SIZE, 150 *SIZE, 10 *SIZE)];
-    //    _confirmL.textColor = YJ86Color;
+    //    _confirmL.textColor = CL86Color;
     //    _confirmL.font = [UIFont systemFontOfSize:11 *SIZE];
     //    [self.contentView addSubview:_confirmL];
     

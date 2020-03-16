@@ -9,6 +9,7 @@
 #import "MessageVC.h"
 #import "MessageCell.h"
 #import "MessageAuditCell.h"
+#import "MessageSHCell.h"
 
 #import "SignSelectWorkerView.h"
 #import "WorkWorkingDimissionView.h"
@@ -18,6 +19,7 @@
 #import "WorkPhoneConfrimWaitDetailVC.h"
 #import "WorkRecommendWaitDetailVC.h"
 #import "WorkCompleteCustomVC1.h"
+#import "ContractDetailVC.h"
 
 @interface MessageVC ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -117,6 +119,24 @@
     
 }
 
+-(void)action_examine:(NSString *)log_id
+{
+    [BaseRequest POST:SecondRoomdealPass_URL parameters:@{@"log_id":log_id} success:^(id resposeObject) {
+        NSLog(@"%@",resposeObject);
+        if ([resposeObject[@"code"] integerValue]==200) {
+            [self showContent:@"审核成功"];
+            [self RequestMethod];
+        }
+        else
+        {
+            [self showContent:resposeObject[@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+        [self showContent:@"网络错误！"];
+    }];
+}
+
 - (void)SetUnComfirmArr:(NSArray *)data{
     
     for (int i = 0; i < data.count; i++) {
@@ -148,7 +168,11 @@
     if ([self->_dataArr[indexPath.row][@"message_type"] integerValue] == 19){
     
         return 155*SIZE;
-    }else{
+    }else if ([self->_dataArr[indexPath.row][@"message_type"] integerValue] == 21)
+    {
+        return UITableViewAutomaticDimension;
+    }
+    else{
         
         return 115*SIZE;
     }
@@ -461,7 +485,49 @@
         };
         
         return cell;
-    }else{
+    }
+#pragma mark    ---------  二手房合同审核消息  ---------
+    else if([self->_dataArr[indexPath.row][@"message_type"] integerValue] == 21)
+    {
+     
+        MessageSHCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageSHCell"];
+        if (!cell) {
+            
+            cell = [[MessageSHCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MessageSHCell"];
+        }
+       cell.selectionStyle = UITableViewCellSelectionStyleNone;
+               
+        cell.dataDic = _dataArr[indexPath.row];
+               
+        cell.sureBtnBlock = ^(NSInteger index) {
+          UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"审核" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+                         
+                         UIAlertAction *agree = [UIAlertAction actionWithTitle:@"通过" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+                             [self action_examine:_dataArr[indexPath.row][@"log_id"]];
+                         }];
+                         
+                         UIAlertAction *refuse = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                             
+                            
+                         }];
+                         
+                         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                             
+                         }];
+                         
+                         [alert addAction:agree];
+                         [alert addAction:refuse];
+                         [alert addAction:cancel];
+                         [self.navigationController presentViewController:alert animated:YES completion:^{
+                             
+                         }];
+        };
+        return cell;
+        
+    }
+    
+    else{
         
         MessageAuditCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageAuditCell"];
         if (!cell) {
@@ -796,8 +862,15 @@
         }
         
         [self.navigationController pushViewController:nextVC animated:YES];
-    }else{
+    }else if([_dataArr[indexPath.row][@"message_type"] integerValue]==21){
         
+        ContractDetailVC *next_vc = [[ContractDetailVC alloc]init];
+        next_vc.deal_id = _dataArr[indexPath.row][@"deal_id"];
+        next_vc.state =1;
+        next_vc.log_id = _dataArr[indexPath.row][@"log_id"];
+        [self.navigationController pushViewController:next_vc animated:YES];
+    }else
+    {
         
     }
 }

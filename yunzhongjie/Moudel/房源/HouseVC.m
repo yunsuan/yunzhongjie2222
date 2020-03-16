@@ -11,17 +11,21 @@
 #import "HouseListVC.h"
 
 
-@interface HouseVC ()
+@interface HouseVC ()<WMPageControllerDataSource,WMPageControllerDelegate>
 {
 //    NSMutableArray *_datasource;
 //    NSString *_page;
 //    NSString *_search;
-    NSArray *_items;
+NSMutableArray *_titlearr;
+     
 }
 
 
-@property (nonatomic, strong) UITableView *table;
-//@property (nonatomic , strong) UISearchBar *searchbar;
+@property (nonatomic , strong) UIView *headerView;
+
+@property (nonatomic, strong) UIButton *cityBtn;
+
+@property (nonatomic, strong) UIView *searchBar;
 
 @property (nonatomic, strong) UIButton *moreBtn;
 
@@ -31,19 +35,22 @@
 @implementation HouseVC
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
     [self initDataSource];
     [self initUI];
-    // Do any additional setup after loading the view.
 }
 
 - (void)initDataSource{
-    _items = @[@"新房",@"二手房",@"租房"];
-//    _search = @"";
-//    _page = @"1";
-//    [self RequestWithPage:_page];
-    [self ReloadType];
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ActionGoto:) name:@"goto" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ReloadType) name:@"reloadType" object:nil];
+    
+    _titlearr = [UserModel defaultModel].tagSelectArr;
+    
+  
+    
 }
 
 - (void)ReloadType{
@@ -51,19 +58,30 @@
     [self pageController:self willEnterViewController:self.childViewControllers[0] withInfo:@{}];
 }
 
+
+
+#pragma mark -- Method
+
+- (void)ActionGoto:(NSNotification *)noti{
+    
+    [self.navigationController.tabBarController setSelectedIndex:1];
+}
+
+
+
 - (void)ActionMoreBtn:(UIButton *)btn{
     
     HNChannelView *view = [[HNChannelView alloc]initWithFrame:CGRectMake(0, SCREEN_Height, SCREEN_Width, SCREEN_Height -STATUS_BAR_HEIGHT)];
     
     view.clickblook = ^(int selctnum) {
-//        _titlearr = [UserModel defaultModel].tagSelectArr;
+        _titlearr = [UserModel defaultModel].tagSelectArr;
         
         self.selectIndex = selctnum;
         [self reloadData];
     };
     
     view.hideblook = ^{
-//        _titlearr = [UserModel defaultModel].tagSelectArr;
+        _titlearr = [UserModel defaultModel].tagSelectArr;
         //        self.selectIndex = 0;
         [self reloadData];
         [self forceLayoutSubviews];
@@ -74,6 +92,8 @@
 
 
 
+
+
 - (void)initUI{
     
     self.delegate = self;
@@ -81,7 +101,7 @@
     self.automaticallyCalculatesItemWidths = YES;
     self.itemMargin = 10;
     self.titleColorSelected = [UIColor colorWithRed:27.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1];
-    self.menuView.backgroundColor   = [UIColor whiteColor];
+    self.menuView.backgroundColor   = [UIColor colorWithRed:244.0/255.0 green:244.0/255.0 blue:244.0/255.0 alpha:1.0];
     
     //    self.menuViewContentMargin = 20*SIZE;
     [self reloadData];
@@ -89,50 +109,74 @@
     self.navBackgroundView.hidden = NO;
     self.leftButton.hidden = YES;
     self.titleLabel.text = @"房源";
-//    _moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    _moreBtn.backgroundColor = COLOR(255, 255, 255, 0.9);
-//    _moreBtn.frame = CGRectMake(320 *SIZE, NAVIGATION_BAR_HEIGHT+20*SIZE, 40 *SIZE, 40 *SIZE);
-//    [_moreBtn addTarget:self action:@selector(ActionMoreBtn:) forControlEvents:UIControlEventTouchUpInside];
-//    [_moreBtn setImage:[UIImage imageNamed:@"add_50"] forState:UIControlStateNormal];
-//    [self.view addSubview:_moreBtn];
+    
+//    _headerView = [[UIView alloc ]initWithFrame:CGRectMake(0, 0,360 *SIZE , 46*SIZE + STATUS_BAR_HEIGHT)];
+//    _headerView.backgroundColor = [UIColor whiteColor];
+//    [self.view addSubview:_headerView];
+
+
+
+    _moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _moreBtn.backgroundColor = COLOR(255, 255, 255, 0.9);
+    _moreBtn.frame = CGRectMake(320 *SIZE, NAVIGATION_BAR_HEIGHT, 40 *SIZE, 40 *SIZE);
+    [_moreBtn addTarget:self action:@selector(ActionMoreBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [_moreBtn setImage:[UIImage imageNamed:@"add_6"] forState:UIControlStateNormal];
+    [self.view addSubview:_moreBtn];
     
 }
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController {
     
-    return 1;
+    if (_titlearr.count == 0) {
+        
+        return 0;
+    }
+    else{
+        return _titlearr.count;
+    }
     
 }
 
 - (void)pageController:(WMPageController *)pageController willEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
-//
-//    if ([viewController isKindOfClass:[RoomChildVC class]]) {
-//        NSLog(@"%@",viewController);
-//        if ([((RoomChildVC *)viewController).city isEqualToString:_city]) {
+    
+    if ([viewController isKindOfClass:[HouseListVC class]]) {
+        NSLog(@"%@",viewController);
+      
+    }
+    else{
+        
+        
+    }
+}
+
+- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
+    
+    if ([viewController isKindOfClass:[HouseListVC class]]) {
+        NSLog(@"%@",viewController);
+//        if ([((HouseListVC *)viewController).city isEqualToString:_city]) {
 //
 //
 //        }else{
 //
-//            ((RoomChildVC *)viewController).city = _city;
+//            ((RoomChildVC *) viewController).city = _city;
 //
 //            [(RoomChildVC *) viewController RequestMethod];
 //        }
-//    }
-//    else{
-//
-//
-//    }
+    }
+    else{
+        
+        
+    }
 }
 
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
     
-    
-    NSString *tempStr = @"新房";
-    NSDictionary *dic;
-    HouseListVC *vc = [[HouseListVC alloc]init];
-    return vc;
+//    NSString *tempStr = _titlearr[index];
+//    NSDictionary *dic;
 //    dic = [UserModel defaultModel].tagDic[tempStr];
-//    RoomChildVC *vc;
+    HouseListVC *vc;
+    vc = [[HouseListVC alloc]init];
+    
 //    if ([((NSString *)dic[@"tag"]) containsString:@"新房"]) {
 //
 //        vc = [[RoomChildVC alloc] initWithType:2];
@@ -160,12 +204,12 @@
 //                nextVC.brokerage = @"no";
 //            }else{
 //
-//                if ([[UserModelArchiver unarchive].agent_identity integerValue] == 1) {
-//
-//                }else{
-//
-//                    nextVC.isRecommend = @"NO";
-//                }
+////                if ([[UserModelArchiver unarchive].agent_identity integerValue] == 1) {
+////
+////                }else{
+////
+////                    nextVC.isRecommend = @"NO";
+////                }
 //                nextVC.brokerage = @"yes";
 //            }
 //
@@ -185,12 +229,12 @@
 //                }
 //                else{
 //
-//                    if ([[UserModelArchiver unarchive].agent_identity integerValue] == 1) {
-//
-//                    }else{
-//
-//                        nextVC.isRecommend = @"NO";
-//                    }
+////                    if ([[UserModelArchiver unarchive].agent_identity integerValue] == 1) {
+////
+////                    }else{
+////
+////                        nextVC.isRecommend = @"NO";
+////                    }
 //                }
 //                nextVC.brokerage = @"yes";
 //            }
@@ -241,11 +285,11 @@
 //        RecommendNewInfoVC *vc = [[RecommendNewInfoVC alloc] initWithUrlStr:dataDic[@"content_url"] titleStr:dataDic[@"title"] imageUrl:dataDic[@"img_url"] briefStr:dataDic[@"desc"] recommendId:dataDic[@"recommend_id"] companyStr:dataDic[@"nick_name"]];
 //        [self.navigationController pushViewController:vc animated:YES];
 //    };
-//    //    vc.roomChildVCRecommendBlock = ^(RecommendInfoModel *model) {
-//    //
-//    //        RecommendInfoVC *vc = [[RecommendInfoVC alloc] initWithUrlStr:model.content_url titleStr:model.title imageUrl:model.img_url briefStr:model.desc];
-//    //        [self.navigationController pushViewController:vc animated:YES];
-//    //    };
+////    vc.roomChildVCRecommendBlock = ^(RecommendInfoModel *model) {
+////
+////        RecommendInfoVC *vc = [[RecommendInfoVC alloc] initWithUrlStr:model.content_url titleStr:model.title imageUrl:model.img_url briefStr:model.desc];
+////        [self.navigationController pushViewController:vc animated:YES];
+////    };
 //
 //    vc.roomChildVCRentModelBlock = ^(RentingAllTableModel *model) {
 //
@@ -277,14 +321,13 @@
 //        [self.navigationController pushViewController:nextVC animated:YES];
 //    };
 //
-//    return vc;
-//
-    return self;
+    return vc;
+    
 }
 
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index {
-    
-    return _items[index];
+
+    return _titlearr[index];
 }
 
 
@@ -292,14 +335,13 @@
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForMenuView:(WMMenuView *)menuView {
     
-    return CGRectMake(0, NAVIGATION_BAR_HEIGHT, 320*SIZE, 0);
+    return CGRectMake(0, NAVIGATION_BAR_HEIGHT, 320*SIZE, 40*SIZE);
 }
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
-    
-    return CGRectMake(0, NAVIGATION_BAR_HEIGHT, 360*SIZE, SCREEN_Height-NAVIGATION_BAR_HEIGHT-TAB_BAR_MORE);
+
+    return CGRectMake(0, NAVIGATION_BAR_HEIGHT+40*SIZE, 360*SIZE, SCREEN_Height-NAVIGATION_BAR_HEIGHT-40*SIZE);
     
 }
-
 
 @end
