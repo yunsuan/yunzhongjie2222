@@ -122,7 +122,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -140,7 +140,7 @@
 //            return [_yearDic[@"company"] count] > 3? 3:[_yearDic[@"company"] count];
 //        }
 //    }
-    return 2;
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

@@ -116,12 +116,12 @@ NSMutableArray *_titlearr;
 
 
 
-    _moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _moreBtn.backgroundColor = COLOR(255, 255, 255, 0.9);
-    _moreBtn.frame = CGRectMake(320 *SIZE, NAVIGATION_BAR_HEIGHT, 40 *SIZE, 40 *SIZE);
-    [_moreBtn addTarget:self action:@selector(ActionMoreBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [_moreBtn setImage:[UIImage imageNamed:@"add_6"] forState:UIControlStateNormal];
-    [self.view addSubview:_moreBtn];
+//    _moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    _moreBtn.backgroundColor = COLOR(255, 255, 255, 0.9);
+//    _moreBtn.frame = CGRectMake(320 *SIZE, NAVIGATION_BAR_HEIGHT, 40 *SIZE, 40 *SIZE);
+//    [_moreBtn addTarget:self action:@selector(ActionMoreBtn:) forControlEvents:UIControlEventTouchUpInside];
+//    [_moreBtn setImage:[UIImage imageNamed:@"add_6"] forState:UIControlStateNormal];
+//    [self.view addSubview:_moreBtn];
     
 }
 
@@ -335,12 +335,13 @@ NSMutableArray *_titlearr;
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForMenuView:(WMMenuView *)menuView {
     
-    return CGRectMake(0, NAVIGATION_BAR_HEIGHT, 320*SIZE, 40*SIZE);
+    return CGRectMake(0, NAVIGATION_BAR_HEIGHT, 320*SIZE, 0*SIZE);
 }
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
 
-    return CGRectMake(0, NAVIGATION_BAR_HEIGHT+40*SIZE, 360*SIZE, SCREEN_Height-NAVIGATION_BAR_HEIGHT-40*SIZE);
+//    return CGRectMake(0, NAVIGATION_BAR_HEIGHT+40*SIZE, 360*SIZE, SCREEN_Height-NAVIGATION_BAR_HEIGHT-40*SIZE);
+    return CGRectMake(0, NAVIGATION_BAR_HEIGHT, 360*SIZE, SCREEN_Height-NAVIGATION_BAR_HEIGHT);
     
 }
 

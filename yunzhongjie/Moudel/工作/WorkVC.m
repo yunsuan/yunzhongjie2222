@@ -63,11 +63,12 @@
 //    if ([UserModel defaultModel].agent_company_info_id) {
     
         _imgArr = @[@[@"laifang",@"ys_find"],@[@"recommended",@"client",@"Clinchadeal"],@[@"maintenance",@"paihao",@"contract"],@[@"rotational"]];
-      _titleArr = @[@[@"经纪人管理",@"统计报表"],@[@"号码判重",@"新房推荐"],@[@"二手房源",@"二手客源",@"二手合同",]];
+//      _titleArr = @[@[@"经纪人管理",@"统计报表"],@[@"号码判重",@"新房推荐"],@[@"二手房源",@"二手客源",@"二手合同",]];
+          _titleArr = @[@[@"经纪人管理"],@[@"号码判重",@"新房推荐"]];
 //    _titleArr = @[@[@"经纪人管理",@"统计报表"],@[@"号码判重",@"新房推荐",@"新房统计"],@[@"二手房源",@"二手客源",@"二手合同",],@[@"租房房源",@"租房客源",@"租房合同"]];
     _contentArr = @[@[@"",@""],@[@"",@"",@""],@[@"",@"",@"",@""],@[@"",@"",@"",@""]];
 //    _headerArr =@[@"综合管理",@"新房",@"二手房",@"租房"];
-    _headerArr =@[@"综合管理",@"新房",@"二手房"];
+    _headerArr =@[@"综合管理",@"新房"];
 
 //    }
 //    _projectArr = [UserModel defaultModel].project_list;
@@ -145,7 +146,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return 2;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

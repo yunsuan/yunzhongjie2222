@@ -165,7 +165,7 @@
 }
 
 -(void)initUI{
-    _table = [[UITableView alloc] initWithFrame:CGRectMake(0,40*SIZE, SCREEN_Width, SCREEN_Height - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT-80*SIZE) style:UITableViewStylePlain];
+    _table = [[UITableView alloc] initWithFrame:CGRectMake(0,40*SIZE, SCREEN_Width, SCREEN_Height - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT-40*SIZE) style:UITableViewStylePlain];
     _table.rowHeight = UITableViewAutomaticDimension;
     _table.estimatedRowHeight = 100 *SIZE;
     _table.backgroundColor = self.view.backgroundColor;

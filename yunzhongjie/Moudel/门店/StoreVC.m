@@ -68,7 +68,7 @@
     NSMutableArray * arr =  [NSMutableArray array];
     _storecount = data.count;
     for (int i= 0; i<data.count; i++) {
-        
+    
         NSDictionary *datadic  =  data[i];
         _agentcount = _agentcount + [datadic[@"agent_num"] integerValue];
         NSMutableDictionary *dic  = [NSMutableDictionary dictionary];
